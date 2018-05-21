@@ -111,6 +111,41 @@
   <article class="article article-summary">
     <div class="article-summary-inner">
       
+<a href="/LCDataManager相关说明.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+      <div class="article-meta">
+        <p class="category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+        <p class="date"><time datetime="2014-11-07T05:38:14.000Z" itemprop="datePublished">11月 7 2014</time></p>
+      </div>
+      <h2 class="article-title">
+        <a href="/LCDataManager相关说明.html" class="title">LCDataManager相关说明</a>
+      </h2>
+      <p class="article-excerpt">
+        
+        ####### 文章参照cucuz的数据存储Library类 的目的
+方便项目当中数据的存储，提供简单的接口供使用,根据存储的位置划分可以分为缓存和本地存储，其中包括
+NSArray, NSDictionary, NSData,NSString,UIImage 等常用数据类型，自定义Object(自行实现NSCoding协议)
+类的函数介绍
+
+类初始化(单例)
+
+1LCDataManager *dataManager = [LCDataManager shareManager];
+首先，我们创建一个对象，下文将以它作为存储的一个依据
+##Cache block
+      </p>
+    </div>
+  </article>
+
+    
+  
+        
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+      
 <a href="/测试Json效率和XML效率.html" class="thumbnail">
   
     <span style="background-image:url(/images/79888-1946ee461177aeca.png
@@ -134,7 +169,11 @@ tips：把项目中的解析json的sbjson ,网上提到的JsonKit和apple提供�
   </article>
 
     
+      </div>
+    
   
+      <div class="article-row">
+    
         
   <article class="article article-summary">
     <div class="article-summary-inner">
@@ -164,19 +203,15 @@ tips：把项目中的解析json的sbjson ,网上提到的JsonKit和apple提供�
   </article>
 
     
-      </div>
-    
   
-      <div class="article-row">
-    
         
   <article class="article article-summary">
     <div class="article-summary-inner">
       
-<a href="/LCBaseViewController相关.html" class="thumbnail">
+<a href="/关于iConsole在项目中的应用.html" class="thumbnail">
   
-    <span style="background-image:url(http://upload-images.jianshu.io/upload_images/79888-d6fa0aed379b25d2.png
-)" alt="LCBaseViewController相关" class="thumbnail-image"></span>
+    <span style="background-image:url(/images/79888-d9f0841d3cfac40e.png
+)" alt="关于iConsole在项目中的应用" class="thumbnail-image"></span>
   
 </a>
 
@@ -185,19 +220,28 @@ tips：把项目中的解析json的sbjson ,网上提到的JsonKit和apple提供�
         <p class="date"><time datetime="2014-11-07T05:38:14.000Z" itemprop="datePublished">11月 7 2014</time></p>
       </div>
       <h2 class="article-title">
-        <a href="/LCBaseViewController相关.html" class="title">LCBaseViewController相关</a>
+        <a href="/关于iConsole在项目中的应用.html" class="title">关于iConsole在项目中的应用</a>
       </h2>
       <p class="article-excerpt">
         
-        简介该基类参考原先项目中BaseViewController等几个类 进行修改 功能暂时满足目前项目需求 日后更新会根据项目迭代中提出的需求在进行修改
-##属性和函数说明
-LCViewControllerShowType：viewController出现的方式 具体分为123LCViewControllerShowTypePush                （pop/push方式）（默认）LCViewControllerShowTypePresent             （present/dismiss方式）LCViewControllerShowTypePresentBasic        （作为没有登录的情况下，登陆界面返回按钮 跳转到首页的凭据）
+        tips：方便程序没有连着Xcode跑时定位bug(目前觉得没什么好写的就是)
+
+安装
+
+
+下载iconsole代码，将其中这两个文件拖入现有代码中
+
+配置添加头文件&quot;iConsole.h&quot;```123456789101112在使用其功能之前有一点要注意,需要将AppDelegate里初始的UIWindow需要以iConsoleWindow来初始化,并添加```iConsoleDelegate``
       </p>
     </div>
   </article>
 
     
+      </div>
+    
   
+      <div class="article-row">
+    
         
   <article class="article article-summary">
     <div class="article-summary-inner">
@@ -229,11 +273,7 @@ LCViewControllerShowType：viewController出现的方式 具体分为123LCViewCo
   </article>
 
     
-      </div>
-    
   
-      <div class="article-row">
-    
         
   <article class="article article-summary">
     <div class="article-summary-inner">
@@ -261,32 +301,6 @@ segmentWidths:(NSArray *)widths   // 每个segment的宽度，类型NSNumber
 segmentTitles:(NSArray *)titles   // 标题，类型NSString
 popups:(NSArray *)popups   // 弹出菜单，类型LCMenuPopupView
 parentView:(UIView *)parent;   // menu的parentView
-      </p>
-    </div>
-  </article>
-
-    
-  
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/appium整理something.html" class="thumbnail">
-  
-    <span class="thumbnail-image thumbnail-none"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/测试/">测试</a></p>
-        <p class="date"><time datetime="2014-11-04T09:23:14.000Z" itemprop="datePublished">11月 4 2014</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/appium整理something.html" class="title">appium整理something</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        1、先从github上down代码，可能比较慢，慢慢来不着急。    https://github.com/appium/appium.git2、cd到appiummulu，执行一下代码安装依赖包    ./reset.sh –hardcore –ios –dev –verbose3、启动appium    appium &amp;amp;4、编译程序    xcodebuild -sdk iphones
       </p>
     </div>
   </article>
@@ -330,6 +344,26 @@ parentView:(UIView *)parent;   // menu的parentView
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/UIStackView基础用法介绍.html" class="thumbnail">
+  
+    <span style="background-image:url(https://o909w11l5.qnssl.com/2016-07-20-屏幕快照%202016-07-20%2016.52.41.png
+)" alt="UIStackView基础用法介绍" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/UIStackView基础用法介绍.html" class="title">UIStackView基础用法介绍</a></p>
+              <p class="item-date"><time datetime="2018-05-21T01:27:19.000Z" itemprop="datePublished">5月 21 2018</time></p>
+            </div>
+          </li>
         
           <li>
             
@@ -406,26 +440,6 @@ parentView:(UIView *)parent;   // menu的parentView
               <p class="item-category"></p>
               <p class="item-title"><a href="/如何提高字符转float数据时的数据精度.html" class="title">如何提高字符转float数据时的数据精度</a></p>
               <p class="item-date"><time datetime="2018-05-12T09:17:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              
-<a href="/echarts用饼图制作带labelline的旭日图.html" class="thumbnail">
-  
-    <span style="background-image:url(/images/dy20180512171652810.jpg
-)" alt="echarts之用饼图制作带labelline的旭日图(一)" class="thumbnail-image"></span>
-  
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/WEB/">WEB</a></p>
-              <p class="item-title"><a href="/echarts用饼图制作带labelline的旭日图.html" class="title">echarts之用饼图制作带labelline的旭日图(一)</a></p>
-              <p class="item-date"><time datetime="2018-05-12T09:04:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
             </div>
           </li>
         

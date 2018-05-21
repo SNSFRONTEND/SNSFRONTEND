@@ -221,7 +221,7 @@
   <article class="article article-summary">
     <div class="article-summary-inner">
       
-<a href="/cocos2d-x 学习笔记（3）.html" class="thumbnail">
+<a href="/cocos2d-x 学习笔记（2）.html" class="thumbnail">
   
     <span class="thumbnail-image thumbnail-none"></span>
   
@@ -232,11 +232,12 @@
         <p class="date"><time datetime="2014-11-25T09:23:14.000Z" itemprop="datePublished">11月 25 2014</time></p>
       </div>
       <h2 class="article-title">
-        <a href="/cocos2d-x 学习笔记（3）.html" class="title">cocos2d-x 学习笔记（3）</a>
+        <a href="/cocos2d-x 学习笔记（2）.html" class="title">cocos2d-x 学习笔记（2）</a>
       </h2>
       <p class="article-excerpt">
         
-        锚点（Anchor Point）我们用以下代码为例，将红色层的Anchor Point设为中点放在屏幕中央，绿色层添加到红色层上，绿色层锚点为右上角：注：因为Layer比较特殊，它默认忽略锚点，所以要调用ignoreAnchorPointForPosition()接口来改变锚点，关于ignoreAnchorPointForPosition()接口的使用说明，我们将在后面详细讲解。123456789
+        调度器(scheduler)重载系统的调度器Cocos2d-x中Node默认是没有启用update事件的，因此你需要重载update方法来执行自己的逻辑代码。通过执行schedulerUpdate()调度器每帧执行 update方法，如果需要停止这个调度器，可以使用12以下代码用来测试该调度器：`
+HelloWorldScene.hvoid update(float dt) override;12
       </p>
     </div>
   </article>
@@ -295,7 +296,7 @@ HelloWorldDemo为项目名称
   <article class="article article-summary">
     <div class="article-summary-inner">
       
-<a href="/cocos2d-x 学习笔记（2）.html" class="thumbnail">
+<a href="/cocos2d-x 学习笔记（3）.html" class="thumbnail">
   
     <span class="thumbnail-image thumbnail-none"></span>
   
@@ -306,12 +307,11 @@ HelloWorldDemo为项目名称
         <p class="date"><time datetime="2014-11-25T09:23:14.000Z" itemprop="datePublished">11月 25 2014</time></p>
       </div>
       <h2 class="article-title">
-        <a href="/cocos2d-x 学习笔记（2）.html" class="title">cocos2d-x 学习笔记（2）</a>
+        <a href="/cocos2d-x 学习笔记（3）.html" class="title">cocos2d-x 学习笔记（3）</a>
       </h2>
       <p class="article-excerpt">
         
-        调度器(scheduler)重载系统的调度器Cocos2d-x中Node默认是没有启用update事件的，因此你需要重载update方法来执行自己的逻辑代码。通过执行schedulerUpdate()调度器每帧执行 update方法，如果需要停止这个调度器，可以使用12以下代码用来测试该调度器：`
-HelloWorldScene.hvoid update(float dt) override;12
+        锚点（Anchor Point）我们用以下代码为例，将红色层的Anchor Point设为中点放在屏幕中央，绿色层添加到红色层上，绿色层锚点为右上角：注：因为Layer比较特殊，它默认忽略锚点，所以要调用ignoreAnchorPointForPosition()接口来改变锚点，关于ignoreAnchorPointForPosition()接口的使用说明，我们将在后面详细讲解。123456789
       </p>
     </div>
   </article>
@@ -350,6 +350,26 @@ HelloWorldScene.hvoid update(float dt) override;12
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/UIStackView基础用法介绍.html" class="thumbnail">
+  
+    <span style="background-image:url(https://o909w11l5.qnssl.com/2016-07-20-屏幕快照%202016-07-20%2016.52.41.png
+)" alt="UIStackView基础用法介绍" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/UIStackView基础用法介绍.html" class="title">UIStackView基础用法介绍</a></p>
+              <p class="item-date"><time datetime="2018-05-21T01:27:19.000Z" itemprop="datePublished">5月 21 2018</time></p>
+            </div>
+          </li>
         
           <li>
             
@@ -426,26 +446,6 @@ HelloWorldScene.hvoid update(float dt) override;12
               <p class="item-category"></p>
               <p class="item-title"><a href="/如何提高字符转float数据时的数据精度.html" class="title">如何提高字符转float数据时的数据精度</a></p>
               <p class="item-date"><time datetime="2018-05-12T09:17:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              
-<a href="/echarts用饼图制作带labelline的旭日图.html" class="thumbnail">
-  
-    <span style="background-image:url(/images/dy20180512171652810.jpg
-)" alt="echarts之用饼图制作带labelline的旭日图(一)" class="thumbnail-image"></span>
-  
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/WEB/">WEB</a></p>
-              <p class="item-title"><a href="/echarts用饼图制作带labelline的旭日图.html" class="title">echarts之用饼图制作带labelline的旭日图(一)</a></p>
-              <p class="item-date"><time datetime="2018-05-12T09:04:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
             </div>
           </li>
         
