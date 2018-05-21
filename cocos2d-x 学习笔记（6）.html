@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?6b806b7ed8c586bd0172da97b3ed66d8";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script>
+    
+
+<head>
+    <meta name="baidu-site-verification" content="ReWQDRchc7" />
+  <meta charset="utf-8">
+  
+  <title>cocos2d-x 学习笔记（6） | SNS前端团队</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="粒子系统简介粒子系统是指计算机图形学中模拟特定现象的技术，它在模仿自然现象、物理现象及空间扭曲上具备得天独厚的优势，为我们实现一些真实自然而又带有随机性的特效（如爆炸、烟花、水流）提供了方便。Cocos2d-x引擎中就为我们提供了强大的粒子系统 粒子属性一个强大的粒子系统它必然具备了多种多样的属性，这样才能配置出多样的粒子。下面就来看看粒子系统的主要属性吧。 主要属性： _duration 发射器">
+<meta name="keywords" content="cocos2d-x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cocos2d-x 学习笔记（6）">
+<meta property="og:url" content="http://snsfrontend.crysnower.cn/cocos2d-x 学习笔记（6）.html">
+<meta property="og:site_name" content="SNS前端团队">
+<meta property="og:description" content="粒子系统简介粒子系统是指计算机图形学中模拟特定现象的技术，它在模仿自然现象、物理现象及空间扭曲上具备得天独厚的优势，为我们实现一些真实自然而又带有随机性的特效（如爆炸、烟花、水流）提供了方便。Cocos2d-x引擎中就为我们提供了强大的粒子系统 粒子属性一个强大的粒子系统它必然具备了多种多样的属性，这样才能配置出多样的粒子。下面就来看看粒子系统的主要属性吧。 主要属性： _duration 发射器">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-21T03:47:59.882Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cocos2d-x 学习笔记（6）">
+<meta name="twitter:description" content="粒子系统简介粒子系统是指计算机图形学中模拟特定现象的技术，它在模仿自然现象、物理现象及空间扭曲上具备得天独厚的优势，为我们实现一些真实自然而又带有随机性的特效（如爆炸、烟花、水流）提供了方便。Cocos2d-x引擎中就为我们提供了强大的粒子系统 粒子属性一个强大的粒子系统它必然具备了多种多样的属性，这样才能配置出多样的粒子。下面就来看看粒子系统的主要属性吧。 主要属性： _duration 发射器">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css">
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(/images/logo.png); }
+    </style>
+  
+
+  
+    <!-- <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'> -->
+    <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  
+
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">点点滴滴-破茧成蝶</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IOS开发/">IOS开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/WEB/">WEB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS/">iOS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/测试/">测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/项目管理/">项目管理</a></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/AboutUs.html">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://snsfrontend.crysnower.cn"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/iOS/">iOS</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-cocos2d-x 学习笔记（6）" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      cocos2d-x 学习笔记（6）
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/cocos2d-x 学习笔记（6）.html" class="article-date">
+  作者：StephenZhu
+  <time datetime="2014-12-02T09:23:14.000Z" itemprop="datePublished">12月 2 2014</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <h1 id="粒子系统"><a href="#粒子系统" class="headerlink" title="粒子系统"></a>粒子系统</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>粒子系统是指计算机图形学中模拟特定现象的技术，它在模仿自然现象、物理现象及空间扭曲上具备得天独厚的优势，为我们实现一些真实自然而又带有随机性的特效（如爆炸、烟花、水流）提供了方便。Cocos2d-x引擎中就为我们提供了强大的粒子系统</p>
+<h1 id="粒子属性"><a href="#粒子属性" class="headerlink" title="粒子属性"></a>粒子属性</h1><p>一个强大的粒子系统它必然具备了多种多样的属性，这样才能配置出多样的粒子。下面就来看看粒子系统的主要属性吧。</p>
+<h1 id="主要属性："><a href="#主要属性：" class="headerlink" title="主要属性："></a>主要属性：</h1><ul>
+<li>_duration 发射器生存时间，即它可以发射粒子的时间，注意这个时间和粒子生存时间不同。单位秒，-1表示永远；粒子发射结束后可点击工具栏的播放按钮再次发射</li>
+<li>_emissionRate 每秒喷发的粒子数目</li>
+<li>_emitterMode 喷发器模式，有重力模式（GRAVITY）和半径模式（RADIUS，也叫放射模式）两种</li>
+<li>_totalParticles 场景中存在的最大粒子数目，往往与_emissionRate配合起来使用</li>
+<li>_isAutoRemoveOnFinish 粒子结束时是否自动删除<h1 id="重力模式（modeA）："><a href="#重力模式（modeA）：" class="headerlink" title="重力模式（modeA）："></a>重力模式（modeA）：</h1>顾名思义，重力模式模拟重力，可让粒子围绕一个中心点移近或移远，它的优点是非常动态，而且移动有规则。下列各属性只在重力模式下起作用。</li>
+<li>gravity 重力X</li>
+<li>radiaAccel 粒子径向加速度，即平行于重力方向的加速度</li>
+<li>radiaAccelVar 粒子径向加速度变化范围</li>
+<li>speed 速度</li>
+<li>speedVar 速度变化范围</li>
+<li>tangentialAccel 粒子切向加速度，即垂直于重力方向的加速度</li>
+<li>tangentialAccelVar 粒子切向加速度变化范围<br>半径模式（modeB）：<br>半径模式可以使粒子以圆圈方式旋转，它也可以创造螺旋效果让粒子急速前进或后退。下列各属性只在半径模式下起作用。</li>
+<li>endRadius 结束半径</li>
+<li>endRadiusVar 结束半径变化范围，即结束半径值的范围在 （endRadius - endRadiusVar） 和 （endRadius + - - - - endRadiusVar ）之间，下面类似。</li>
+<li>rotatePerSecond 粒子每秒围绕起始点的旋转角度</li>
+<li>rotatePerSecondVar 粒子每秒围绕起始点的旋转角度变化范围</li>
+<li>startRadius 初始半径</li>
+<li>startRadiusVar 初始半径变化范围</li>
+<li>###生命属性：</li>
+<li>_life 粒子生命，即粒子的生存时间 </li>
+<li>_lifeVar 粒子生命变化范围<br>大小属性：</li>
+<li>_endSize 粒子结束时的大小，-1表示和初始大小一致</li>
+<li>_endSizeVar 粒子结束大小的变化范围</li>
+<li>_startSize 粒子的初始大小</li>
+<li>_startSizeVar 粒子初始大小的变化范围<br>角度属性：</li>
+<li>_angle 粒子角度</li>
+<li>_angleVar 粒子角度变化范围<br>颜色属性：</li>
+<li>_endColor 粒子结束颜色</li>
+<li>_endColorVar 粒子结束颜色变化范围</li>
+<li>_startColor 粒子初始颜色</li>
+<li><p>_startColorVar 粒子初始颜色变化范围<br>如果你不想编辑出五颜六色的粒子效果，那应该把_endColorVar，_startColorVar尽量设置为（0, 0, 0, 0)。<br>位置属性:</p>
+</li>
+<li><p>_positionType 粒子位置类型，有自由模式（FREE）、相对模式（RELATIVE）和打组模式（GROUPED）三种</p>
+</li>
+<li>_posVar 发射器位置的变化范围（横向和纵向）</li>
+<li>_sourcePosition 发射器原始坐标位置<br>Free自由模式，相对于屏幕自由，不会随粒子节点移动而移动（可产生火焰、蒸汽等效果）；Relative相对模式，相对于被绑定的Node静止，粒子发射器会随Node移动而移动，可用于制作移动角色身上的特效等等；Grouped打组模式是相对于发射点的，粒子随发射器移动而移动。</li>
+</ul>
+<p>自旋属性：</p>
+<ul>
+<li>_endSpin 粒子结束自旋角度</li>
+<li>_endSpinVar 粒子结束自旋角度变化范围</li>
+<li>_startSpin 粒子开始自旋角度</li>
+<li><p>_startSpinVar 粒子开始自旋角度变化范围<br>纹理渲染属性:</p>
+</li>
+<li><p>_texture 粒子贴图纹理</p>
+</li>
+<li><p>_blendFunc 纹理的混合模式方法，有DISABLE、ALPHA_PREMULTIPLIED、ALPHA_NON_PREMULTIPLIED、ADDITIVE四种类型。<br>DISABLE = {GL_ONE, GL_ZERO};<br>ALPHA_PREMULTIPLIED = {GL_ONE, GL_ONE_MINUS_SRC_ALPHA};<br>ALPHA_NON_PREMULTIPLIED = {GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA};<br>ADDITIVE = {GL_SRC_ALPHA, GL_ONE};</p>
+</li>
+<li><p>GL_ZERO： 表示使用0.0作为因子，实际上相当于不使用这种颜色参与混合运算。</p>
+</li>
+<li>GL_ONE： 表示使用1.0作为因子，实际上相当于完全的使用了这种颜色参与混合运算。</li>
+<li>GL_SRC_ALPHA：表示使用源颜色的alpha值来作为因子。</li>
+<li>GL_DST_ALPHA：表示使用目标颜色的alpha值来作为因子。</li>
+<li>GL_ONE_MINUS_SRC_ALPHA：表示用1.0减去源颜色的alpha值来作为因子。</li>
+<li>GL_ONE_MINUS_DST_ALPHA：表示用1.0减去目标颜色的alpha值来作为因子。<br>Cocos2dx使用OpenGL混合原理对图形进行渲染绘制。混合就是指把两种颜色混在一起，具体一点就是把某一像素位置原来的颜色和将要画上去的颜色，通过某种方式混在一起，从而实现特殊的效果。它是一种常用的技巧，通常可以用来实现半透明，你也可以通过不同的设置得到不同的混合结果，产生一些有趣或者奇怪的图象。</li>
+</ul>
+<p>ParticleBatchNode</p>
+<p>ParticleBatchNode 和批处理节点一样，它将通过一次调用OpenGL来绘制它的子节点。 ParticleBatchNode 实例可以引用一个且只能引用一个 texture 的对象。 只有 ParticleSystem 包含 texture 的时候它才可以被添加到SpriteBatchNode中。 所有添加到SpriteBatchNode里面的ParticleSystem都会在同一OpenGL ES调用里面被绘制. 如果 ParticleSystem 没有被添加到ParticleBatchNode中，那么OpenGL ES会调用每个粒子系统的绘图函数，这样做效率会很低。</p>
+<p>局限性:</p>
+<ul>
+<li>目前只支持 ParticleSystemQuad</li>
+<li><p>所有的系统都使用相同的参数被绘制：混合函数、纹理等<br>最为有效的用法</p>
+</li>
+<li><p>为所有粒子系统初始化ParticleBatchNode纹理和足够的容量</p>
+</li>
+<li>初始化所有粒子系统，并将其添加为批处理节点的子节点<h1 id="程序中的应用"><a href="#程序中的应用" class="headerlink" title="程序中的应用"></a>程序中的应用</h1></li>
+</ul>
+<p>创建一个粒子系统，同时初始化它的粒子总数：<br>    auto _emitter = ParticleSystemQuad::createWithTotalParticles(50);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">auto _emitter = ParticleSystemQuad::createWithTotalParticles(50);</span><br><span class="line">addChild(_emitter, 10);</span><br><span class="line">_emitter-&gt;setTexture(Director::getInstance()-&gt;getTextureCache()-&gt;addImage(&quot;CloseNormal.png&quot;));</span><br><span class="line">_emitter-&gt;setAnchorPoint(Point(0, 0));</span><br><span class="line">// duration</span><br><span class="line">_emitter-&gt;setDuration(ParticleSystem::DURATION_INFINITY);</span><br><span class="line"> </span><br><span class="line">// radius mode</span><br><span class="line">_emitter-&gt;setEmitterMode(ParticleSystem::Mode::RADIUS);</span><br><span class="line"> </span><br><span class="line">// radius mode: start and end radius in pixels</span><br><span class="line">_emitter-&gt;setStartRadius(4);</span><br><span class="line">_emitter-&gt;setStartRadiusVar(1);</span><br><span class="line">_emitter-&gt;setEndRadius(ParticleSystem::START_RADIUS_EQUAL_TO_END_RADIUS);</span><br><span class="line">_emitter-&gt;setEndRadiusVar(0);</span><br><span class="line"> </span><br><span class="line">// radius mode: degrees per second</span><br><span class="line">_emitter-&gt;setRotatePerSecond(100);</span><br><span class="line">_emitter-&gt;setRotatePerSecondVar(0);</span><br><span class="line"> </span><br><span class="line">// angle</span><br><span class="line">_emitter-&gt;setAngle(90);</span><br><span class="line">_emitter-&gt;setAngleVar(0);</span><br><span class="line"> </span><br><span class="line">// emitter position</span><br><span class="line">auto size = Director::getInstance()-&gt;getWinSize();</span><br><span class="line">_emitter-&gt;setPosVar(Point::ZERO);</span><br><span class="line"> </span><br><span class="line">// life of particles</span><br><span class="line">_emitter-&gt;setLife(0.5);</span><br><span class="line">_emitter-&gt;setLifeVar(0);</span><br><span class="line"> </span><br><span class="line">// spin of particles</span><br><span class="line">_emitter-&gt;setStartSpin(0);</span><br><span class="line">_emitter-&gt;setStartSpinVar(0);</span><br><span class="line">_emitter-&gt;setEndSpin(0);</span><br><span class="line">_emitter-&gt;setEndSpinVar(0);</span><br><span class="line"> </span><br><span class="line">// color of particles</span><br><span class="line">Color4F startColor(0.0f, 0.8f, 0.9f, 1.0f);</span><br><span class="line">_emitter-&gt;setStartColor(startColor);</span><br><span class="line"> </span><br><span class="line">Color4F startColorVar(0, 0, 0, 1.0f);</span><br><span class="line">_emitter-&gt;setStartColorVar(startColorVar);</span><br><span class="line"> </span><br><span class="line">Color4F endColor(1.0f, 1.0f, 1.0f, 0.1f);</span><br><span class="line">_emitter-&gt;setEndColor(endColor);</span><br><span class="line"> </span><br><span class="line">Color4F endColorVar(0, 0, 0, 0.1f);</span><br><span class="line">_emitter-&gt;setEndColorVar(endColorVar);</span><br><span class="line"> </span><br><span class="line">// size, in pixels</span><br><span class="line">_emitter-&gt;setStartSize(20);</span><br><span class="line">_emitter-&gt;setStartSizeVar(1);</span><br><span class="line">_emitter-&gt;setEndSize(0);</span><br><span class="line"> </span><br><span class="line">// emits per second</span><br><span class="line">_emitter-&gt;setEmissionRate(_emitter-&gt;getTotalParticles() / _emitter-&gt;getLife());</span><br><span class="line"> </span><br><span class="line">// additive</span><br><span class="line">_emitter-&gt;setBlendAdditive(false);</span><br><span class="line"> </span><br><span class="line">//addChild(_emitter);</span><br><span class="line">_emitter-&gt;setPosition(Point(200,200));</span><br></pre></td></tr></table></figure></p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://snsfrontend.crysnower.cn/cocos2d-x 学习笔记（6）.html" data-id="cjhfvpxnh001owmovg8d3m2b9" class="article-share-link">分享到</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cocos2d-x/">cocos2d-x</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="github" href="http://www.suning.com" target="_blank"><i id="icon-github" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="http://www.suning.com" target="_blank"><i id="icon-weibo" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="rss" href="/atom.xml" target="_blank"><i id="icon-rss" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/cocos2d-x 学习笔记（7）.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <p class="article-nav-title">
+        
+          cocos2d-x 学习笔记（7）
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/cocos2d-x 学习笔记（5）.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">cocos2d-x 学习笔记（5）</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/螺与鱼.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/redaiyu.jpg
+)" alt="螺与螺" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/项目管理/">项目管理</a></p>
+              <p class="item-title"><a href="/螺与鱼.html" class="title">螺与螺</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:53:16.867Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/URL-编码-iOS.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/URL-编码-iOS.html" class="title">URL 编码 iOS</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:05:46.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/ios修改本地useragent-WKWebView.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/ios修改本地useragent-WKWebView.html" class="title">ios修改本地useragent(WKWebView)</a></p>
+              <p class="item-date"><time datetime="2018-05-20T03:50:39.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/如何提高字符转float数据时的数据精度.html" class="thumbnail">
+  
+    <span style="background-image:url(http://obfk4z1f6.bkt.clouddn.com/fixed-point-representation.png
+)" alt="如何提高字符转float数据时的数据精度" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/如何提高字符转float数据时的数据精度.html" class="title">如何提高字符转float数据时的数据精度</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:17:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/echarts用饼图制作带labelline的旭日图.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/dy20180512171652810.jpg
+)" alt="echarts之用饼图制作带labelline的旭日图(一)" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/WEB/">WEB</a></p>
+              <p class="item-title"><a href="/echarts用饼图制作带labelline的旭日图.html" class="title">echarts之用饼图制作带labelline的旭日图(一)</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:04:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IOS开发/">IOS开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">49</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/FMDB/" style="font-size: 10px;">FMDB</a> <a href="/tags/POP/" style="font-size: 10px;">POP</a> <a href="/tags/PhoneGap/" style="font-size: 10px;">PhoneGap</a> <a href="/tags/SizeClass/" style="font-size: 14px;">SizeClass</a> <a href="/tags/WKWebView/" style="font-size: 10px;">WKWebView</a> <a href="/tags/appium/" style="font-size: 12px;">appium</a> <a href="/tags/cocos2d-x/" style="font-size: 20px;">cocos2d-x</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS8/" style="font-size: 16px;">iOS8</a> <a href="/tags/iconsole/" style="font-size: 10px;">iconsole</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/phonegap/" style="font-size: 10px;">phonegap</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/xib/" style="font-size: 10px;">xib</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/代码优化/" style="font-size: 12px;">代码优化</a> <a href="/tags/代码规范/" style="font-size: 10px;">代码规范</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/控件/" style="font-size: 18px;">控件</a> <a href="/tags/推送/" style="font-size: 10px;">推送</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/效率/" style="font-size: 12px;">效率</a> <a href="/tags/日历/" style="font-size: 10px;">日历</a> <a href="/tags/杂文/" style="font-size: 10px;">杂文</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/状态栏/" style="font-size: 10px;">状态栏</a> <a href="/tags/网络/" style="font-size: 14px;">网络</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/路线图/" style="font-size: 10px;">路线图</a> <a href="/tags/边下边播/" style="font-size: 10px;">边下边播</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a> <a href="/tags/项目管理/" style="font-size: 12px;">项目管理</a> <a href="/tags/高德/" style="font-size: 10px;">高德</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+          <li>
+            <a href="/AboutUs.html">AboutMe</a>
+          </li>
+        
+          <li>
+            <a href="http://www.suning.com">苏宁易购</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2018 SNS前端团队</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js"></script>
+  <script src="/scrollLoading/main.js"></script>
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

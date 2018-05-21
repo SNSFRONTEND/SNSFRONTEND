@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?6b806b7ed8c586bd0172da97b3ed66d8";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script>
+    
+
+<head>
+    <meta name="baidu-site-verification" content="ReWQDRchc7" />
+  <meta charset="utf-8">
+  
+  <title>在MKMapView中添加渐变色路径 | SNS前端团队</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="刚来苏宁接触到的业务并不多，既然要写博客那就暂时上一篇之前所遇到的关于在地图控件中如何添加渐变色路径实现方案吧。 整体实现原理是依据用户跑步配速将坐标点等分为若干色块，将色块相连就形成了渐变色轨迹 如何在iPhone上绘制mapView就不说了，在mapView上绘制轨迹要添加MKPolyline，调用[self.mapView addOverlay:self.polyLine]；但这个MKPol">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在MKMapView中添加渐变色路径">
+<meta property="og:url" content="http://snsfrontend.crysnower.cn/在MKMapView中添加渐变色路径.html">
+<meta property="og:site_name" content="SNS前端团队">
+<meta property="og:description" content="刚来苏宁接触到的业务并不多，既然要写博客那就暂时上一篇之前所遇到的关于在地图控件中如何添加渐变色路径实现方案吧。 整体实现原理是依据用户跑步配速将坐标点等分为若干色块，将色块相连就形成了渐变色轨迹 如何在iPhone上绘制mapView就不说了，在mapView上绘制轨迹要添加MKPolyline，调用[self.mapView addOverlay:self.polyLine]；但这个MKPol">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-28T10:16:53.129Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在MKMapView中添加渐变色路径">
+<meta name="twitter:description" content="刚来苏宁接触到的业务并不多，既然要写博客那就暂时上一篇之前所遇到的关于在地图控件中如何添加渐变色路径实现方案吧。 整体实现原理是依据用户跑步配速将坐标点等分为若干色块，将色块相连就形成了渐变色轨迹 如何在iPhone上绘制mapView就不说了，在mapView上绘制轨迹要添加MKPolyline，调用[self.mapView addOverlay:self.polyLine]；但这个MKPol">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css">
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(/images/logo.png); }
+    </style>
+  
+
+  
+    <!-- <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'> -->
+    <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  
+
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">点点滴滴-破茧成蝶</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IOS开发/">IOS开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/WEB/">WEB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS/">iOS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/测试/">测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/项目管理/">项目管理</a></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/AboutUs.html">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://snsfrontend.crysnower.cn"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header">未分类</h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-在MKMapView中添加渐变色路径" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      在MKMapView中添加渐变色路径
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/在MKMapView中添加渐变色路径.html" class="article-date">
+  作者：SNS前端团队
+  <time datetime="2018-04-28T09:50:37.000Z" itemprop="datePublished">4月 28 2018</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <p>刚来苏宁接触到的业务并不多，既然要写博客那就暂时上一篇之前所遇到的关于在地图控件中如何添加渐变色路径实现方案吧。</p>
+<p>整体实现原理是依据用户跑步配速将坐标点等分为若干色块，将色块相连就形成了渐变色轨迹</p>
+<p>如何在iPhone上绘制mapView就不说了，在mapView上绘制轨迹要添加MKPolyline，调用[self.mapView addOverlay:self.polyLine]；但这个MKPolyline的构造方法中只接受和坐标相关的值，而轨迹渐变自然要通过速度控制，但传不进去，所以只能重写一个实现<mkoverlay>协议的类。下面就是我找到的，拿去可以直接用：</mkoverlay></p>
+<p>GradientPolylineOverlay.h实现</p>
+<p>#import &lt;Foundation/Foundation.h&gt;</p>
+<p>#import &lt;MapKit/MapKit.h&gt;</p>
+<p>@interface GradientPolylineOverlay : NSObject <mkoverlay>{<br>    MKMapPoint *points;<br>    NSUInteger pointCount;<br>    NSUInteger pointSpace;</mkoverlay></p>
+<pre><code>MKMapRect boundingMapRect;
+pthread_rwlock_t rwLock;
+</code></pre><p>}</p>
+<p>//Initialize the overlay with the starting coordinate.<br>//The overlay’s boundingMapRect will be set to a sufficiently large square<br>//centered on the starting coordinate.<br>-(id) initWithCenterCoordinate:(CLLocationCoordinate2D)coord;</p>
+<p>-(id) initWithPoints:(CLLocationCoordinate2D<em>)_points velocity:(float</em>)_velocity count:(NSUInteger)_count;</p>
+<p>//Add a location observation. A MKMapRect containing the newly added point<br>//and the previously added point is returned so that the view can be updated<br>//int that rectangle. If the added coordinate has not moved far enough from<br>//the previously added coordinate it will not be added to the list and<br>//MKMapRectNULL will be returned.<br>//<br>-(MKMapRect)addCoordinate:(CLLocationCoordinate2D)coord;</p>
+<p>-(void) lockForReading;</p>
+<p>//The following properties must only be accessed when holding the read lock<br>// via lockForReading. Once you’re done accessing the points, release the<br>// read lock with unlockForReading.<br>//<br>@property (assign) MKMapPoint <em>points;<br>@property (readonly) NSUInteger pointCount;<br>@property (assign) float </em>velocity;</p>
+<p>-(void) unlockForReading;</p>
+<p>@end<br>GradientPolylineOverlay.m</p>
+<p>#import “GradientPolylineOverlay.h”</p>
+<p>#import &lt;pthread.h&gt;</p>
+<p>#define INITIAL_POINT_SPACE 1000</p>
+<p>#define MINIMUM_DELTA_METERS 10.0</p>
+<p>@implementation GradientPolylineOverlay{<br>}</p>
+<p>@synthesize points, pointCount, velocity;</p>
+<p>-(id) initWithCenterCoordinate:(CLLocationCoordinate2D)coord{<br>    self = [super init];<br>    if (self){<br>        //initialize point storage and place this first coordinate in it<br>        pointSpace = INITIAL_POINT_SPACE;<br>        points = malloc(sizeof(MKMapPoint)*pointSpace);<br>        points[0] = MKMapPointForCoordinate(coord);<br>        pointCount = 1;</p>
+<pre><code>    //bite off up to 1/4 of the world to draw into
+    MKMapPoint origin = points[0];
+    origin.x -= MKMapSizeWorld.width/8.0;
+    origin.y -= MKMapSizeWorld.height/8.0;
+    MKMapSize size = MKMapSizeWorld;
+    size.width /=4.0;
+    size.height /=4.0;
+    boundingMapRect = (MKMapRect) {origin, size};
+    MKMapRect worldRect = MKMapRectMake(0, 0, MKMapSizeWorld.width, MKMapSizeWorld.height);
+    boundingMapRect = MKMapRectIntersection(boundingMapRect, worldRect);
+
+    // initialize read-write lock for drawing and updates
+    pthread_rwlock_init(&amp;rwLock,NULL);
+}
+return self;
+</code></pre><p>}</p>
+<p>-(id) initWithPoints:(CLLocationCoordinate2D<em>)_points velocity:(float </em>)_velocity count:(NSUInteger)_count{<br>    self = [super init];<br>    if (self){<br>        pointCount = _count;<br>        self.points = malloc(sizeof(MKMapPoint)*pointCount);<br>        for (int i=0; i&lt;_count; i++){<br>            self.points[i] = MKMapPointForCoordinate(_points[i]);<br>        }</p>
+<pre><code>    self.velocity = malloc(sizeof(float)*pointCount);
+    for (int i=0; i&lt;_count;i++){
+        self.velocity[i] = _velocity[i];
+    }
+
+    //bite off up to 1/4 of the world to draw into
+    MKMapPoint origin = points[0];
+    origin.x -= MKMapSizeWorld.width/8.0;
+    origin.y -= MKMapSizeWorld.height/8.0;
+    MKMapSize size = MKMapSizeWorld;
+    size.width /=4.0;
+    size.height /=4.0;
+    boundingMapRect = (MKMapRect) {origin, size};
+    MKMapRect worldRect = MKMapRectMake(0, 0, MKMapSizeWorld.width, MKMapSizeWorld.height);
+    boundingMapRect = MKMapRectIntersection(boundingMapRect, worldRect);
+
+    // initialize read-write lock for drawing and updates
+    pthread_rwlock_init(&amp;rwLock,NULL);
+}
+return self;
+</code></pre><p>}</p>
+<p>-(void)dealloc{<br>    free(points);<br>    free(velocity);<br>    pthread_rwlock_destroy(&amp;rwLock);<br>}</p>
+<p>//center<br>-(CLLocationCoordinate2D)coordinate{<br>    return MKCoordinateForMapPoint(points[0]);<br>}</p>
+<p>-(MKMapRect)boundingMapRect{<br>    return boundingMapRect;<br>}</p>
+<p>-(void) lockForReading{<br>    pthread_rwlock_rdlock(&amp;rwLock);<br>}</p>
+<p>-(void) unlockForReading{<br>    pthread_rwlock_unlock(&amp;rwLock);<br>}</p>
+<p>-(MKMapRect)addCoordinate:(CLLocationCoordinate2D)coord{<br>    //Acquire the write lock because we are going to changing the list of points<br>    pthread_rwlock_wrlock(&amp;rwLock);</p>
+<pre><code>//Convert a CLLocationCoordinate2D to an MKMapPoint
+MKMapPoint newPoint = MKMapPointForCoordinate(coord);
+MKMapPoint prevPoint = points[pointCount-1];
+
+//Get the distance between this new point and previous point
+CLLocationDistance metersApart = MKMetersBetweenMapPoints(newPoint, prevPoint);
+MKMapRect updateRect = MKMapRectNull;
+
+if (metersApart &gt; MINIMUM_DELTA_METERS){
+    //Grow the points array if necessary
+    if (pointSpace == pointCount){
+        pointSpace *= 2;
+        points = realloc(points, sizeof(MKMapPoint) * pointSpace);
+    }
+
+    //Add the new point to points array
+    points[pointCount] = newPoint;
+    pointCount++;
+
+    //Compute MKMapRect bounding prevPoint and newPoint
+    double minX = MIN(newPoint.x,prevPoint.x);
+    double minY = MIN(newPoint.y,prevPoint.y);
+    double maxX = MAX(newPoint.x, prevPoint.x);
+    double maxY = MAX(newPoint.y, prevPoint.y);
+
+    updateRect = MKMapRectMake(minX, minY, maxX - minX, maxY - minY);
+}
+
+pthread_rwlock_unlock(&amp;rwLock);
+
+return updateRect;
+</code></pre><p>}</p>
+<p>@end</p>
+<p>下面是在mapview上添加PolyLine的方法：([self smoothTrack] 是我针对项目需求做速度平滑渐变的算法，可以忽略；我绘制轨迹的坐标数据结构是由精度、维度、速度构成的字典；最后添加的方法是调用mapview的分类中的方法，所以有级别，也是根我需求相关，可直接用[self.mapView addOverlay:self.polyline] 代替)</p>
+<p>NSMutableArray <em>smoothTrackArray = [self smoothTrack];<br>    double count = smoothTrackArray.count;<br>    CLLocationCoordinate2D </em>points;<br>    float <em>velocity;<br>    points = malloc(sizeof(CLLocationCoordinate2D)</em>count);<br>    velocity = malloc(sizeof(float)*count);</p>
+<pre><code>for(int i=0;i&lt;count;i++){
+    NSDictionary *dic = [smoothTrackArray objectAtIndex:i];
+    CLLocationDegrees latitude  = [dic[@&quot;latitude&quot;] doubleValue];
+    CLLocationDegrees longitude = [dic[@&quot;longitude&quot;] doubleValue];
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
+    velocity[i] = [dic[@&quot;speed&quot;] doubleValue];
+    points[i] = coordinate;
+}
+
+self.polyline = [[GradientPolylineOverlay alloc] initWithPoints:points velocity:velocity count:count];
+[self.mapView addOverlay:self.polyline level:1];
+</code></pre><p>轨迹添加好了，还需要在渲染器上面呈现，会调用Mapkit相应的代理：(GradientPolylineRenderer 则是与之对应的渲染器)</p>
+<p>#pragma mark -</p>
+<p>#pragma mark - MKMap Delegate</p>
+<ul>
+<li>(MKOverlayRenderer <em>)mapView:(MKMapView </em>)mapView rendererForOverlay:(id <mkoverlay>)overlay{<br>  if([overlay isKindOfClass:[GradientPolylineOverlay class]]){<pre><code>//轨迹
+GradientPolylineRenderer *polylineRenderer = [[GradientPolylineRenderer alloc] initWithOverlay:overlay];
+polylineRenderer.lineWidth = 8.f;
+return polylineRenderer;
+</code></pre>  }<br>  return nil;<br>}<br>GradientPolylineRenderer.h实现：</mkoverlay></li>
+</ul>
+<p>#import &lt;MapKit/MapKit.h&gt;</p>
+<p>@interface GradientPolylineRenderer : MKOverlayPathRenderer</p>
+<p>@end<br>GradientPolylineRenderer.m实现：(上面的几个宏定义，是速度的边界值，以及对应的颜色边界值；另外我这里会对hues[i]是否为0做判断，项目需求要区分暂停点和速度过快点，已防作弊，此种情况会用虚线代替，如果只绘制渐变实线，不用管这)</p>
+<p>#import “GradientPolylineRenderer.h”</p>
+<p>#import &lt;pthread.h&gt;</p>
+<p>#import “GradientPolylineOverlay.h”</p>
+<p>#import “Constant.h”</p>
+<p>#define V_MAX 4.5</p>
+<p>#define V_MIN 1.0</p>
+<p>#define H_MAX 0.33</p>
+<p>#define H_MIN 0.03</p>
+<p>@implementation GradientPolylineRenderer{<br>    float<em> hues;<br>    pthread_rwlock_t rwLock;<br>    GradientPolylineOverlay</em> polyline;<br>}</p>
+<ul>
+<li>(id) initWithOverlay:(id<mkoverlay>)overlay{<br>  self = [super initWithOverlay:overlay];<br>  if (self){<pre><code>pthread_rwlock_init(&amp;rwLock,NULL);
+polyline = ((GradientPolylineOverlay*)self.overlay);
+float *velocity = polyline.velocity;
+int count = (int)polyline.pointCount;
+[self velocity:velocity ToHue:&amp;hues count:count];
+[self createPath];
+</code></pre>  }<br>  return self;<br>}<br>/**<ul>
+<li>Convert velocity to Hue using specific formular.<br>*</li>
+<li>H(v) = Hmax, (v &gt; Vmax)</li>
+<li>= Hmin + ((v-Vmin)*(Hmax-Hmin))/(Vmax-Vmin), (Vmin &lt;= v &lt;= Vmax)</li>
+<li>= Hmin, (v &lt; Vmin)<br>*</li>
+<li>@param velocity Velocity list.</li>
+<li>@param count    count of velocity list.<br>*</li>
+<li>@return An array of hues mapping each velocity.<br>*/</li>
+</ul>
+</mkoverlay></li>
+<li><p>(void) velocity:(float<em>)velocity ToHue:(float**)_hue count:(int)count{
+  </em>_hue = malloc(sizeof(float)*count);<br>  for (int i=0;i&lt;count;i++){</p>
+<pre><code>float curVelo = velocity[i];
+</code></pre><p>//        //原有渐变公式<br>//        curVelo = ((curVelo &lt; V_MIN) ? V_MIN : (curVelo  &gt; V_MAX) ? V_MAX : curVelo);<br>//        (<em>_hue)[i] = H_MIN + ((curVelo-V_MIN)</em>(H_MAX-H_MIN))/(V_MAX-V_MIN);</p>
+<pre><code>if(curVelo&gt;0.){
+    curVelo = ((curVelo &lt; V_MIN) ? V_MIN : (curVelo  &gt; V_MAX) ? V_MAX : curVelo);
+    (*_hue)[i] = H_MIN + ((curVelo-V_MIN)*(H_MAX-H_MIN))/(V_MAX-V_MIN);
+}else{
+    //暂停颜色
+    (*_hue)[i] = 0.;
+}
+</code></pre><p>  }<br>}</p>
+</li>
+</ul>
+<p>-(void) createPath{<br>    CGMutablePathRef path = CGPathCreateMutable();<br>    BOOL pathIsEmpty = YES;<br>    for (int i=0;i&lt; polyline.pointCount;i++){<br>        CGPoint point = [self pointForMapPoint:polyline.points[i]];<br>        if (pathIsEmpty){<br>            CGPathMoveToPoint(path, nil, point.x, point.y);<br>            pathIsEmpty = NO;<br>        } else {<br>            CGPathAddLineToPoint(path, nil, point.x, point.y);<br>        }<br>    }</p>
+<pre><code>pthread_rwlock_wrlock(&amp;rwLock);
+self.path = path; //&lt;—— don&apos;t forget this line.
+pthread_rwlock_unlock(&amp;rwLock);
+</code></pre><p>}</p>
+<p>//-(BOOL)canDrawMapRect:(MKMapRect)mapRect zoomScale:(MKZoomScale)zoomScale{<br>//    CGRect pointsRect = CGPathGetBoundingBox(self.path);<br>//    CGRect mapRectCG = [self rectForMapRect:mapRect];<br>//    return CGRectIntersectsRect(pointsRect, mapRectCG);<br>//}</p>
+<ul>
+<li><p>(void) drawMapRect:(MKMapRect)mapRect zoomScale:(MKZoomScale)zoomScale inContext:(CGContextRef)context{</p>
+<p>  //put this blok into the canDraw method cause problem<br>  CGRect pointsRect = CGPathGetBoundingBox(self.path);<br>  CGRect mapRectCG = [self rectForMapRect:mapRect];<br>  if (!CGRectIntersectsRect(pointsRect, mapRectCG))return;<br>  CGContextSetLineCap(context, kCGLineCapRound);<br>  CGContextSetLineJoin(context, kCGLineJoinRound);<br>  UIColor<em> pcolor,</em>ccolor;<br>  for (int i=0;i&lt; polyline.pointCount;i++){</p>
+<pre><code>CGPoint point = [self pointForMapPoint:polyline.points[i]];
+CGMutablePathRef path = CGPathCreateMutable();
+
+if(hues[i]==0.){
+    //虚线
+    if(i==0){
+        CGPathMoveToPoint(path, nil, point.x, point.y);
+    }else{
+        //颜色
+        CGContextSetRGBStrokeColor(context, 153.0 / 255.0, 153.0 / 255.0, 153.0 / 255.0, 1.0);
+        //线宽
+        CGFloat lineWidth = CGContextConvertSizeToUserSpace(context, (CGSize){self.lineWidth,self.lineWidth}).width;
+        CGContextSetLineWidth(context, lineWidth);
+
+        CGFloat lengths[] = {lineWidth*2,lineWidth*2};//设置虚线
+        CGContextSetLineDash(context, lineWidth, lengths, 2);//设置虚线
+
+        CGPoint prevPoint = [self pointForMapPoint:polyline.points[i-1]];
+        CGPathMoveToPoint(path, nil, prevPoint.x, prevPoint.y);
+        CGPathAddLineToPoint(path, nil, point.x, point.y);
+        CGContextAddPath(context, path);
+        CGContextStrokePath(context);
+    }
+}else{
+    //跑步渐变
+    ccolor = [UIColor colorWithHue:hues[i] saturation:1.0f brightness:1.0f alpha:1.0f];
+    if (i==0){
+        CGPathMoveToPoint(path, nil, point.x, point.y);
+    } else {
+        CGPoint prevPoint = [self pointForMapPoint:polyline.points[i-1]];
+        CGPathMoveToPoint(path, nil, prevPoint.x, prevPoint.y);
+        CGPathAddLineToPoint(path, nil, point.x, point.y);
+
+        CGFloat pc_r,pc_g,pc_b,pc_a,
+        cc_r,cc_g,cc_b,cc_a;
+
+        [pcolor getRed:&amp;pc_r green:&amp;pc_g blue:&amp;pc_b alpha:&amp;pc_a];
+        [ccolor getRed:&amp;cc_r green:&amp;cc_g blue:&amp;cc_b alpha:&amp;cc_a];
+
+        CGFloat gradientColors[8] = {pc_r,pc_g,pc_b,pc_a,
+            cc_r,cc_g,cc_b,cc_a};
+
+        CGFloat gradientLocation[2] = {0,1};
+        CGContextSaveGState(context);
+        CGFloat lineWidth = CGContextConvertSizeToUserSpace(context, (CGSize){self.lineWidth,self.lineWidth}).width;
+        CGPathRef pathToFill = CGPathCreateCopyByStrokingPath(path, NULL, lineWidth, self.lineCap, self.lineJoin, self.miterLimit);
+        CGContextAddPath(context, pathToFill);
+        CGContextClip(context);
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+        CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, gradientColors, gradientLocation, 2);
+        CGColorSpaceRelease(colorSpace);
+        CGPoint gradientStart = prevPoint;
+        CGPoint gradientEnd = point;
+        CGContextDrawLinearGradient(context, gradient, gradientStart, gradientEnd, kCGGradientDrawsAfterEndLocation);
+        CGGradientRelease(gradient);
+        CGContextRestoreGState(context);
+        pcolor = [UIColor colorWithCGColor:ccolor.CGColor];
+    }
+}
+</code></pre><p>  }<br>}<br>@end</p>
+</li>
+</ul>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://snsfrontend.crysnower.cn/在MKMapView中添加渐变色路径.html" data-id="cjhfvpxp3004awmov4jf8e67u" class="article-share-link">分享到</a>
+        
+        
+      </footer>
+    </div>
+  </article>
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="github" href="http://www.suning.com" target="_blank"><i id="icon-github" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="http://www.suning.com" target="_blank"><i id="icon-weibo" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="rss" href="/atom.xml" target="_blank"><i id="icon-rss" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/关于Masonry的使用和注意点.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <p class="article-nav-title">
+        
+          关于Masonry的使用和注意点
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/IOS音视频分片缓存库IdiotAVPlayer.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">IOS音视频分片缓存库IdiotAVPlayer</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/螺与鱼.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/redaiyu.jpg
+)" alt="螺与螺" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/项目管理/">项目管理</a></p>
+              <p class="item-title"><a href="/螺与鱼.html" class="title">螺与螺</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:53:16.867Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/URL-编码-iOS.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/URL-编码-iOS.html" class="title">URL 编码 iOS</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:05:46.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/ios修改本地useragent-WKWebView.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/ios修改本地useragent-WKWebView.html" class="title">ios修改本地useragent(WKWebView)</a></p>
+              <p class="item-date"><time datetime="2018-05-20T03:50:39.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/如何提高字符转float数据时的数据精度.html" class="thumbnail">
+  
+    <span style="background-image:url(http://obfk4z1f6.bkt.clouddn.com/fixed-point-representation.png
+)" alt="如何提高字符转float数据时的数据精度" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/如何提高字符转float数据时的数据精度.html" class="title">如何提高字符转float数据时的数据精度</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:17:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/echarts用饼图制作带labelline的旭日图.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/dy20180512171652810.jpg
+)" alt="echarts之用饼图制作带labelline的旭日图(一)" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/WEB/">WEB</a></p>
+              <p class="item-title"><a href="/echarts用饼图制作带labelline的旭日图.html" class="title">echarts之用饼图制作带labelline的旭日图(一)</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:04:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IOS开发/">IOS开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">49</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/FMDB/" style="font-size: 10px;">FMDB</a> <a href="/tags/POP/" style="font-size: 10px;">POP</a> <a href="/tags/PhoneGap/" style="font-size: 10px;">PhoneGap</a> <a href="/tags/SizeClass/" style="font-size: 14px;">SizeClass</a> <a href="/tags/WKWebView/" style="font-size: 10px;">WKWebView</a> <a href="/tags/appium/" style="font-size: 12px;">appium</a> <a href="/tags/cocos2d-x/" style="font-size: 20px;">cocos2d-x</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS8/" style="font-size: 16px;">iOS8</a> <a href="/tags/iconsole/" style="font-size: 10px;">iconsole</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/phonegap/" style="font-size: 10px;">phonegap</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/xib/" style="font-size: 10px;">xib</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/代码优化/" style="font-size: 12px;">代码优化</a> <a href="/tags/代码规范/" style="font-size: 10px;">代码规范</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/控件/" style="font-size: 18px;">控件</a> <a href="/tags/推送/" style="font-size: 10px;">推送</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/效率/" style="font-size: 12px;">效率</a> <a href="/tags/日历/" style="font-size: 10px;">日历</a> <a href="/tags/杂文/" style="font-size: 10px;">杂文</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/状态栏/" style="font-size: 10px;">状态栏</a> <a href="/tags/网络/" style="font-size: 14px;">网络</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/路线图/" style="font-size: 10px;">路线图</a> <a href="/tags/边下边播/" style="font-size: 10px;">边下边播</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a> <a href="/tags/项目管理/" style="font-size: 12px;">项目管理</a> <a href="/tags/高德/" style="font-size: 10px;">高德</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+          <li>
+            <a href="/AboutUs.html">AboutMe</a>
+          </li>
+        
+          <li>
+            <a href="http://www.suning.com">苏宁易购</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2018 SNS前端团队</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js"></script>
+  <script src="/scrollLoading/main.js"></script>
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?6b806b7ed8c586bd0172da97b3ed66d8";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script>
+    
+
+<head>
+    <meta name="baidu-site-verification" content="ReWQDRchc7" />
+  <meta charset="utf-8">
+  
+  <title>xib使用 | SNS前端团队</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="xib简介xib用来描述软件界面，它用Interface Builder工具来编辑。本文主要介绍使用xib的一些技术，即在xib中布局UI,然后xib与code相结合，快速UI开发介绍。本文主要讲解的也就是加载xib的技术。">
+<meta name="keywords" content="xib">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xib使用">
+<meta property="og:url" content="http://snsfrontend.crysnower.cn/xib简介.html">
+<meta property="og:site_name" content="SNS前端团队">
+<meta property="og:description" content="xib简介xib用来描述软件界面，它用Interface Builder工具来编辑。本文主要介绍使用xib的一些技术，即在xib中布局UI,然后xib与code相结合，快速UI开发介绍。本文主要讲解的也就是加载xib的技术。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://snsfrontend.crysnower.cn/images/gouxuan.png">
+<meta property="og:image" content="http://snsfrontend.crysnower.cn/images/dandu.png">
+<meta property="og:image" content="http://snsfrontend.crysnower.cn/images/autolayout.png">
+<meta property="og:image" content="http://snsfrontend.crysnower.cn/images/guanlian.png">
+<meta property="og:image" content="http://snsfrontend.crysnower.cn/images/yueshu.png">
+<meta property="og:image" content="http://snsfrontend.crysnower.cn/images/yueshu2.png">
+<meta property="og:updated_time" content="2018-05-21T06:28:09.847Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="xib使用">
+<meta name="twitter:description" content="xib简介xib用来描述软件界面，它用Interface Builder工具来编辑。本文主要介绍使用xib的一些技术，即在xib中布局UI,然后xib与code相结合，快速UI开发介绍。本文主要讲解的也就是加载xib的技术。">
+<meta name="twitter:image" content="http://snsfrontend.crysnower.cn/images/gouxuan.png">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css">
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(/images/logo.png); }
+    </style>
+  
+
+  
+    <!-- <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'> -->
+    <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  
+
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">点点滴滴-破茧成蝶</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IOS开发/">IOS开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/WEB/">WEB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS/">iOS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/测试/">测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/项目管理/">项目管理</a></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/AboutUs.html">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://snsfrontend.crysnower.cn"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/iOS/">iOS</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-xib简介" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      xib使用
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/xib简介.html" class="article-date">
+  作者：StephenZhu
+  <time datetime="2014-12-30T07:00:25.000Z" itemprop="datePublished">12月 30 2014</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <h2 id="xib简介"><a href="#xib简介" class="headerlink" title="xib简介"></a>xib简介</h2><p>xib用来描述软件界面，它用Interface Builder工具来编辑。<br>本文主要介绍使用xib的一些技术，即在xib中布局UI,然后xib与code相结合，快速UI开发介绍。本文主要讲解的也就是加载xib的技术。</p>
+<a id="more"></a>
+<h2 id="xib创建"><a href="#xib创建" class="headerlink" title="xib创建"></a>xib创建</h2><h3 id="与文件同步创建"><a href="#与文件同步创建" class="headerlink" title="与文件同步创建"></a>与文件同步创建</h3><p><img src="/images/gouxuan.png" alt="" title="" width="600">  </p>
+<h3 id="已有文件单独创建xib"><a href="#已有文件单独创建xib" class="headerlink" title="已有文件单独创建xib"></a>已有文件单独创建xib</h3><p><img src="/images/dandu.png" alt="" title="" width="600">  </p>
+<h2 id="xib使用"><a href="#xib使用" class="headerlink" title="xib使用"></a>xib使用</h2><h3 id="1、是否选择autolayout"><a href="#1、是否选择autolayout" class="headerlink" title="1、是否选择autolayout"></a>1、是否选择autolayout</h3><p>如果要用autolayout则勾选下图中的红框，不勾选则使用autoresize<br><img src="/images/autolayout.png" alt="" title="" width="300"></p>
+<h3 id="2、针对某一项单独禁用autolayout"><a href="#2、针对某一项单独禁用autolayout" class="headerlink" title="2、针对某一项单独禁用autolayout"></a>2、针对某一项单独禁用autolayout</h3><p>如果使用autolayout，但又想对某一控件禁用autolayout，则只需加入如下代码即可：<br><em>[self.locationLabel setTranslatesAutoresizingMaskIntoConstraints:YES];</em><br>此地的self.locationLabel即为你想禁用的控件。<br><strong>特别注意：启用autolayout，则代码中所有设置frame的代码都是无用的，如果要单独设置frame则需禁用该控件的autolayout。</strong></p>
+<h3 id="3、xib关联"><a href="#3、xib关联" class="headerlink" title="3、xib关联"></a>3、xib关联</h3><p>如果是容器，如：viewController,则File’s Owner中的Custom Class中的Class必须关联到对应的viewController类。<br>如果是单纯控件，如：view，button等，则view中的Custom Class中的Class不用关联。</p>
+<p>对于代码中需要进行操作的变量定义时需要在前部加上<br><em>IBOutlet</em><br>定义完成后，需要进行关联。选中要关联的项，拖动，具体如下图所示<br><img src="/images/guanlian.png" alt="" title="" width="600"><br>如果是容器则拖动到File’s Owner,如果是其他的则拖动到view  </p>
+<h3 id="4、xib约束"><a href="#4、xib约束" class="headerlink" title="4、xib约束"></a>4、xib约束</h3><p>如果是autolayout，则可以添加相对约束，所添加的约束都是相对于它最近的view，添加约束方式如下图：<br><img src="/images/yueshu.png" alt="" title="" width="300"><br>如果是autoresize，添加的约束只相对于它的superview，添加约束方式如下图：<br><img src="/images/yueshu2.png" alt="" title="" width="300"><br><strong>特别注意：启用autolayout，如果添加约束，则最好所有的项目都添加约束，以免造成页面排版错乱。</strong></p>
+<h3 id="5、调用xib"><a href="#5、调用xib" class="headerlink" title="5、调用xib"></a>5、调用xib</h3><p>如果是容器类xib，则只需正常的init就可以。<br>如果是非容器类xib，则调用方法如下<br><em>HomeIconView \</em>iconView = [[[NSBundle mainBundle] loadNibNamed:@”HomeIconView” owner:self options:nil] lastObject];*<br>此处的@”HomeIconView”即为你创建的xib名。  </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>使用xib，可以减少代码量。<br>autolayout和autoresize配合可以方便的解决屏幕适配问题。</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>使用xib，frame不能定义成0.5。<br>autolayout加约束时，尽量要都加，不然会出现各种排班问题。<br>控件叠控件不能实现，例如：button上不能再加其它控件。<br>定义好的frame，有时候会自己变成0，具体原因不明。  </p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://snsfrontend.crysnower.cn/xib简介.html" data-id="cjhfvpxoj003ewmov1v97qjq3" class="article-share-link">分享到</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xib/">xib</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="github" href="http://www.suning.com" target="_blank"><i id="icon-github" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="http://www.suning.com" target="_blank"><i id="icon-weibo" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="rss" href="/atom.xml" target="_blank"><i id="icon-rss" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/PhoneGap(一).html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <p class="article-nav-title">
+        
+          PhoneGap(一)
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/PhoneGap入门.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">PhoneGap入门</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/螺与鱼.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/redaiyu.jpg
+)" alt="螺与螺" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/项目管理/">项目管理</a></p>
+              <p class="item-title"><a href="/螺与鱼.html" class="title">螺与螺</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:53:16.867Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/URL-编码-iOS.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/URL-编码-iOS.html" class="title">URL 编码 iOS</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:05:46.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/ios修改本地useragent-WKWebView.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/ios修改本地useragent-WKWebView.html" class="title">ios修改本地useragent(WKWebView)</a></p>
+              <p class="item-date"><time datetime="2018-05-20T03:50:39.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/如何提高字符转float数据时的数据精度.html" class="thumbnail">
+  
+    <span style="background-image:url(http://obfk4z1f6.bkt.clouddn.com/fixed-point-representation.png
+)" alt="如何提高字符转float数据时的数据精度" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/如何提高字符转float数据时的数据精度.html" class="title">如何提高字符转float数据时的数据精度</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:17:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/echarts用饼图制作带labelline的旭日图.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/dy20180512171652810.jpg
+)" alt="echarts之用饼图制作带labelline的旭日图(一)" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/WEB/">WEB</a></p>
+              <p class="item-title"><a href="/echarts用饼图制作带labelline的旭日图.html" class="title">echarts之用饼图制作带labelline的旭日图(一)</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:04:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IOS开发/">IOS开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">49</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/FMDB/" style="font-size: 10px;">FMDB</a> <a href="/tags/POP/" style="font-size: 10px;">POP</a> <a href="/tags/PhoneGap/" style="font-size: 10px;">PhoneGap</a> <a href="/tags/SizeClass/" style="font-size: 14px;">SizeClass</a> <a href="/tags/WKWebView/" style="font-size: 10px;">WKWebView</a> <a href="/tags/appium/" style="font-size: 12px;">appium</a> <a href="/tags/cocos2d-x/" style="font-size: 20px;">cocos2d-x</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS8/" style="font-size: 16px;">iOS8</a> <a href="/tags/iconsole/" style="font-size: 10px;">iconsole</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/phonegap/" style="font-size: 10px;">phonegap</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/xib/" style="font-size: 10px;">xib</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/代码优化/" style="font-size: 12px;">代码优化</a> <a href="/tags/代码规范/" style="font-size: 10px;">代码规范</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/控件/" style="font-size: 18px;">控件</a> <a href="/tags/推送/" style="font-size: 10px;">推送</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/效率/" style="font-size: 12px;">效率</a> <a href="/tags/日历/" style="font-size: 10px;">日历</a> <a href="/tags/杂文/" style="font-size: 10px;">杂文</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/状态栏/" style="font-size: 10px;">状态栏</a> <a href="/tags/网络/" style="font-size: 14px;">网络</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/路线图/" style="font-size: 10px;">路线图</a> <a href="/tags/边下边播/" style="font-size: 10px;">边下边播</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a> <a href="/tags/项目管理/" style="font-size: 12px;">项目管理</a> <a href="/tags/高德/" style="font-size: 10px;">高德</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+          <li>
+            <a href="/AboutUs.html">AboutMe</a>
+          </li>
+        
+          <li>
+            <a href="http://www.suning.com">苏宁易购</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2018 SNS前端团队</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js"></script>
+  <script src="/scrollLoading/main.js"></script>
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

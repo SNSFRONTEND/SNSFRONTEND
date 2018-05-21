@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?6b806b7ed8c586bd0172da97b3ed66d8";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script>
+    
+
+<head>
+    <meta name="baidu-site-verification" content="ReWQDRchc7" />
+  <meta charset="utf-8">
+  
+  <title>玩转表格：在android上使用ECharts | SNS前端团队</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="支持原创，转载请注明出处  前言做Android开发经常会需要画一些图表，自己写的话不仅麻烦而且工作量太大，所以一般都会采用第三方图表框架，现在给大家介绍一款功能非常丰富的图表框架 ECharts 。 #准备ECharts 是由百度开发提供的开源框架，主要提供给Web使用，所以Android中一般使用WebView加载显示，其实本质上也就是用 WebView 加载本地 H5。ECharts的图表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="玩转表格：在android上使用ECharts">
+<meta property="og:url" content="http://snsfrontend.crysnower.cn/玩转表格：在android上使用ECharts.html">
+<meta property="og:site_name" content="SNS前端团队">
+<meta property="og:description" content="支持原创，转载请注明出处  前言做Android开发经常会需要画一些图表，自己写的话不仅麻烦而且工作量太大，所以一般都会采用第三方图表框架，现在给大家介绍一款功能非常丰富的图表框架 ECharts 。 #准备ECharts 是由百度开发提供的开源框架，主要提供给Web使用，所以Android中一般使用WebView加载显示，其实本质上也就是用 WebView 加载本地 H5。ECharts的图表">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://snsfrontend.crysnower.cn/images/assets.png">
+<meta property="og:image" content="http://snsfrontend.crysnower.cn/images/Screenshot_2018-04-11-14-36-32-219_com.example.ming.echartsforandroid.png">
+<meta property="og:updated_time" content="2018-05-20T07:19:13.341Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="玩转表格：在android上使用ECharts">
+<meta name="twitter:description" content="支持原创，转载请注明出处  前言做Android开发经常会需要画一些图表，自己写的话不仅麻烦而且工作量太大，所以一般都会采用第三方图表框架，现在给大家介绍一款功能非常丰富的图表框架 ECharts 。 #准备ECharts 是由百度开发提供的开源框架，主要提供给Web使用，所以Android中一般使用WebView加载显示，其实本质上也就是用 WebView 加载本地 H5。ECharts的图表">
+<meta name="twitter:image" content="http://snsfrontend.crysnower.cn/images/assets.png">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css">
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(/images/logo.png); }
+    </style>
+  
+
+  
+    <!-- <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'> -->
+    <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  
+
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">点点滴滴-破茧成蝶</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IOS开发/">IOS开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/WEB/">WEB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS/">iOS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/测试/">测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/项目管理/">项目管理</a></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/AboutUs.html">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://snsfrontend.crysnower.cn"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Android/">Android</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-玩转表格：在android上使用ECharts" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      玩转表格：在android上使用ECharts
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/玩转表格：在android上使用ECharts.html" class="article-date">
+  作者：ming
+  <time datetime="2018-04-28T07:56:00.000Z" itemprop="datePublished">4月 28 2018</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <blockquote>
+<p>支持原创，转载请注明出处</p>
+</blockquote>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>做Android开发经常会需要画一些图表，自己写的话不仅麻烦而且工作量太大，所以一般都会采用第三方图表框架，现在给大家介绍一款功能非常丰富的图表框架 <a href="http://echarts.baidu.com/index.html" target="_blank" rel="noopener">ECharts</a> 。</p>
+<p>#准备<br>ECharts 是由百度开发提供的开源框架，主要提供给Web使用，所以Android中一般使用WebView加载显示，其实本质上也就是用 WebView 加载本地 H5。<br>ECharts的图表样式主要由option控制，option是由js编写，如下面代码就是一个简单折线图的option。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">option = &#123;</span><br><span class="line">    xAxis: &#123;</span><br><span class="line">        type: &apos;category&apos;,</span><br><span class="line">        data: [&apos;Mon&apos;, &apos;Tue&apos;, &apos;Wed&apos;, &apos;Thu&apos;, &apos;Fri&apos;, &apos;Sat&apos;, &apos;Sun&apos;]</span><br><span class="line">    &#125;,</span><br><span class="line">    yAxis: &#123;</span><br><span class="line">        type: &apos;value&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    series: [&#123;</span><br><span class="line">        data: [820, 932, 901, 934, 1290, 1330, 1320],</span><br><span class="line">        type: &apos;line&apos;</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>在andorid中使用ECharts,一般来讲我们有两种实现方案</p>
+<ul>
+<li>Android获取数据并封装好option，然后传递给h5，h5再对数据进行解析，调用ECharts绘制。<br>这种方案的难点在于option的属性太多了，封装起来太麻烦。</li>
+<li>h5处理所有操作，进行获取数据，并调用ECharts进行绘制。<br>这种方案需要对js比较熟悉。</li>
+</ul>
+<p>这里我们采用第一种方案，因为前人栽树后人乘凉，已经有大神帮我们做好最困难的数据封装工作：<a href="https://link.jianshu.com?t=https://github.com/abel533/ECharts" target="_blank" rel="noopener">EChart java 对象库</a></p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h5 id="配置ECharts"><a href="#配置ECharts" class="headerlink" title="配置ECharts"></a>配置ECharts</h5><ul>
+<li>下载Echarts。你可以根据你的需求在ECharts官网<a href="http://echarts.baidu.com/download.html" target="_blank" rel="noopener">下载</a>需要的ECharts组件。我这里选择的是完整版。</li>
+<li>将下载好的<code>echarts.min.js</code>文件放入工程中<code>assets</code>目录下。如果没有<code>assets</code>目录，可以先在<code>mian</code>目录下，通过右击 new -&gt; Folder -&gt; Assets Folder 创建。<br><img src="/images/assets.png" alt="assets.png"></li>
+<li>编写echarts.html文件，并将echarts.html放入assets目录。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html style=&quot;height: 100%&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;</span><br><span class="line">        &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body style=&quot;height: 100%; margin: 0&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;container&quot; style=&quot;height: 100%&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;script type=&quot;text/javascript&quot; src=&quot;./echarts.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">            var dom =document.getElementById(&quot;container&quot;);</span><br><span class="line">            var myChart =echarts.init(dom);</span><br><span class="line">            var app =&#123;&#125;;</span><br><span class="line">            function loadEcharts(echartJson)&#123;</span><br><span class="line">                var option = JSON.parse(echartJson);</span><br><span class="line">                if (option &amp;&amp;typeof option ===&quot;object&quot;) &#123;</span><br><span class="line">                    myChart.setOption(option,true);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="依赖EChart-java-对象库"><a href="#依赖EChart-java-对象库" class="headerlink" title="依赖EChart java 对象库"></a>依赖EChart java 对象库</h5><blockquote>
+<p>注意：因为该对象库依赖Gson，所以project同样需要添加Gson依赖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile &apos;com.github.abel533:ECharts:3.0.0.2&apos;</span><br><span class="line">    implementation &apos;com.google.code.gson:gson:2.8.1&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h5 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h5><p>因为Echarts需要在WebView中显示，所以我们直接自定义一个EchartView继承自WebView用来显示图表。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">public class EchartView extends WebView &#123;</span><br><span class="line">    private static final String TAG = EchartView.class.getSimpleName();</span><br><span class="line"></span><br><span class="line">    public EchartView(Context context) &#123;</span><br><span class="line">        this(context, null);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public EchartView(Context context, AttributeSet attrs) &#123;</span><br><span class="line">        this(context, attrs, 0);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public EchartView(Context context, AttributeSet attrs, int defStyleAttr) &#123;</span><br><span class="line">        super(context, attrs, defStyleAttr);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void init() &#123;</span><br><span class="line">        WebSettings webSettings = getSettings();</span><br><span class="line">        webSettings.setJavaScriptEnabled(true);</span><br><span class="line">        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);</span><br><span class="line">        webSettings.setSupportZoom(false);</span><br><span class="line">        webSettings.setDisplayZoomControls(false);</span><br><span class="line">        loadUrl(&quot;file:///android_asset/echarts.html&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**刷新图表</span><br><span class="line">     * java调用js的loadEcharts方法刷新echart</span><br><span class="line">     * 不能在第一时间就用此方法来显示图表，因为第一时间html的标签还未加载完成，不能获取到标签值</span><br><span class="line">     * @param option</span><br><span class="line">     */</span><br><span class="line">    public void refreshEchartsWithOption(GsonOption option) &#123;</span><br><span class="line">        if (option == null) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        String optionString = option.toString();</span><br><span class="line">        String call = &quot;javascript:loadEcharts(&apos;&quot; + optionString + &quot;&apos;)&quot;;</span><br><span class="line">        loadUrl(call);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再定义一个工具类用来将数据封装为option，这里只封装了一个简单的折线图做例子。<br>更多图表的封装请参照<code>EChart java 对象库</code>和<a href="http://echarts.baidu.com/examples/index.html" target="_blank" rel="noopener">ECharts官方例子</a>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class EchartOptionUtil &#123;</span><br><span class="line"></span><br><span class="line">    public static GsonOption getLineChartOptions(Object[] xAxis, Object[] yAxis) &#123;</span><br><span class="line">        GsonOption option = new GsonOption();</span><br><span class="line">        option.title(&quot;折线图&quot;);</span><br><span class="line">        option.legend(&quot;销量&quot;);</span><br><span class="line">        option.tooltip().trigger(Trigger.axis);</span><br><span class="line"></span><br><span class="line">        ValueAxis valueAxis = new ValueAxis();</span><br><span class="line">        option.yAxis(valueAxis);</span><br><span class="line"></span><br><span class="line">        CategoryAxis categorxAxis = new CategoryAxis();</span><br><span class="line">        categorxAxis.axisLine().onZero(false);</span><br><span class="line">        categorxAxis.boundaryGap(true);</span><br><span class="line">        categorxAxis.data(xAxis);</span><br><span class="line">        option.xAxis(categorxAxis);</span><br><span class="line"></span><br><span class="line">        Line line = new Line();</span><br><span class="line">        line.smooth(false).name(&quot;销量&quot;).data(yAxis).itemStyle().normal().lineStyle().shadowColor(&quot;rgba(0,0,0,0.4)&quot;);</span><br><span class="line">        option.series(line);</span><br><span class="line">        return option;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在Acitvity中显示<br>activity_main.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    tools:context=&quot;com.example.ming.echartsforandroid.MainActivity&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;com.example.ming.echartsforandroid.EchartView</span><br><span class="line">        android:id=&quot;@+id/lineChart&quot;</span><br><span class="line">        android:layout_width=&quot;400dp&quot;</span><br><span class="line">        android:layout_height=&quot;400dp&quot;</span><br><span class="line">        android:layout_gravity=&quot;center&quot;&gt;</span><br><span class="line">    &lt;/com.example.ming.echartsforandroid.EchartView&gt;</span><br><span class="line"></span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure></p>
+<p>MainActivity .java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    private EchartView lineChart;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        lineChart = findViewById(R.id.lineChart);</span><br><span class="line">        lineChart.setWebViewClient(new WebViewClient()&#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onPageFinished(WebView view, String url) &#123;</span><br><span class="line">                super.onPageFinished(view, url);</span><br><span class="line">                //最好在h5页面加载完毕后再加载数据，防止html的标签还未加载完成，不能正常显示</span><br><span class="line">                refreshLineChart();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void refreshLineChart()&#123;</span><br><span class="line">        Object[] x = new Object[]&#123;</span><br><span class="line">                &quot;Mon&quot;, &quot;Tue&quot;, &quot;Wed&quot;, &quot;Thu&quot;, &quot;Fri&quot;, &quot;Sat&quot;, &quot;Sun&quot;</span><br><span class="line">        &#125;;</span><br><span class="line">        Object[] y = new Object[]&#123;</span><br><span class="line">                820, 932, 901, 934, 1290, 1330, 1320</span><br><span class="line">        &#125;;</span><br><span class="line">        lineChart.refreshEchartsWithOption(EchartOptionUtil.getLineChartOptions(x, y));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/Screenshot_2018-04-11-14-36-32-219_com.example.ming.echartsforandroid.png" alt="Screenshot_2018-04-11-14-36-32-219_com.example.ming.echartsforandroid.png"></p>
+<p>#后记<br><a href="https://link.jianshu.com?t=https://github.com/abel533/ECharts" target="_blank" rel="noopener">EChart java 对象库</a>目前只封装了常用的十几种图表，所以如果需要用到更多的图表，建议直接下载EChart java 对象库代码，对其进行扩充。</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://snsfrontend.crysnower.cn/玩转表格：在android上使用ECharts.html" data-id="cjhfvpxpi0053wmovme902uex" class="article-share-link">分享到</a>
+        
+        
+      </footer>
+    </div>
+  </article>
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="github" href="http://www.suning.com" target="_blank"><i id="icon-github" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="http://www.suning.com" target="_blank"><i id="icon-weibo" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="rss" href="/atom.xml" target="_blank"><i id="icon-rss" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/IOS音视频分片缓存库IdiotAVPlayer.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <p class="article-nav-title">
+        
+          IOS音视频分片缓存库IdiotAVPlayer
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/AboutUs.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">AboutUs</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/螺与鱼.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/redaiyu.jpg
+)" alt="螺与螺" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/项目管理/">项目管理</a></p>
+              <p class="item-title"><a href="/螺与鱼.html" class="title">螺与螺</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:53:16.867Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/URL-编码-iOS.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/URL-编码-iOS.html" class="title">URL 编码 iOS</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:05:46.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/ios修改本地useragent-WKWebView.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/ios修改本地useragent-WKWebView.html" class="title">ios修改本地useragent(WKWebView)</a></p>
+              <p class="item-date"><time datetime="2018-05-20T03:50:39.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/如何提高字符转float数据时的数据精度.html" class="thumbnail">
+  
+    <span style="background-image:url(http://obfk4z1f6.bkt.clouddn.com/fixed-point-representation.png
+)" alt="如何提高字符转float数据时的数据精度" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/如何提高字符转float数据时的数据精度.html" class="title">如何提高字符转float数据时的数据精度</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:17:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/echarts用饼图制作带labelline的旭日图.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/dy20180512171652810.jpg
+)" alt="echarts之用饼图制作带labelline的旭日图(一)" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/WEB/">WEB</a></p>
+              <p class="item-title"><a href="/echarts用饼图制作带labelline的旭日图.html" class="title">echarts之用饼图制作带labelline的旭日图(一)</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:04:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IOS开发/">IOS开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">49</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/FMDB/" style="font-size: 10px;">FMDB</a> <a href="/tags/POP/" style="font-size: 10px;">POP</a> <a href="/tags/PhoneGap/" style="font-size: 10px;">PhoneGap</a> <a href="/tags/SizeClass/" style="font-size: 14px;">SizeClass</a> <a href="/tags/WKWebView/" style="font-size: 10px;">WKWebView</a> <a href="/tags/appium/" style="font-size: 12px;">appium</a> <a href="/tags/cocos2d-x/" style="font-size: 20px;">cocos2d-x</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS8/" style="font-size: 16px;">iOS8</a> <a href="/tags/iconsole/" style="font-size: 10px;">iconsole</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/phonegap/" style="font-size: 10px;">phonegap</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/xib/" style="font-size: 10px;">xib</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/代码优化/" style="font-size: 12px;">代码优化</a> <a href="/tags/代码规范/" style="font-size: 10px;">代码规范</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/控件/" style="font-size: 18px;">控件</a> <a href="/tags/推送/" style="font-size: 10px;">推送</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/效率/" style="font-size: 12px;">效率</a> <a href="/tags/日历/" style="font-size: 10px;">日历</a> <a href="/tags/杂文/" style="font-size: 10px;">杂文</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/状态栏/" style="font-size: 10px;">状态栏</a> <a href="/tags/网络/" style="font-size: 14px;">网络</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/路线图/" style="font-size: 10px;">路线图</a> <a href="/tags/边下边播/" style="font-size: 10px;">边下边播</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a> <a href="/tags/项目管理/" style="font-size: 12px;">项目管理</a> <a href="/tags/高德/" style="font-size: 10px;">高德</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+          <li>
+            <a href="/AboutUs.html">AboutMe</a>
+          </li>
+        
+          <li>
+            <a href="http://www.suning.com">苏宁易购</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2018 SNS前端团队</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js"></script>
+  <script src="/scrollLoading/main.js"></script>
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

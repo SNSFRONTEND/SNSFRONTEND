@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?6b806b7ed8c586bd0172da97b3ed66d8";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script>
+    
+
+<head>
+    <meta name="baidu-site-verification" content="ReWQDRchc7" />
+  <meta charset="utf-8">
+  
+  <title>SizeClass探究 | SNS前端团队</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="刚开始写iOS的时候，所有的分辨率都是320*480，所以UI布局都可以用代码写死。也写多iPad的代码，为了适应横屏，写了很多布局代码，当时除此之外，也没什么好的办法。后来有了iPhone5，有把原来的代码改改改……">
+<meta name="keywords" content="SizeClass,iOS8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SizeClass探究">
+<meta property="og:url" content="http://snsfrontend.crysnower.cn/SizeClass探究.html">
+<meta property="og:site_name" content="SNS前端团队">
+<meta property="og:description" content="刚开始写iOS的时候，所有的分辨率都是320*480，所以UI布局都可以用代码写死。也写多iPad的代码，为了适应横屏，写了很多布局代码，当时除此之外，也没什么好的办法。后来有了iPhone5，有把原来的代码改改改……">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/16632-e2d49b1788a10342.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/16632-5c422eb24a406863.png">
+<meta property="og:updated_time" content="2018-05-21T06:23:29.417Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SizeClass探究">
+<meta name="twitter:description" content="刚开始写iOS的时候，所有的分辨率都是320*480，所以UI布局都可以用代码写死。也写多iPad的代码，为了适应横屏，写了很多布局代码，当时除此之外，也没什么好的办法。后来有了iPhone5，有把原来的代码改改改……">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/16632-e2d49b1788a10342.png">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css">
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(/images/logo.png); }
+    </style>
+  
+
+  
+    <!-- <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'> -->
+    <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  
+
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">点点滴滴-破茧成蝶</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IOS开发/">IOS开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/WEB/">WEB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS/">iOS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/测试/">测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/项目管理/">项目管理</a></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/AboutUs.html">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://snsfrontend.crysnower.cn"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/iOS/">iOS</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-SizeClass探究" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      SizeClass探究
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/SizeClass探究.html" class="article-date">
+  作者：StephenZhu
+  <time datetime="2014-12-18T09:23:14.000Z" itemprop="datePublished">12月 18 2014</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <p>刚开始写iOS的时候，所有的分辨率都是320*480，所以UI布局都可以用代码写死。也写多iPad的代码，为了适应横屏，写了很多布局代码，当时除此之外，也没什么好的办法。后来有了iPhone5，有把原来的代码改改改……<br><a id="more"></a></p>
+<p>#背景</p>
+<p>iOS6,AutoLayout出来了，UI元素之间可以相对布局了。但这样只是解决了不同分辨率下的适配，界面中的元素不会增减，只是布局会调整。那么如果界面中的元素在不同的硬件下不一样呢？</p>
+<p>毕竟，我们有了iPhone6，iPhone6 plus，以及马上就有的iWatch。一个应用，总不能在所有的设备上显示一样的界面吧？所以，苹果为了让我们不去写很多根据设备来调整界面元素的胶水代码，创造了SizeClass这个神奇的东西。</p>
+<h1 id="SizeClass是什么？"><a href="#SizeClass是什么？" class="headerlink" title="SizeClass是什么？"></a>SizeClass是什么？</h1><p>SizeClass是一个抽象的概念。对于任何尺寸，SizeClass给它定义了两种状态：Compact和Regular，分别代表不够宽和足够宽，如果两者都可以，那就是Any。</p>
+<p>任何一个iOS的设备，不管是Phone、Pad还是Watch，都必然有长和宽；不管是长或者宽，它的尺寸必然是不够宽或者足够宽。到底是不够宽或者足够宽，这个苹果官方给我们规定好了。</p>
+<ul>
+<li><p>iPhone4S,iPhone 5/5s,iPhone 6<br>竖屏：(w:Compact h:Regular)<br>横屏：(w:Compact h:Compact)</p>
+</li>
+<li><p>iPhone6Plus<br>竖屏：(w:Compact h:Regular)<br>横屏：(w:Regular h:Compact)</p>
+</li>
+<li><p>iPad<br>竖屏：(w:Regular h:Regular)<br>横屏：(w:Regular h:Regular)</p>
+</li>
+<li><p>AppleWatch(猜测)<br>竖屏：(w:Compact h:Compact)<br>横屏：(w:Compact h:Compact)</p>
+</li>
+</ul>
+<p>还有一个Any，指的是我并不关心尺寸，无论它是Compact或Regular，我都这么设计。</p>
+<p>下图是IB中设计界面点开之后选择界面模式的视图。一共有9中模式，默认的是长和宽都是Any。<br><img src="http://upload-images.jianshu.io/upload_images/16632-e2d49b1788a10342.png" alt="sizeclass_1.png"></p>
+<p>这些模式是有包含关系的。<br><img src="http://upload-images.jianshu.io/upload_images/16632-5c422eb24a406863.png" alt="sizeclass_2.png"></p>
+<p>如果在Any，Any模式下加入了一个View，那个不管是什么设备，都会显示这个View。<br>如果在Compact，Compact模式下加入了一个View，那么之后在iPhone4S,iPhone 5/5s,iPhone 6横屏的情况下才能看到，否则不可见。在IB中，一旦你把模式切到非Compact，Compact，该控件就会置灰。<br>如果在Compact，Any模式下加入了一个View，那么在iPhone中除了6plus横屏不可见，其余都可见，ipad均不可见。</p>
+<p>总而言之，SizeClass就是对设备屏幕的抽象，不管以后苹果退出再多的分辨率，都能通过这9种模式包含起来。</p>
+<h1 id="SizeClass与AutoLayout的联系"><a href="#SizeClass与AutoLayout的联系" class="headerlink" title="SizeClass与AutoLayout的联系"></a>SizeClass与AutoLayout的联系</h1><p>SizeClass和AutoLayout是两码事，而且它们是相辅相成的。SizeClass解决了不同屏幕多种设计的问题，而AutoLayout解决的是不同频幕布局适配的问题。如果你不使用AutoLayout，则不能使用SizeClass；反之是可以的。</p>
+<h1 id="SizeClass还能干嘛？"><a href="#SizeClass还能干嘛？" class="headerlink" title="SizeClass还能干嘛？"></a>SizeClass还能干嘛？</h1><ul>
+<li>通过Image Asset为不同的SizeClass配置不同的图片</li>
+<li>Label的FontSize根据不同的SizeClass设置不同的字号</li>
+<li>更多有待发现……</li>
+</ul>
+<h1 id="SizeClass与屏幕旋转"><a href="#SizeClass与屏幕旋转" class="headerlink" title="SizeClass与屏幕旋转"></a>SizeClass与屏幕旋转</h1><p>对于SizeClass来说，没有什么屏幕旋转的概念，有的只是切换SizeClass的模式，所以以下的几个api已经过时了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@property(nonatomic, readonly) UIInterfaceOrientation interfaceOrientation</span><br><span class="line"></span><br><span class="line">- willRotateToInterfaceOrientation:duration:</span><br><span class="line">- willAnimateRotationToInterfaceOrientation:duration:</span><br><span class="line">- didRotateFromInterfaceOrientation:</span><br><span class="line">- shouldAutomaticallyForwardRotationMethods</span><br></pre></td></tr></table></figure></p>
+<p>取而代之的是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection </span><br><span class="line">              withTransitionCoordinator:(id &lt;UIViewControllerTransitionCoordinator&gt;)coordinator</span><br><span class="line">&#123;</span><br><span class="line">    [super willTransitionToTraitCollection:newCollection </span><br><span class="line">                 withTransitionCoordinator:coordinator];</span><br><span class="line">    [coordinator animateAlongsideTransition:^(id &lt;UIViewControllerTransitionCoordinatorContext&gt; context) &#123;</span><br><span class="line">        if (newCollection.verticalSizeClass == UIUserInterfaceSizeClassCompact) &#123;</span><br><span class="line">            //To Do: modify something for compact vertical size</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            //To Do: modify something for other vertical size</span><br><span class="line">        &#125;</span><br><span class="line">        [self.view setNeedsLayout];</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>SizeClass很美好，但8.0之后才能使用，所以手头的项目暂时还用不了。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://onevcat.com/2014/07/ios-ui-unique/" target="_blank" rel="noopener">iOS界面开发的大一统</a></p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://snsfrontend.crysnower.cn/SizeClass探究.html" data-id="cjhfvpxn0000swmov1manx5mf" class="article-share-link">分享到</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SizeClass/">SizeClass</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS8/">iOS8</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="github" href="http://www.suning.com" target="_blank"><i id="icon-github" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="http://www.suning.com" target="_blank"><i id="icon-weibo" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="rss" href="/atom.xml" target="_blank"><i id="icon-rss" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/PhoneGap入门.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <p class="article-nav-title">
+        
+          PhoneGap入门
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/iOS8Extension之Today插件.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">iOS8Extension之Today插件</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/螺与鱼.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/redaiyu.jpg
+)" alt="螺与螺" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/项目管理/">项目管理</a></p>
+              <p class="item-title"><a href="/螺与鱼.html" class="title">螺与螺</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:53:16.867Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/URL-编码-iOS.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/URL-编码-iOS.html" class="title">URL 编码 iOS</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:05:46.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/ios修改本地useragent-WKWebView.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/ios修改本地useragent-WKWebView.html" class="title">ios修改本地useragent(WKWebView)</a></p>
+              <p class="item-date"><time datetime="2018-05-20T03:50:39.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/如何提高字符转float数据时的数据精度.html" class="thumbnail">
+  
+    <span style="background-image:url(http://obfk4z1f6.bkt.clouddn.com/fixed-point-representation.png
+)" alt="如何提高字符转float数据时的数据精度" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/如何提高字符转float数据时的数据精度.html" class="title">如何提高字符转float数据时的数据精度</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:17:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/echarts用饼图制作带labelline的旭日图.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/dy20180512171652810.jpg
+)" alt="echarts之用饼图制作带labelline的旭日图(一)" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/WEB/">WEB</a></p>
+              <p class="item-title"><a href="/echarts用饼图制作带labelline的旭日图.html" class="title">echarts之用饼图制作带labelline的旭日图(一)</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:04:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IOS开发/">IOS开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">49</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/FMDB/" style="font-size: 10px;">FMDB</a> <a href="/tags/POP/" style="font-size: 10px;">POP</a> <a href="/tags/PhoneGap/" style="font-size: 10px;">PhoneGap</a> <a href="/tags/SizeClass/" style="font-size: 14px;">SizeClass</a> <a href="/tags/WKWebView/" style="font-size: 10px;">WKWebView</a> <a href="/tags/appium/" style="font-size: 12px;">appium</a> <a href="/tags/cocos2d-x/" style="font-size: 20px;">cocos2d-x</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS8/" style="font-size: 16px;">iOS8</a> <a href="/tags/iconsole/" style="font-size: 10px;">iconsole</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/phonegap/" style="font-size: 10px;">phonegap</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/xib/" style="font-size: 10px;">xib</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/代码优化/" style="font-size: 12px;">代码优化</a> <a href="/tags/代码规范/" style="font-size: 10px;">代码规范</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/控件/" style="font-size: 18px;">控件</a> <a href="/tags/推送/" style="font-size: 10px;">推送</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/效率/" style="font-size: 12px;">效率</a> <a href="/tags/日历/" style="font-size: 10px;">日历</a> <a href="/tags/杂文/" style="font-size: 10px;">杂文</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/状态栏/" style="font-size: 10px;">状态栏</a> <a href="/tags/网络/" style="font-size: 14px;">网络</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/路线图/" style="font-size: 10px;">路线图</a> <a href="/tags/边下边播/" style="font-size: 10px;">边下边播</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a> <a href="/tags/项目管理/" style="font-size: 12px;">项目管理</a> <a href="/tags/高德/" style="font-size: 10px;">高德</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+          <li>
+            <a href="/AboutUs.html">AboutMe</a>
+          </li>
+        
+          <li>
+            <a href="http://www.suning.com">苏宁易购</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2018 SNS前端团队</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js"></script>
+  <script src="/scrollLoading/main.js"></script>
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

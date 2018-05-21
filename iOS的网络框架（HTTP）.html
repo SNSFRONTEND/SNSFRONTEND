@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?6b806b7ed8c586bd0172da97b3ed66d8";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script>
+    
+
+<head>
+    <meta name="baidu-site-verification" content="ReWQDRchc7" />
+  <meta charset="utf-8">
+  
+  <title>iOS的网络框架（HTTP） | SNS前端团队</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="背景和目标目前市场上的大部分App都有网络功能，而网络功能大部分都是基于HTTP协议的。HTTP协议简单而又强大，这也是该协议长盛不衰的秘诀之一。每一个程序员都最好了解一下HTTP协议，这会让你受益匪浅。  协议规范(英) 协议规范(中)  回到iOS，我们将如何使用HTTP协议来完成网络请求呢？从头开始开发一个协议栈是重复造轮子，非常不明智。因为苹果的开发框架中已经包含了对HTTP协议的封装。请">
+<meta name="keywords" content="网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS的网络框架（HTTP）">
+<meta property="og:url" content="http://snsfrontend.crysnower.cn/iOS的网络框架（HTTP）.html">
+<meta property="og:site_name" content="SNS前端团队">
+<meta property="og:description" content="背景和目标目前市场上的大部分App都有网络功能，而网络功能大部分都是基于HTTP协议的。HTTP协议简单而又强大，这也是该协议长盛不衰的秘诀之一。每一个程序员都最好了解一下HTTP协议，这会让你受益匪浅。  协议规范(英) 协议规范(中)  回到iOS，我们将如何使用HTTP协议来完成网络请求呢？从头开始开发一个协议栈是重复造轮子，非常不明智。因为苹果的开发框架中已经包含了对HTTP协议的封装。请">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/16632-bc2417c93684ed68.gif">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/16632-bc2417c93684ed68.gif">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/16632-9e79a04bcf4a1033.png">
+<meta property="og:updated_time" content="2018-05-21T06:16:16.970Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS的网络框架（HTTP）">
+<meta name="twitter:description" content="背景和目标目前市场上的大部分App都有网络功能，而网络功能大部分都是基于HTTP协议的。HTTP协议简单而又强大，这也是该协议长盛不衰的秘诀之一。每一个程序员都最好了解一下HTTP协议，这会让你受益匪浅。  协议规范(英) 协议规范(中)  回到iOS，我们将如何使用HTTP协议来完成网络请求呢？从头开始开发一个协议栈是重复造轮子，非常不明智。因为苹果的开发框架中已经包含了对HTTP协议的封装。请">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/16632-bc2417c93684ed68.gif">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css">
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(/images/logo.png); }
+    </style>
+  
+
+  
+    <!-- <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'> -->
+    <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  
+
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">点点滴滴-破茧成蝶</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IOS开发/">IOS开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/WEB/">WEB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS/">iOS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/测试/">测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/项目管理/">项目管理</a></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/AboutUs.html">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://snsfrontend.crysnower.cn"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/iOS/">iOS</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-iOS的网络框架（HTTP）" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      iOS的网络框架（HTTP）
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/iOS的网络框架（HTTP）.html" class="article-date">
+  作者：StephenZhu
+  <time datetime="2014-10-13T07:07:00.000Z" itemprop="datePublished">10月 13 2014</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <h2 id="背景和目标"><a href="#背景和目标" class="headerlink" title="背景和目标"></a>背景和目标</h2><p>目前市场上的大部分App都有网络功能，而网络功能大部分都是基于HTTP协议的。HTTP协议简单而又强大，这也是该协议长盛不衰的秘诀之一。每一个程序员都最好了解一下HTTP协议，这会让你受益匪浅。</p>
+<ul>
+<li><a href="http://www.w3.org/Protocols/rfc2616/rfc2616.html" target="_blank" rel="noopener">协议规范(英)</a></li>
+<li><a href="http://javadocs.wikidot.com/hypertext-transfer-protocol-http1-1" target="_blank" rel="noopener">协议规范(中)</a></li>
+</ul>
+<p>回到iOS，我们将如何使用HTTP协议来完成网络请求呢？从头开始开发一个协议栈是重复造轮子，非常不明智。因为苹果的开发框架中已经包含了对HTTP协议的封装。<a href="https://developer.apple.com/library/ios/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/WorkingWithHTTPAndHTTPSRequests/WorkingWithHTTPAndHTTPSRequests.html" target="_blank" rel="noopener">请看官方文档说明</a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/16632-bc2417c93684ed68.gif" alt="network.gif"><br><a id="more"></a></p>
+<h2 id="背景和目标-1"><a href="#背景和目标-1" class="headerlink" title="背景和目标"></a>背景和目标</h2><p>目前市场上的大部分App都有网络功能，而网络功能大部分都是基于HTTP协议的。HTTP协议简单而又强大，这也是该协议长盛不衰的秘诀之一。每一个程序员都最好了解一下HTTP协议，这会让你受益匪浅。</p>
+<ul>
+<li><a href="http://www.w3.org/Protocols/rfc2616/rfc2616.html" target="_blank" rel="noopener">协议规范(英)</a></li>
+<li><a href="http://javadocs.wikidot.com/hypertext-transfer-protocol-http1-1" target="_blank" rel="noopener">协议规范(中)</a></li>
+</ul>
+<p>回到iOS，我们将如何使用HTTP协议来完成网络请求呢？从头开始开发一个协议栈是重复造轮子，非常不明智。因为苹果的开发框架中已经包含了对HTTP协议的封装。<a href="https://developer.apple.com/library/ios/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/WorkingWithHTTPAndHTTPSRequests/WorkingWithHTTPAndHTTPSRequests.html" target="_blank" rel="noopener">请看官方文档说明</a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/16632-bc2417c93684ed68.gif" alt="network.gif"></p>
+<p>上面这张<a href="http://www.infoq.com/cn/articles/afn_vs_asi" target="_blank" rel="noopener">图片</a>解释了iOS框架中网络的实现方式和目前流行的网络框架所出的位置（第三行右边应该视CFHTTP，不是CFFTP））。ASI是基于CFHTTP的，AFNetworking是基于NSURL的，两者处在不同的层次上，实现原理也不同。</p>
+<p>像这样的第三方网络框架，虽然使用起来比系统原生的简单了许多，但为了保持通用性，整个框架的接口还是比较多，调用的过程也不是一两行能搞定的。</p>
+<p>我想，如果在开发自己的项目过程中，能不能提供一套最简单的API，只提供我们用的到的接口，并且将一些重复的处理逻辑封装起来。使得调用者在不需要了解CFHTTP、NSURL、ASIHTTPRequest、AFNetworking的情况下，只要用一两行代码，就能把网络请求处理完，让开发着处理网络请求像调用本地方法一样自然，这就是我的目标。</p>
+<h2 id="确定需求范围"><a href="#确定需求范围" class="headerlink" title="确定需求范围"></a>确定需求范围</h2><p>我不想做一个通用性很强的框架，我只是希望它能解决目前的所有需求，然后越简单越好。<br>我们目前遇到的需求不是很多，有如下几种类型：</p>
+<ul>
+<li>根据本地参数，向后台发起请求，获得我要的数据。</li>
+<li>像后台提交数据，知道成功或者失败。</li>
+</ul>
+<h2 id="实现方式选择"><a href="#实现方式选择" class="headerlink" title="实现方式选择"></a>实现方式选择</h2><p>由于个人喜好，我会基于AFNetworking之上开发一套API，同时让这套API可以方便的切换到ASIHTTPRequest或者哪天有冒出来的新框架。</p>
+<h2 id="最终实现"><a href="#最终实现" class="headerlink" title="最终实现"></a>最终实现</h2><p>最终的实现基本满足了预期的目标，即用一两行代码完成网络的请求。下面是架构图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/16632-9e79a04bcf4a1033.png" alt="http_framework.png"></p>
+<p>其实一开始设计的时候，就只有4个类：</p>
+<ul>
+<li>MJHttpClient</li>
+<li>MJRequest</li>
+<li>MJHttpError</li>
+<li>MJResponse</li>
+</ul>
+<p> 这样做满足了项目中80%的后台接口，但有些比如传图片或者需要在httpbody中塞数据的接口，用最基本的Request难以封装，所以就陆续加了两个子类。因为是见招拆招，所以并不完美，不过还是覆盖了当前项目的所有请求类型。</p>
+<p>接下来主义介绍这几个类：</p>
+<h4 id="MJHttpClient"><a href="#MJHttpClient" class="headerlink" title="MJHttpClient"></a>MJHttpClient</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">typedef void (^MJResponseObject)(MJResponse* responseObject);</span><br><span class="line">typedef void (^MJResponseError)(MJHttpError* responseError);</span><br><span class="line"></span><br><span class="line">@interface MJHttpClient : NSObject</span><br><span class="line"></span><br><span class="line">+ (MJHttpClient*)client;</span><br><span class="line"></span><br><span class="line">//设置是否接受非json格式的返回</span><br><span class="line">- (void)enableNoneJsonBack;</span><br><span class="line"></span><br><span class="line">//发送请求，需要提供成功和失败的回掉</span><br><span class="line">- (void)sendRequest:(MJRequest*)request</span><br><span class="line">         onResponse:(MJResponseObject)processBlock</span><br><span class="line">            onError:(MJResponseError)errorBlock;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>这个类非常简单，第一个方法创建自身对象，非单例（因为可能同时存在多个请求，所以不可以用单例）。第二个方法是因为后台的返回数据有些不是json格式的（事情上开发过程中前后台需要协调尽量让所有的接口返回json，不要返回字符串或者整数对象。但现在已经有了漏网之鱼，所以要做容错）。第三个方法就是发送请求的方法，就一行代码。</p>
+<h4 id="MJRequest"><a href="#MJRequest" class="headerlink" title="MJRequest"></a>MJRequest</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">typedef NS_ENUM(NSInteger, RequestMethod) &#123;</span><br><span class="line">    RequestMethod_Get,</span><br><span class="line">    RequestMethod_Post,</span><br><span class="line">    RequestMethod_Put,</span><br><span class="line">    RequestMethod_Delete</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">@class MJQueryModel;</span><br><span class="line"></span><br><span class="line">@interface MJRequest : NSObject</span><br><span class="line"></span><br><span class="line">@property (nonatomic,assign) RequestMethod method;</span><br><span class="line"></span><br><span class="line">@property (nonatomic,copy) NSString* baseUrl;</span><br><span class="line"></span><br><span class="line">@property (nonatomic,copy) NSString* api;</span><br><span class="line"></span><br><span class="line">//请求参数的对象</span><br><span class="line">@property (nonatomic,strong) MJQueryModel* queryModel;</span><br><span class="line"></span><br><span class="line">//请求参数的对象（请求参数是数组的话）</span><br><span class="line">@property (nonatomic,strong) NSArray* queryModels;</span><br><span class="line"></span><br><span class="line">//创建请求</span><br><span class="line">+ (MJRequest*)requestWithMethod:(RequestMethod)method api:(NSString*)api;</span><br><span class="line"></span><br><span class="line">//请求参数对象转化成NSDictionary或者NSArray</span><br><span class="line">- (id)buildParam;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>这个Request只能吃力url传参数的情况，body里面传参数是不支持的（这也是MJBodyRequest和MJMultipartRequest存在的必要）。但即使url传参数，也有字典和数组两种情况，所以这里加了queryModel和queryModels两个属性，在实用的时候，只需要给其中一个复制就可以了。</p>
+<h4 id="MJResponse"><a href="#MJResponse" class="headerlink" title="MJResponse"></a>MJResponse</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@interface MJResponse : NSObject</span><br><span class="line"></span><br><span class="line">@property (nonatomic,strong) id object;</span><br><span class="line"></span><br><span class="line">+ (MJResponse*)responseWithObject:(id)responseObject;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>MJResponse是请求成功之后返回的对象，可以是空、字符串、字典、数组，基本上都可以支持，在成功的block里需要对其处理。</p>
+<h4 id="MJHttpError"><a href="#MJHttpError" class="headerlink" title="MJHttpError"></a>MJHttpError</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@interface MJHttpError : NSObject</span><br><span class="line"></span><br><span class="line">@property (nonatomic,assign) NSInteger errorCode;</span><br><span class="line"></span><br><span class="line">@property (nonatomic,copy) NSString* errorDescription;</span><br><span class="line"></span><br><span class="line">+ (MJHttpError*)errorWithNSError:(NSError*)error;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>这个类比较鸡肋，就是一个翻版的NSError。但后期可能会对错误有特殊处理，就先占个位。</p>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><h4 id="普通请求"><a href="#普通请求" class="headerlink" title="普通请求"></a>普通请求</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">MJHttpClient* client = [MJHttpClient client];</span><br><span class="line">MJRequest* request = [MJRequest requestWithMethod:RequestMethod_Get api:@&quot;xxx/yyy&quot;];</span><br><span class="line">    </span><br><span class="line">HJQueryAdsModel* model = [HJQueryAdsModel new];</span><br><span class="line">model.type = [NSString stringWithFormat:@&quot;%d&quot;,mtag];</span><br><span class="line">request.queryModel = model;</span><br><span class="line">    </span><br><span class="line">[client sendRequest:request onResponse:^(MJResponse *responseObject) &#123;</span><br><span class="line">    //数据处理</span><br><span class="line">&#125; onError:^(MJHttpError *responseError) &#123;</span><br><span class="line">    NSLog(@&quot;%@&quot;,responseError.errorDescription);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<h4 id="Body请求"><a href="#Body请求" class="headerlink" title="Body请求"></a>Body请求</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">MJHttpClient* client = [MJHttpClient client];</span><br><span class="line">        </span><br><span class="line">MJBodyRequest* request = [MJBodyRequest requestWithMethod:RequestMethod_Post api:@&quot;xxx/yyy&quot; bodies:array];</span><br><span class="line">        </span><br><span class="line">[client sendRequest:request onResponse:^(MJResponse *responseObject) &#123;</span><br><span class="line">     //数据处理   </span><br><span class="line">&#125; onError:^(MJHttpError *responseError) &#123;</span><br><span class="line">     NSLog(@&quot;%@&quot;,responseError.errorDescription);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<h4 id="Multipart请求"><a href="#Multipart请求" class="headerlink" title="Multipart请求"></a>Multipart请求</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">MJHttpClient* client = [MJHttpClient client];</span><br><span class="line">MJMultipartData* data = [MJMultipartData new];</span><br><span class="line">data.fileData = UIImagePNGRepresentation(image);</span><br><span class="line">data.name = @&quot;file&quot;;</span><br><span class="line">data.fileName = @&quot;boris.png&quot;;</span><br><span class="line">data.fileType = @&quot;image/png&quot;;</span><br><span class="line">    </span><br><span class="line">MJMultipartRequest* request = [MJMultipartRequest requestWithMethod:RequestMethod_Post api:@&quot;xxx/yyy&quot; datas:@[data]];</span><br><span class="line">[client sendRequest:request onResponse:^(MJResponse *responseObject) &#123;</span><br><span class="line">    //数据处理 </span><br><span class="line">&#125; onError:^(MJHttpError *responseError) &#123;</span><br><span class="line">    NSLog(@&quot;%@&quot;,responseError.errorDescription);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://snsfrontend.crysnower.cn/iOS的网络框架（HTTP）.html" data-id="cjhfvpxo5002nwmovactijz92" class="article-share-link">分享到</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="github" href="http://www.suning.com" target="_blank"><i id="icon-github" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="http://www.suning.com" target="_blank"><i id="icon-weibo" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="rss" href="/atom.xml" target="_blank"><i id="icon-rss" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/一个简单的分享框架.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <p class="article-nav-title">
+        
+          一个简单的分享框架
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/iOS代码中的不良实践与优化.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">iOS代码中的不良实践与优化</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/螺与鱼.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/redaiyu.jpg
+)" alt="螺与螺" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/项目管理/">项目管理</a></p>
+              <p class="item-title"><a href="/螺与鱼.html" class="title">螺与螺</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:53:16.867Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/URL-编码-iOS.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/URL-编码-iOS.html" class="title">URL 编码 iOS</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:05:46.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/ios修改本地useragent-WKWebView.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/ios修改本地useragent-WKWebView.html" class="title">ios修改本地useragent(WKWebView)</a></p>
+              <p class="item-date"><time datetime="2018-05-20T03:50:39.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/如何提高字符转float数据时的数据精度.html" class="thumbnail">
+  
+    <span style="background-image:url(http://obfk4z1f6.bkt.clouddn.com/fixed-point-representation.png
+)" alt="如何提高字符转float数据时的数据精度" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/如何提高字符转float数据时的数据精度.html" class="title">如何提高字符转float数据时的数据精度</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:17:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/echarts用饼图制作带labelline的旭日图.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/dy20180512171652810.jpg
+)" alt="echarts之用饼图制作带labelline的旭日图(一)" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/WEB/">WEB</a></p>
+              <p class="item-title"><a href="/echarts用饼图制作带labelline的旭日图.html" class="title">echarts之用饼图制作带labelline的旭日图(一)</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:04:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IOS开发/">IOS开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">49</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/FMDB/" style="font-size: 10px;">FMDB</a> <a href="/tags/POP/" style="font-size: 10px;">POP</a> <a href="/tags/PhoneGap/" style="font-size: 10px;">PhoneGap</a> <a href="/tags/SizeClass/" style="font-size: 14px;">SizeClass</a> <a href="/tags/WKWebView/" style="font-size: 10px;">WKWebView</a> <a href="/tags/appium/" style="font-size: 12px;">appium</a> <a href="/tags/cocos2d-x/" style="font-size: 20px;">cocos2d-x</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS8/" style="font-size: 16px;">iOS8</a> <a href="/tags/iconsole/" style="font-size: 10px;">iconsole</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/phonegap/" style="font-size: 10px;">phonegap</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/xib/" style="font-size: 10px;">xib</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/代码优化/" style="font-size: 12px;">代码优化</a> <a href="/tags/代码规范/" style="font-size: 10px;">代码规范</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/控件/" style="font-size: 18px;">控件</a> <a href="/tags/推送/" style="font-size: 10px;">推送</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/效率/" style="font-size: 12px;">效率</a> <a href="/tags/日历/" style="font-size: 10px;">日历</a> <a href="/tags/杂文/" style="font-size: 10px;">杂文</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/状态栏/" style="font-size: 10px;">状态栏</a> <a href="/tags/网络/" style="font-size: 14px;">网络</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/路线图/" style="font-size: 10px;">路线图</a> <a href="/tags/边下边播/" style="font-size: 10px;">边下边播</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a> <a href="/tags/项目管理/" style="font-size: 12px;">项目管理</a> <a href="/tags/高德/" style="font-size: 10px;">高德</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+          <li>
+            <a href="/AboutUs.html">AboutMe</a>
+          </li>
+        
+          <li>
+            <a href="http://www.suning.com">苏宁易购</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2018 SNS前端团队</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js"></script>
+  <script src="/scrollLoading/main.js"></script>
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

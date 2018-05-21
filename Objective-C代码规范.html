@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?6b806b7ed8c586bd0172da97b3ed66d8";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script>
+    
+
+<head>
+    <meta name="baidu-site-verification" content="ReWQDRchc7" />
+  <meta charset="utf-8">
+  
+  <title>Objective-C代码规范 | SNS前端团队</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="为什么要有代码规范？对于团队，如果代码风格不统一，阅读或修改同事的代码会非常困难，造成潜在的风险。 对于个人，代码规范是对自身编码习惯的一种监督，如果没有这种监督，有时候因为偷懒，会写出难看的代码，时间长了自己都看不懂。这样对于代码的维护性是不利的。 代码规范的内容？代码规范包含的范围十分广泛。从一个变量的命名到一个类的设计，我觉得都属于代码规范的范畴。从实践的角度，可以把代码规范分成两个部分：">
+<meta name="keywords" content="规范">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Objective-C代码规范">
+<meta property="og:url" content="http://snsfrontend.crysnower.cn/Objective-C代码规范.html">
+<meta property="og:site_name" content="SNS前端团队">
+<meta property="og:description" content="为什么要有代码规范？对于团队，如果代码风格不统一，阅读或修改同事的代码会非常困难，造成潜在的风险。 对于个人，代码规范是对自身编码习惯的一种监督，如果没有这种监督，有时候因为偷懒，会写出难看的代码，时间长了自己都看不懂。这样对于代码的维护性是不利的。 代码规范的内容？代码规范包含的范围十分广泛。从一个变量的命名到一个类的设计，我觉得都属于代码规范的范畴。从实践的角度，可以把代码规范分成两个部分：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-21T06:22:24.455Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Objective-C代码规范">
+<meta name="twitter:description" content="为什么要有代码规范？对于团队，如果代码风格不统一，阅读或修改同事的代码会非常困难，造成潜在的风险。 对于个人，代码规范是对自身编码习惯的一种监督，如果没有这种监督，有时候因为偷懒，会写出难看的代码，时间长了自己都看不懂。这样对于代码的维护性是不利的。 代码规范的内容？代码规范包含的范围十分广泛。从一个变量的命名到一个类的设计，我觉得都属于代码规范的范畴。从实践的角度，可以把代码规范分成两个部分：">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css">
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(/images/logo.png); }
+    </style>
+  
+
+  
+    <!-- <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'> -->
+    <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  
+
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">点点滴滴-破茧成蝶</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IOS开发/">IOS开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/WEB/">WEB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS/">iOS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/测试/">测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/项目管理/">项目管理</a></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/AboutUs.html">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://snsfrontend.crysnower.cn"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/iOS/">iOS</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Objective-C代码规范" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Objective-C代码规范
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/Objective-C代码规范.html" class="article-date">
+  作者：StephenZhu
+  <time datetime="2014-09-16T09:33:00.000Z" itemprop="datePublished">9月 16 2014</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <h1 id="为什么要有代码规范？"><a href="#为什么要有代码规范？" class="headerlink" title="为什么要有代码规范？"></a>为什么要有代码规范？</h1><p>对于团队，如果代码风格不统一，阅读或修改同事的代码会非常困难，造成潜在的风险。</p>
+<p>对于个人，代码规范是对自身编码习惯的一种监督，如果没有这种监督，有时候因为偷懒，会写出难看的代码，时间长了自己都看不懂。这样对于代码的维护性是不利的。</p>
+<h1 id="代码规范的内容？"><a href="#代码规范的内容？" class="headerlink" title="代码规范的内容？"></a>代码规范的内容？</h1><p>代码规范包含的范围十分广泛。从一个变量的命名到一个类的设计，我觉得都属于代码规范的范畴。从实践的角度，可以把代码规范分成两个部分：</p>
+<p>第一部分是规则，即一定要这么做。这里面没有对错，但需要统一。包含变量的命名、函数的命名、模块的组织、代码块的组织、宏、枚举、常量的声明、函数的粒度。</p>
+<p>第二部分是风格，即一种模式化的代码设计结构。我们实现某个功能时，往往不止一种实现方式。每一种实现方式没有绝对的高低之分，不同角度的解读，就会有不同的偏好。所以这个层面上的代码规范，只能求同存异。但是不管怎样，每个人必须要有一致性的风格。就像不同的小区可以有不同的风格，但同一个小区只能有一种设计风格。风格包含代码设计中的抽象概念，比如接口、继承等等。</p>
+<a id="more"></a>
+<h1 id="为什么要有代码规范？-1"><a href="#为什么要有代码规范？-1" class="headerlink" title="为什么要有代码规范？"></a>为什么要有代码规范？</h1><p>对于团队，如果代码风格不统一，阅读或修改同事的代码会非常困难，造成潜在的风险。</p>
+<p>对于个人，代码规范是对自身编码习惯的一种监督，如果没有这种监督，有时候因为偷懒，会写出难看的代码，时间长了自己都看不懂。这样对于代码的维护性是不利的。</p>
+<h1 id="代码规范的内容？-1"><a href="#代码规范的内容？-1" class="headerlink" title="代码规范的内容？"></a>代码规范的内容？</h1><p>代码规范包含的范围十分广泛。从一个变量的命名到一个类的设计，我觉得都属于代码规范的范畴。从实践的角度，可以把代码规范分成两个部分：</p>
+<p>第一部分是规则，即一定要这么做。这里面没有对错，但需要统一。包含变量的命名、函数的命名、模块的组织、代码块的组织、宏、枚举、常量的声明、函数的粒度。</p>
+<p>第二部分是风格，即一种模式化的代码设计结构。我们实现某个功能时，往往不止一种实现方式。每一种实现方式没有绝对的高低之分，不同角度的解读，就会有不同的偏好。所以这个层面上的代码规范，只能求同存异。但是不管怎样，每个人必须要有一致性的风格。就像不同的小区可以有不同的风格，但同一个小区只能有一种设计风格。风格包含代码设计中的抽象概念，比如接口、继承等等。</p>
+<h1 id="代码的规则"><a href="#代码的规则" class="headerlink" title="代码的规则"></a>代码的规则</h1><p>规则如同法律，尽管从心底里很多人不认可，但每个人都必须遵守。看起来大家都受了束缚，但是对整个社会以及每一个人都是利大于弊。</p>
+<h2 id="变量命名"><a href="#变量命名" class="headerlink" title="变量命名"></a>变量命名</h2><p>变量命名历史上产生过很多方法，比较著名的有匈牙利命名法、驼峰命名法、下划线命名法。</p>
+<ul>
+<li>匈牙利命名法：szUserName</li>
+<li>驼峰命名法：userName</li>
+<li>下划线命名法：user_name</li>
+</ul>
+<p>用Objective-C开发，我们就参考苹果的官方命名方式即可，苹果采用的是驼峰命名法。</p>
+<p>苹果的变量命名方式常常被其它语言的开发者所吐槽，因为它的名有时候是在太长了！！！下面是3个最长的Objective-C属性名：<br>[56] automaticallyEnablesStillImageStabilizationWhenAvailable<br>[54] availableMediaCharacteristicsWithMediaSelectionOptions<br>[49] outputObscuredDueToInsufficientExternalProtection<br>变量声明最重要的是清晰其次才考虑长短，如果为了简短而含糊不清，是不可取的。</p>
+<blockquote>
+<p><a href="http://segmentfault.com/a/1190000000370048" target="_blank" rel="noopener">Objective-C项目的命名有多长</a></p>
+</blockquote>
+<p>拿现有代码举例</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">变量含义</th>
+<th style="text-align:left">Not Good</th>
+<th style="text-align:left">Good</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">昵称输入框</td>
+<td style="text-align:left">tfNickName</td>
+<td style="text-align:left">nickNameTextField</td>
+</tr>
+<tr>
+<td style="text-align:left">密码ImageView</td>
+<td style="text-align:left">imvPass</td>
+<td style="text-align:left">passwordImageView</td>
+</tr>
+<tr>
+<td style="text-align:left">我的搜索条</td>
+<td style="text-align:left">mysearchBar</td>
+<td style="text-align:left">mySearchBar</td>
+</tr>
+</tbody>
+</table>
+<p><strong>类变量</strong><br>前面加下划线，和系统框架保持一致<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@interface UIViewController : UIResponder &lt;NSCoding, UIAppearanceContainer&gt; &#123;</span><br><span class="line">    @package</span><br><span class="line">    UIView           *_view;</span><br><span class="line">    UITabBarItem     *_tabBarItem;</span><br><span class="line">    UINavigationItem *_navigationItem;</span><br><span class="line">    NSArray          *_toolbarItems;</span><br><span class="line">    NSString         *_title;</span><br><span class="line">    </span><br><span class="line">    NSString         *_nibName;</span><br><span class="line">    NSBundle         *_nibBundle;</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure></p>
+<p>现有的例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@interface CouponListTableViewCell : UITableViewCell</span><br><span class="line">&#123;</span><br><span class="line">    UIImageView *imageIcon;</span><br><span class="line">    UIImageView *imageCollect;</span><br><span class="line">    UILabel *labelName;</span><br><span class="line">    UILabel *labelPriceSale;</span><br><span class="line">    UILabel *labelPriceOrigin;</span><br><span class="line">    UILabel *labelSaleNumber;</span><br><span class="line">    UIImageView *imageArrow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>类变量与属性</strong><br>属性是Objective-C的一种高级语法，属性可以完全替换类变量，并且提供更强大的访问控制（strong、weak、nonatomic、readonly…）,而且属性也只需要用一行就能搞定，所以为什么还要用类变量呢？<br>属性声明后不用写@synthesize，且会自动生成类变量。<a href="http://stackoverflow.com/questions/12119284/xcode-4-automatically-generates-ivars-when-using-property-where-can-i-find-the" target="_blank" rel="noopener">资料&gt;</a></p>
+<p><strong>例外</strong><br>一些局部变量允许用最简单的方式命名：i、j、temp<br>一些常用的缩写可以不用驼峰：RMB，OBD</p>
+<h2 id="函数命名"><a href="#函数命名" class="headerlink" title="函数命名"></a>函数命名</h2><p>Objective-C中的函数不同于其他语言，函数名是按参数隔开的。初看起来是有点怪，但是习惯了就会发现这样和命名方式可读性极好，就像一句话一样。所以当你的函数名不能流利的读出来的话，那么它的命名肯定就有问题。<br>还是先举系统的例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)willAnimateFirstHalfOfRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration</span><br></pre></td></tr></table></figure></p>
+<p>这里面值得注意的几点：</p>
+<ul>
+<li>最左边的（+、-）和返回类型的左括号之间有一个空格，返回类型的右括号与第一个参数之间没有空格；</li>
+<li>函数名中每一段描述都以小写字母开头，描述的写法要考虑清晰明确，参考变量命名；</li>
+<li>如果函数名过长，应该换行，按冒号对齐；</li>
+<li>从描述中可以看出对应参数的意义。</li>
+</ul>
+<p>再看看我们自己的命名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1、最后一个参数描述Selector首字母大写了</span><br><span class="line">+(UIButton *)createButton:(MUButtonItemAttribute *)attr target:(id)target Selector:(SEL)sel;</span><br><span class="line">2、有一些多余的空格</span><br><span class="line">+ (AppDelegate *) appDelegate;</span><br><span class="line">- (void)hideTabbar :(BOOL)status;</span><br><span class="line">3、加减号和括号之间要有空格</span><br><span class="line">-(void)pushEvent:(NSDictionary*)dictionary target:(id)target;</span><br><span class="line">4、参数名和参数要对应，含义清晰</span><br><span class="line">- (void)setNavBackButton:(NSString *)string;</span><br><span class="line">- (id)init:(NSString*)nickName phoneNumber:(NSString *)phoneNumber;</span><br><span class="line">- (void)setTextFieldBackGroud:(CGRect)rect;</span><br><span class="line">- (id)init:(NSInteger)flag;</span><br><span class="line">- (void)requestHealthRecord:(NSString *)typeStr;</span><br><span class="line">5、函数名过长要换行</span><br><span class="line">- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier containingTableView:(UITableView *)containingTableView leftUtilityButtons:(NSArray *)leftUtilityButtons rightUtilityButtons:(NSArray *)rightUtilityButtons;</span><br><span class="line">6、命名风格混乱</span><br><span class="line">+ (NSInteger) GetServerBack:(NSString *)serverName</span><br><span class="line">                 path_Param:(NSMutableDictionary*)path_Param</span><br><span class="line">                query_Param:(NSMutableDictionary*)query_Param</span><br><span class="line">                 body_Param:(NSMutableDictionary*)body_Param</span><br><span class="line">                     method:(NSInteger)method</span><br><span class="line">                returnValue:(NSMutableDictionary*)returnValue;</span><br><span class="line">7、参数之间用and、with，多此一举</span><br><span class="line">- (id)initWithFrame:(CGRect)frame andImageView:(UIImageView*)imageView withImageFrame:(CGRect)imageInitFrame withImageUrl:(NSURL*)imageUrl;</span><br></pre></td></tr></table></figure></p>
+<p><strong>命名很重要！！！</strong><br>良好的命名是写出高质量代码的前提，命名的时候除了符合以上的规范，还需要找到合适的单词来表达含义，不要为了一时之快用拼音，也千万不要出现数字。</p>
+<h2 id="代码模块组织"><a href="#代码模块组织" class="headerlink" title="代码模块组织"></a>代码模块组织</h2><p>这个代码模块的组织是指文件级别的，即我们应该如何划分包。<br>现有的包结构是有些问题的，导致我们找某个功能的实现文件比较麻烦。<br>参考<a href="http://www.cocoachina.com/industry/20140225/7879.html" target="_blank" rel="noopener">别人的经验</a>，个人觉得这样的划分还是不错的。</p>
+<p><strong>文件的命名</strong><br>我们自己创建的文件，应该有统一的前缀。比如HJMainViewController，这也符合系统的命名规范。Objective-C没有namespace，所以这样做的好处是当你引用了第三方的代码时，防止重名。而且当我们自己的代码越来越大时，内部也会出现冲突。</p>
+<p><strong>一个文件一个类</strong><br>好处：</p>
+<ul>
+<li>减少单个文件的长度</li>
+<li>定位文件更方便</li>
+<li>便于重用</li>
+</ul>
+<h2 id="代码块的组织"><a href="#代码块的组织" class="headerlink" title="代码块的组织"></a>代码块的组织</h2><p>作为一个程序员，大部分时间实在看代码而不是在写。所以代码的可读性严重影响到我们的工作效率。<br>当你看到超过1000行的实现文件时，你还有看下去的欲望吗？<br>所以千万不要写出超过1000行的代码，有的话也得<a href="http://www.objc.io/issue-1/" target="_blank" rel="noopener">重构掉</a>。</p>
+<p>当代码控制到1000行以内后，只是具备了可读的基本条件。我们的屏幕一般只能一次显示50行代码，从头看到尾就是20屏，常常会看了后面忘了前面。所以我们要把一个文件里面的所有函数有秩序的组织起来，让人不用重头看到尾，就能很快定位到想看的地方。<br>这里提供一个小办法：用#pragma mark宏根据功能区分开:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#pragma mark - Life Circle</span><br><span class="line">#pragma mark - Public Interface</span><br><span class="line">#pragma mark - UI Actions</span><br><span class="line">#pragma mark - Business Logic</span><br><span class="line">#pragma mark - UITableViewDataSource</span><br><span class="line">#pragma mark - UITableViewDelegate</span><br><span class="line">#pragma mark - UIScrollViewDelegate</span><br><span class="line">#pragma mark - Notification Handle</span><br><span class="line">#pragma mark - Private Method</span><br></pre></td></tr></table></figure></p>
+<h2 id="宏、枚举、常量的声明"><a href="#宏、枚举、常量的声明" class="headerlink" title="宏、枚举、常量的声明"></a>宏、枚举、常量的声明</h2><p>宏的命名方式参考变量的命名方式，大写，用下划线分开<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TARGET_OS_IPHONE</span><br></pre></td></tr></table></figure></p>
+<p>枚举也有很多写法，这里推荐系统的方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typedef NS_ENUM(NSInteger, NSTextAlignment) &#123;</span><br><span class="line">    NSTextAlignmentLeft      = 0,    // Visually left aligned</span><br><span class="line">    NSTextAlignmentRight     = 1,    // Visually right aligned</span><br><span class="line">    NSTextAlignmentCenter    = 2,    // Visually centered</span><br><span class="line">    NSTextAlignmentJustified = 3,    // Fully-justified. The last line in a paragraph is natural-aligned.</span><br><span class="line">    NSTextAlignmentNatural   = 4,    // Indicates the default alignment for script</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>常量以k开头，系统命名风格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">extern NSString *const kAPNetworkDidSetupNotification;     // 建立连接</span><br><span class="line">extern NSString *const kAPNetworkDidCloseNotification;     // 关闭连接</span><br><span class="line">extern NSString *const kAPNetworkDidRegisterNotification;  // 注册成功</span><br><span class="line">extern NSString *const kAPNetworkDidLoginNotification;     // 登录成功</span><br></pre></td></tr></table></figure></p>
+<p>如果是数值常量，用宏的话，也可以用k开头<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define kDistancePoint  10.0f   // 圆点、标志和正文的间距</span><br></pre></td></tr></table></figure></p>
+<h2 id="函数的粒度"><a href="#函数的粒度" class="headerlink" title="函数的粒度"></a>函数的粒度</h2><p>知道我们现在最长的函数有多少行吗？655行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)getShopDetail</span><br></pre></td></tr></table></figure></p>
+<p>一个函数最好不超过一屏（50行），千万不能超过两屏（100行）。<br>因为从设计的角度来说，一个函数只需要干一件事，所以50行一般是狗的，超长的函数往往干了很多事情，或者干了意见很大的事（拆成多件小事，交给子函数去干）。</p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li><strong>Log</strong>：不要使用NSLog，提交了会因想到别人，而且最后打包删起来麻烦。需要找一个Log工具，MyNSLog功能不够。</li>
+<li><p><strong>代码中尽量不要出现数字</strong>：据上下文推测出来的，还是计算的出为好（现在界面里面很多地方确实要写死数字，适配iPhone6会很困难）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_contentBkg = [[UIView alloc] initWithFrame:CGRectMake(0, 1 / [UIScreen mainScreen].scale, 320, 68 - 1)];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>避免复杂的表达式</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if (tfPassword.text!=nil &amp;&amp;</span><br><span class="line">    ![tfPassword.text isEqualToString:@&quot;&quot;] &amp;&amp;</span><br><span class="line">    tfRequestNumber.text!=nil &amp;&amp;</span><br><span class="line">    ![tfRequestNumber.text isEqualToString:@&quot;&quot;]</span><br><span class="line">    )</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>一个变量不在多个函数中出现，不要作为类变量：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MBProgressHUD* hudProgress;</span><br><span class="line">int result;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>每个类的.h开头的地方要有注释，说明这个类是干嘛的</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * SDImageCache maintains a memory cache and an optional disk cache. Disk cache write operations are performed</span><br><span class="line"> * asynchronous so it doesn’t add unnecessary latency to the UI.</span><br><span class="line"> */</span><br><span class="line">@interface SDImageCache : NSObject</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>if后面的语句哪怕只有一行，都加括号</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if ([key rangeOfString:@&quot;热&quot;].location != NSNotFound) &#123;</span><br><span class="line">            titleLabel.text = @&quot;热门城市&quot;;</span><br><span class="line">     &#125;</span><br><span class="line">     else</span><br><span class="line">            titleLabel.text = key;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="代码的风格"><a href="#代码的风格" class="headerlink" title="代码的风格"></a>代码的风格</h1><p>风格如同习俗，不同地区有不同的习俗。你觉得入乡随俗好，就入乡随俗，这样避免了一些无谓的麻烦；但是你若坚持原有的习俗，社会也是能接受的，毕竟这些东西都是发展变化的，没有固定的模式，只有更好的模式。</p>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>这里的接口指的是一个类公开的一组方法，良好设计的类是高内聚低耦合的，所以接口必须是简洁的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@interface PaySucceedViewController : LCBaseViewController</span><br><span class="line"></span><br><span class="line">@property (nonatomic,retain) NSString *isSuccess;</span><br><span class="line"></span><br><span class="line">@property (nonatomic,retain) NSString *shopName;</span><br><span class="line"></span><br><span class="line">@property (nonatomic,retain) NSString *detailinfo;</span><br><span class="line"></span><br><span class="line">@property (nonatomic,retain) NSString *amount;</span><br><span class="line"></span><br><span class="line">@property (nonatomic,retain) NSString *omsOrderId;</span><br><span class="line">/*!</span><br><span class="line"> *  支付订单类型</span><br><span class="line"> *</span><br><span class="line"> *  @since</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic) ORDER_CATEGORY mCategory;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<p>上面的例子是一个ViewController，但是它暴露了太多属性，属性很零碎，传值的时候要一个一个传。其实这里属性应该属于一个叫订单Model的对象，把这些属性封装在OrderModel中，复用性和可维护性都会好很多。（但是现在代码整体结构没有Model层，这里需要很大的重构）</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>继承不是为了少写代码，它的目的是抽象，顺便少写了代码。<br>举NavigationBar的例子，用宏可以实现，用基类也可以实现，但基类抽象出了一个共有的接口，以后发生共性的变化够可以通过修改基类来实现，你可以在基类里加一组方法，而宏做不到。</p>
+<h2 id="其它-1"><a href="#其它-1" class="headerlink" title="其它"></a>其它</h2><p>代码规范的路还长着，先走出第一步吧！</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html" target="_blank" rel="noopener">Apple代码规范</a></p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://snsfrontend.crysnower.cn/Objective-C代码规范.html" data-id="cjhfvpxmw000lwmovs97zpq1f" class="article-share-link">分享到</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/规范/">规范</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="github" href="http://www.suning.com" target="_blank"><i id="icon-github" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="http://www.suning.com" target="_blank"><i id="icon-weibo" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="rss" href="/atom.xml" target="_blank"><i id="icon-rss" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/iOS架构设计与分层.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <p class="article-nav-title">
+        
+          iOS架构设计与分层
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/开源语音格式speex教程（for IOS）.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">开源语音格式speex教程（for IOS）</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/螺与鱼.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/redaiyu.jpg
+)" alt="螺与螺" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/项目管理/">项目管理</a></p>
+              <p class="item-title"><a href="/螺与鱼.html" class="title">螺与螺</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:53:16.867Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/URL-编码-iOS.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/URL-编码-iOS.html" class="title">URL 编码 iOS</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:05:46.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/ios修改本地useragent-WKWebView.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/ios修改本地useragent-WKWebView.html" class="title">ios修改本地useragent(WKWebView)</a></p>
+              <p class="item-date"><time datetime="2018-05-20T03:50:39.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/如何提高字符转float数据时的数据精度.html" class="thumbnail">
+  
+    <span style="background-image:url(http://obfk4z1f6.bkt.clouddn.com/fixed-point-representation.png
+)" alt="如何提高字符转float数据时的数据精度" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/如何提高字符转float数据时的数据精度.html" class="title">如何提高字符转float数据时的数据精度</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:17:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/echarts用饼图制作带labelline的旭日图.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/dy20180512171652810.jpg
+)" alt="echarts之用饼图制作带labelline的旭日图(一)" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/WEB/">WEB</a></p>
+              <p class="item-title"><a href="/echarts用饼图制作带labelline的旭日图.html" class="title">echarts之用饼图制作带labelline的旭日图(一)</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:04:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IOS开发/">IOS开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">49</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/FMDB/" style="font-size: 10px;">FMDB</a> <a href="/tags/POP/" style="font-size: 10px;">POP</a> <a href="/tags/PhoneGap/" style="font-size: 10px;">PhoneGap</a> <a href="/tags/SizeClass/" style="font-size: 14px;">SizeClass</a> <a href="/tags/WKWebView/" style="font-size: 10px;">WKWebView</a> <a href="/tags/appium/" style="font-size: 12px;">appium</a> <a href="/tags/cocos2d-x/" style="font-size: 20px;">cocos2d-x</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS8/" style="font-size: 16px;">iOS8</a> <a href="/tags/iconsole/" style="font-size: 10px;">iconsole</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/phonegap/" style="font-size: 10px;">phonegap</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/xib/" style="font-size: 10px;">xib</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/代码优化/" style="font-size: 12px;">代码优化</a> <a href="/tags/代码规范/" style="font-size: 10px;">代码规范</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/控件/" style="font-size: 18px;">控件</a> <a href="/tags/推送/" style="font-size: 10px;">推送</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/效率/" style="font-size: 12px;">效率</a> <a href="/tags/日历/" style="font-size: 10px;">日历</a> <a href="/tags/杂文/" style="font-size: 10px;">杂文</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/状态栏/" style="font-size: 10px;">状态栏</a> <a href="/tags/网络/" style="font-size: 14px;">网络</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/路线图/" style="font-size: 10px;">路线图</a> <a href="/tags/边下边播/" style="font-size: 10px;">边下边播</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a> <a href="/tags/项目管理/" style="font-size: 12px;">项目管理</a> <a href="/tags/高德/" style="font-size: 10px;">高德</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+          <li>
+            <a href="/AboutUs.html">AboutMe</a>
+          </li>
+        
+          <li>
+            <a href="http://www.suning.com">苏宁易购</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2018 SNS前端团队</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js"></script>
+  <script src="/scrollLoading/main.js"></script>
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

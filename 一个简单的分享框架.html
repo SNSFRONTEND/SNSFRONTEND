@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?6b806b7ed8c586bd0172da97b3ed66d8";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script>
+    
+
+<head>
+    <meta name="baidu-site-verification" content="ReWQDRchc7" />
+  <meta charset="utf-8">
+  
+  <title>一个简单的分享框架 | SNS前端团队</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="背景分享，是APP中一个基础功能，可以为APP提供传播渠道。APP中分享功能的开发主要有两种形式：  集成各个分享平台提供的sdk。 常用的社交软件，如微信、微博，都有各自的开放平台，提供各种语言的sdk。使用sdk，我们可以快速的将分享功能加到应用中。 使用分享集成框架。虽然使用sdk开发已经很快了，但是不同的分享平台有不同的特点，一个一个去集成研究还是要花费一定时间。而分享功能在展现形式和交互">
+<meta name="keywords" content="分享">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个简单的分享框架">
+<meta property="og:url" content="http://snsfrontend.crysnower.cn/一个简单的分享框架.html">
+<meta property="og:site_name" content="SNS前端团队">
+<meta property="og:description" content="背景分享，是APP中一个基础功能，可以为APP提供传播渠道。APP中分享功能的开发主要有两种形式：  集成各个分享平台提供的sdk。 常用的社交软件，如微信、微博，都有各自的开放平台，提供各种语言的sdk。使用sdk，我们可以快速的将分享功能加到应用中。 使用分享集成框架。虽然使用sdk开发已经很快了，但是不同的分享平台有不同的特点，一个一个去集成研究还是要花费一定时间。而分享功能在展现形式和交互">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/16632-f852fef3b1f23475.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/16632-137ada9d0cca3657.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/16632-e60aaae234179c63.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/16632-9db4f6b115712302.png">
+<meta property="og:updated_time" content="2018-05-21T06:28:17.838Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一个简单的分享框架">
+<meta name="twitter:description" content="背景分享，是APP中一个基础功能，可以为APP提供传播渠道。APP中分享功能的开发主要有两种形式：  集成各个分享平台提供的sdk。 常用的社交软件，如微信、微博，都有各自的开放平台，提供各种语言的sdk。使用sdk，我们可以快速的将分享功能加到应用中。 使用分享集成框架。虽然使用sdk开发已经很快了，但是不同的分享平台有不同的特点，一个一个去集成研究还是要花费一定时间。而分享功能在展现形式和交互">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/16632-f852fef3b1f23475.png">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css">
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(/images/logo.png); }
+    </style>
+  
+
+  
+    <!-- <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'> -->
+    <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  
+
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">点点滴滴-破茧成蝶</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IOS开发/">IOS开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/WEB/">WEB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS/">iOS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/测试/">测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/项目管理/">项目管理</a></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/AboutUs.html">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://snsfrontend.crysnower.cn"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/iOS/">iOS</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-一个简单的分享框架" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      一个简单的分享框架
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/一个简单的分享框架.html" class="article-date">
+  作者：StephenZhu
+  <time datetime="2014-10-29T02:33:00.000Z" itemprop="datePublished">10月 29 2014</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>分享，是APP中一个基础功能，可以为APP提供传播渠道。APP中分享功能的开发主要有两种形式：</p>
+<ul>
+<li>集成各个分享平台提供的sdk。<br> 常用的社交软件，如微信、微博，都有各自的开放平台，提供各种语言的sdk。使用sdk，我们可以快速的将分享功能加到应用中。</li>
+<li>使用分享集成框架。<br>虽然使用sdk开发已经很快了，但是不同的分享平台有不同的特点，一个一个去集成研究还是要花费一定时间。而分享功能在展现形式和交互流程上又有共通性，所以技术上也存在整合的可行性。因此，市场上出现了如友盟等第三方分享平台，开发者只需要加很少的代码，就能集成几乎所有的分享渠道。</li>
+</ul>
+<p>既然友盟等已经做的这么好了，为什么还要自己做分享框架呢？</p>
+<p>首先，技术上的不可控性。我们依赖友盟，友盟再依赖原生sdk，环节越多，中间的风险就越多。<br>其次，展现上的雷同。用友盟等工具的APP基本上是一样的展现形式，如果你做的只是一款大陆货，那没问题；但想做好，雷同就是首先要避免的。<br>最后，确实有时间做这个。做这个东西，集成了微信、微博、短信、邮件，总共花了三天。<br><a id="more"></a></p>
+<h3 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h3><p>分享，是APP中一个基础功能，可以为APP提供传播渠道。APP中分享功能的开发主要有两种形式：</p>
+<ul>
+<li>集成各个分享平台提供的sdk。<br> 常用的社交软件，如微信、微博，都有各自的开放平台，提供各种语言的sdk。使用sdk，我们可以快速的将分享功能加到应用中。</li>
+<li>使用分享集成框架。<br>虽然使用sdk开发已经很快了，但是不同的分享平台有不同的特点，一个一个去集成研究还是要花费一定时间。而分享功能在展现形式和交互流程上又有共通性，所以技术上也存在整合的可行性。因此，市场上出现了如友盟等第三方分享平台，开发者只需要加很少的代码，就能集成几乎所有的分享渠道。</li>
+</ul>
+<p>既然友盟等已经做的这么好了，为什么还要自己做分享框架呢？</p>
+<p>首先，技术上的不可控性。我们依赖友盟，友盟再依赖原生sdk，环节越多，中间的风险就越多。<br>其次，展现上的雷同。用友盟等工具的APP基本上是一样的展现形式，如果你做的只是一款大陆货，那没问题；但想做好，雷同就是首先要避免的。<br>最后，确实有时间做这个。做这个东西，集成了微信、微博、短信、邮件，总共花了三天。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><ul>
+<li><p>准备工作<br>因为目前我们要用的分享渠道只有微信朋友圈、微信好友、新浪微博、短信、邮件。所以需要准备的sdk只有微信和新浪，把sdk大概看一遍，跑一下Demo，就可以进行设计了。</p>
+</li>
+<li><p>接口<br>分享框架的客户是公司内部的iOS程序员，别人没有义务了解你的sdk究竟是怎么做的。以前用的友盟一行代码就能搞定，所以这个框架也必须要足够简单。因此，我还是参照了友盟的接口，设计了该框架唯一的分享接口。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//LCShareSDK.h</span><br><span class="line">+ (void)presentShareMenu:(NSArray*)menu</span><br><span class="line">        inViewController:(UIViewController*)viewController</span><br><span class="line">               shareItem:(LCShareItem*)item</span><br><span class="line">                delegate:(id&lt;LCShareDelegate&gt;)delegate;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>实现<br>主要是采用了单例模式来开发。虽然能够覆盖现有的使用场景，但不支持多线程，而且设计模式中最鄙视单例模式，这是一种让人懒惰的模式（个人观点）。<br>最上层给用户看到只有一个叫LCShareSDK的类，只有一个类方法。中间层分别对新浪微博、微信sdk进行封装，分别提供一个Manager类，也是单例。短信和邮件比较简单，逻辑处理就在LCShareSDK类里面实现。最下层是微信和新浪微博的sdk。<br>此外，新浪微博我用的不是最新的sdk，是有代码的。这样我就可以在程序内部进行分享，而且可以自定义授权页面和分享界面，灵活性很好。所以作为框架的一部分，还有授权和分享两个ViewController。<br>以下是结构图<br><img src="http://upload-images.jianshu.io/upload_images/16632-f852fef3b1f23475.png" alt="share.png"></li>
+</ul>
+<p>新浪微博里面默认的授权页面是弹出式的页面，弹出框还没有网页打，我觉得比较丑，就用自己写的LCShareOauthViewController替换了原有的View（这就是老版本sdk的好处，最新sdk只有静态库了）。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>使用非常简单，在ViewController(非必须，但参数中是需要ViewController的)里面如下调用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LCShareItem* shareItem = [LCShareItem new];</span><br><span class="line">shareItem.title = @&quot;XXXX&quot;;</span><br><span class="line">shareItem.desc = @&quot;YYYY&quot;;</span><br><span class="line">shareItem.image = [UIImage imageNamed:SHARE_ICON];</span><br><span class="line">shareItem.url = @&quot;http://www.qq.com&quot;;</span><br><span class="line">        </span><br><span class="line">[LCShareSDK presentShareMenu:@[@(WXMoments),@(WXFriend),@(Weibo),@(SMS),@(Mail)]</span><br><span class="line">            inViewController:self</span><br><span class="line">                   shareItem:shareItem</span><br><span class="line">                    delegate:self];</span><br></pre></td></tr></table></figure></p>
+<p>然后就会弹出分享菜单：<br><img src="http://upload-images.jianshu.io/upload_images/16632-137ada9d0cca3657.png" alt="share_menu2.png"></p>
+<p>如果之前没有授权过，下一步是打开授权页面，如果已安装微博，就会进行SSO授权。<br><img src="http://upload-images.jianshu.io/upload_images/16632-e60aaae234179c63.png" alt="share_oauth.png"></p>
+<p>最后出现分享界面，点击发送即可分享。<br><img src="http://upload-images.jianshu.io/upload_images/16632-9db4f6b115712302.png" alt="share_content2.png"></p>
+<p>除了那个分享接口，我们还提供了两个代理方法，用来判断用户点了哪个渠道，哪个渠道的分享结果。当然，这两个方法不是必须要实现的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@protocol LCShareDelegate &lt;NSObject&gt;</span><br><span class="line"></span><br><span class="line">@optional</span><br><span class="line"></span><br><span class="line">//点完了某个分享渠道按钮</span><br><span class="line">- (void)didSelectShareWithSource:(LCShareSource)source;</span><br><span class="line"></span><br><span class="line">//分享结果回调（成功或失败）</span><br><span class="line">- (void)didFinishShareWithResponse:(LCShareResponse*)response;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<p>还有在AppDelegate里面要做些初始化工作，比如在程序启动时注册微信：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[LCShareSDK registerWXApp:kWeiXinAppId];</span><br></pre></td></tr></table></figure></p>
+<p>从微信或微博返回APP时的处理：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation</span><br><span class="line">&#123; </span><br><span class="line">    return [LCShareSDK handleOpenUrl:url];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://snsfrontend.crysnower.cn/一个简单的分享框架.html" data-id="cjhfvpxok003iwmovhsa1qbpg" class="article-share-link">分享到</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分享/">分享</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="github" href="http://www.suning.com" target="_blank"><i id="icon-github" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="http://www.suning.com" target="_blank"><i id="icon-weibo" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="rss" href="/atom.xml" target="_blank"><i id="icon-rss" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/npm 管理器.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <p class="article-nav-title">
+        
+          npm 管理器
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/iOS的网络框架（HTTP）.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">iOS的网络框架（HTTP）</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/螺与鱼.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/redaiyu.jpg
+)" alt="螺与螺" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/项目管理/">项目管理</a></p>
+              <p class="item-title"><a href="/螺与鱼.html" class="title">螺与螺</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:53:16.867Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/URL-编码-iOS.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/URL-编码-iOS.html" class="title">URL 编码 iOS</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:05:46.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/ios修改本地useragent-WKWebView.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/ios修改本地useragent-WKWebView.html" class="title">ios修改本地useragent(WKWebView)</a></p>
+              <p class="item-date"><time datetime="2018-05-20T03:50:39.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/如何提高字符转float数据时的数据精度.html" class="thumbnail">
+  
+    <span style="background-image:url(http://obfk4z1f6.bkt.clouddn.com/fixed-point-representation.png
+)" alt="如何提高字符转float数据时的数据精度" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/如何提高字符转float数据时的数据精度.html" class="title">如何提高字符转float数据时的数据精度</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:17:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/echarts用饼图制作带labelline的旭日图.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/dy20180512171652810.jpg
+)" alt="echarts之用饼图制作带labelline的旭日图(一)" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/WEB/">WEB</a></p>
+              <p class="item-title"><a href="/echarts用饼图制作带labelline的旭日图.html" class="title">echarts之用饼图制作带labelline的旭日图(一)</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:04:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IOS开发/">IOS开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">49</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/FMDB/" style="font-size: 10px;">FMDB</a> <a href="/tags/POP/" style="font-size: 10px;">POP</a> <a href="/tags/PhoneGap/" style="font-size: 10px;">PhoneGap</a> <a href="/tags/SizeClass/" style="font-size: 14px;">SizeClass</a> <a href="/tags/WKWebView/" style="font-size: 10px;">WKWebView</a> <a href="/tags/appium/" style="font-size: 12px;">appium</a> <a href="/tags/cocos2d-x/" style="font-size: 20px;">cocos2d-x</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS8/" style="font-size: 16px;">iOS8</a> <a href="/tags/iconsole/" style="font-size: 10px;">iconsole</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/phonegap/" style="font-size: 10px;">phonegap</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/xib/" style="font-size: 10px;">xib</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/代码优化/" style="font-size: 12px;">代码优化</a> <a href="/tags/代码规范/" style="font-size: 10px;">代码规范</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/控件/" style="font-size: 18px;">控件</a> <a href="/tags/推送/" style="font-size: 10px;">推送</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/效率/" style="font-size: 12px;">效率</a> <a href="/tags/日历/" style="font-size: 10px;">日历</a> <a href="/tags/杂文/" style="font-size: 10px;">杂文</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/状态栏/" style="font-size: 10px;">状态栏</a> <a href="/tags/网络/" style="font-size: 14px;">网络</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/路线图/" style="font-size: 10px;">路线图</a> <a href="/tags/边下边播/" style="font-size: 10px;">边下边播</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a> <a href="/tags/项目管理/" style="font-size: 12px;">项目管理</a> <a href="/tags/高德/" style="font-size: 10px;">高德</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+          <li>
+            <a href="/AboutUs.html">AboutMe</a>
+          </li>
+        
+          <li>
+            <a href="http://www.suning.com">苏宁易购</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2018 SNS前端团队</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js"></script>
+  <script src="/scrollLoading/main.js"></script>
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

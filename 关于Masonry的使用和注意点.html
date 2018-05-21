@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?6b806b7ed8c586bd0172da97b3ed66d8";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script>
+    
+
+<head>
+    <meta name="baidu-site-verification" content="ReWQDRchc7" />
+  <meta charset="utf-8">
+  
+  <title>关于Masonry的使用和注意点 | SNS前端团队</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="因为之前开发时都是在xib文件中添加约束，或者代码中计算frame并没有接触过Masonry，现在写篇博客来归纳总结下Masonry的使用和注意点。这篇文章只是简单介绍Masonry，以及Masonry的使用，并且会举一些例子出来。但并不会涉及到Masonry的内部实现 Masonry中的坑： 在使用Masonry进行约束时，有一些是需要注意的。 在使用Masonry添加约束之前，需要在addSu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Masonry的使用和注意点">
+<meta property="og:url" content="http://snsfrontend.crysnower.cn/关于Masonry的使用和注意点.html">
+<meta property="og:site_name" content="SNS前端团队">
+<meta property="og:description" content="因为之前开发时都是在xib文件中添加约束，或者代码中计算frame并没有接触过Masonry，现在写篇博客来归纳总结下Masonry的使用和注意点。这篇文章只是简单介绍Masonry，以及Masonry的使用，并且会举一些例子出来。但并不会涉及到Masonry的内部实现 Masonry中的坑： 在使用Masonry进行约束时，有一些是需要注意的。 在使用Masonry添加约束之前，需要在addSu">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-21T06:30:26.961Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于Masonry的使用和注意点">
+<meta name="twitter:description" content="因为之前开发时都是在xib文件中添加约束，或者代码中计算frame并没有接触过Masonry，现在写篇博客来归纳总结下Masonry的使用和注意点。这篇文章只是简单介绍Masonry，以及Masonry的使用，并且会举一些例子出来。但并不会涉及到Masonry的内部实现 Masonry中的坑： 在使用Masonry进行约束时，有一些是需要注意的。 在使用Masonry添加约束之前，需要在addSu">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css">
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(/images/logo.png); }
+    </style>
+  
+
+  
+    <!-- <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'> -->
+    <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  
+
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">点点滴滴-破茧成蝶</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IOS开发/">IOS开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/WEB/">WEB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS/">iOS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/测试/">测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/项目管理/">项目管理</a></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/AboutUs.html">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://snsfrontend.crysnower.cn"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/iOS/">iOS</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-关于Masonry的使用和注意点" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      关于Masonry的使用和注意点
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/关于Masonry的使用和注意点.html" class="article-date">
+  作者：SNS前端团队
+  <time datetime="2018-05-07T02:24:40.000Z" itemprop="datePublished">5月 7 2018</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <p>因为之前开发时都是在xib文件中添加约束，或者代码中计算frame并没有接触过Masonry，现在写篇博客来归纳总结下Masonry的使用和注意点。这篇文章只是简单介绍Masonry，以及Masonry的使用，并且会举一些例子出来。但并不会涉及到Masonry的内部实现</p>
+<p>Masonry中的坑：</p>
+<p>在使用Masonry进行约束时，有一些是需要注意的。</p>
+<p>在使用Masonry添加约束之前，需要在addSubview之后才能使用，否则会导致崩溃。<br>在添加约束时初学者经常会出现一些错误，约束出现问题的原因一般就是两种：约束冲突和缺少约束。对于这两种问题，可以通过调试和log排查。<br>之前使用Interface Builder添加约束，如果约束有错误直接就可以看出来，并且会以红色或者黄色警告体现出来。而Masonry则不会直观的体现出来，而是以运行过程中崩溃或者打印异常log体现，所以这也是手写代码进行AutoLayout的一个缺点。<br>这个问题只能通过多敲代码，积攒纯代码进行AutoLayout的经验，慢慢就用起来越来越得心应手了。</p>
+<p>Masonry基础使用</p>
+<p>Masonry基础API<br>mas_makeConstraints()    添加约束.<br>mas_remakeConstraints()  移除之前的约束，重新添加新的约束.<br>mas_updateConstraints()  更新约束</p>
+<p>equalTo()       参数是对象类型，一般是视图对象或者mas_width这样的坐标系对象</p>
+<p>mas_equalTo()   和上面功能相同，参数可以传递基础数据类型对象，可以理解为比上面的API更强大</p>
+<p>width()         用来表示宽度，例如代表view的宽度</p>
+<p>mas_width()     用来获取宽度的值。和上面的区别在于，一个代表某个坐标系对象，一个用来获取坐标系对象的值<br>Auto Boxing</p>
+<p>上面例如equalTo或者width这样的，有时候需要涉及到使用mas_前缀，这在开发中需要注意作区分。</p>
+<p>如果在当前类引入#import “Masonry.h”之前，用下面两种宏定义声明一下，就不需要区分mas_前缀。</p>
+<p>// 定义这个常量，就可以不用在开发过程中使用”mas_”前缀。</p>
+<p>#define MAS_SHORTHAND<br>// 定义这个常量，就可以让Masonry帮我们自动把基础数据类型的数据，自动装箱为对象类型。</p>
+<p>#define MAS_SHORTHAND_GLOBALS<br>修饰语句</p>
+<p>Masonry为了让代码使用和阅读更容易理解，所以直接通过点语法就可以调用，还添加了and和with两个方法。这两个方法内部实际上什么都没干，只是在内部将self直接返回，功能就是为了更加方便阅读，对代码执行没有实际作用。</p>
+<p>例如下面的例子：</p>
+<p>make.top.and.bottom.equalTo(self.containerView).with.offset(padding);<br>其内部代码实现，实际上就是直接将self返回。</p>
+<ul>
+<li>(MASConstraint *)with {<br>  return self;<br>}<br>更新约束和布局</li>
+</ul>
+<p>关于更新约束布局相关的API，主要用以下四个API：</p>
+<ul>
+<li>(void)updateConstraintsIfNeeded  调用此方法，如果有标记为需要重新布局的约束，则立即进行重新布局，内部会调用updateConstraints方法</li>
+<li>(void)updateConstraints          重写此方法，内部实现自定义布局过程</li>
+<li>(BOOL)needsUpdateConstraints     当前是否需要重新布局，内部会判断当前有没有被标记的约束</li>
+<li>(void)setNeedsUpdateConstraints  标记需要进行重新布局<br>关于UIView重新布局相关的API，主要用以下三个API：</li>
+</ul>
+<ul>
+<li>(void)setNeedsLayout  标记为需要重新布局</li>
+<li>(void)layoutIfNeeded  查看当前视图是否被标记需要重新布局，有则在内部调用layoutSubviews方法进行重新布局</li>
+<li>(void)layoutSubviews  重写当前方法，在内部完成重新布局操作<br>Masonry示例代码</li>
+</ul>
+<p>Masonry本质上就是对系统AutoLayout进行的封装，包括里面很多的API，都是对系统API进行了一次二次包装。</p>
+<p>typedef NS_OPTIONS(NSInteger, MASAttribute) {</p>
+<pre><code>MASAttributeLeft = 1 &lt;&lt; NSLayoutAttributeLeft,    
+MASAttributeRight = 1 &lt;&lt; NSLayoutAttributeRight,  
+MASAttributeTop = 1 &lt;&lt; NSLayoutAttributeTop,   
+MASAttributeBottom = 1 &lt;&lt; NSLayoutAttributeBottom,  
+MASAttributeLeading = 1 &lt;&lt; NSLayoutAttributeLeading,  
+MASAttributeTrailing = 1 &lt;&lt; NSLayoutAttributeTrailing,  
+MASAttributeWidth = 1 &lt;&lt; NSLayoutAttributeWidth,  
+MASAttributeHeight = 1 &lt;&lt; NSLayoutAttributeHeight,  
+MASAttributeCenterX = 1 &lt;&lt; NSLayoutAttributeCenterX,  
+MASAttributeCenterY = 1 &lt;&lt; NSLayoutAttributeCenterY,  
+MASAttributeBaseline = 1 &lt;&lt; NSLayoutAttributeBaseline,  
+</code></pre><p>};<br>常用方法</p>
+<p>设置内边距</p>
+<p>/**<br> 设置yellow视图和self.view等大，并且有10的内边距。<br> 注意根据UIView的坐标系，下面right和bottom进行了取反。所以不能写成下面这样，否则right、bottom这两个方向会出现问题。<br> make.edges.equalTo(self.view).with.offset(10);</p>
+<p> 除了下面例子中的offset()方法，还有针对不同坐标系的centerOffset()、sizeOffset()、valueOffset()之类的方法。<br> <em>/<br>[self.yellowView mas_makeConstraints:^(MASConstraintMaker </em>make) {<br>    make.left.equalTo(self.view).with.offset(10);<br>    make.top.equalTo(self.view).with.offset(10);<br>    make.right.equalTo(self.view).with.offset(-10);<br>    make.bottom.equalTo(self.view).with.offset(-10);<br>}];<br>通过insets简化设置内边距的方式</p>
+<p>// 下面的方法和上面例子等价，区别在于使用insets()方法。<br>[self.blueView mas_makeConstraints:^(MASConstraintMaker *make) {<br>    // 下、右不需要写负号，insets方法中已经为我们做了取反的操作了。<br>    make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(10, 10, 10, 10));<br>}];<br>更新约束</p>
+<p>// 设置greenView的center和size，这样就可以达到简单进行约束的目的<br>[self.greenView mas_makeConstraints:^(MASConstraintMaker *make) {<br>    make.center.equalTo(self.view);<br>    // 这里通过mas_equalTo给size设置了基础数据类型的参数，参数为CGSize的结构体<br>    make.size.mas_equalTo(CGSizeMake(300, 300));<br>}];</p>
+<p>// 为了更清楚的看出约束变化的效果，在显示两秒后更新约束。<br>dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.f <em> NSEC_PER_SEC)), dispatch_get_main_queue(), ^{<br>    [self.greenView mas_updateConstraints:^(MASConstraintMaker </em>make) {<br>        make.centerX.equalTo(self.view).offset(100);<br>        make.size.mas_equalTo(CGSizeMake(100, 100));<br>    }];<br>});<br>大于等于和小于等于某个值的约束</p>
+<p>[self.textLabel mas_makeConstraints:^(MASConstraintMaker *make) {<br>    make.center.equalTo(self.view);<br>    // 设置宽度小于等于200<br>    make.width.lessThanOrEqualTo(@200);<br>    // 设置高度大于等于10<br>    make.height.greaterThanOrEqualTo(@(10));<br>}];<br>self.textLabel.text = @”这是测试的字符串。能看到1、2、3个步骤，第一步当然是上传照片了，要上传正面近照哦。上传后，网站会自动识别你的面部，如果觉得识别的不准，你还可以手动修改一下。左边可以看到16项修改参数，最上面是整体修改，你也可以根据自己的意愿单独修改某项，将鼠标放到选项上面，右边的预览图会显示相应的位置。”;</p>
+<p>textLabel只需要设置一个属性即可</p>
+<p>self.textLabel.numberOfLines = 0;<br>使用基础数据类型当做参数</p>
+<p>/**<br> 如果想使用基础数据类型当做参数，Masonry为我们提供了”mas_xx”格式的宏定义。<br> 这些宏定义会将传入的基础数据类型转换为NSNumber类型，这个过程叫做封箱(Auto Boxing)。</p>
+<p> “mas_xx”开头的宏定义，内部都是通过MASBoxValue()函数实现的。<br> 这样的宏定义主要有四个，分别是mas_equalTo()、mas_offset()和大于等于、小于等于四个。<br> <em>/<br>[self.redView mas_makeConstraints:^(MASConstraintMaker </em>make) {<br>    make.center.equalTo(self.view);<br>    make.width.mas_equalTo(100);<br>    make.height.mas_equalTo(100);<br>}];<br>设置约束优先级</p>
+<p>/*<em><br> Masonry为我们提供了三个默认的方法，priorityLow()、priorityMedium()、priorityHigh()，这三个方法内部对应着不同的默认优先级。<br> 除了这三个方法，我们也可以自己设置优先级的值，可以通过priority()方法来设置。
+ </em>/<br>[self.redView mas_makeConstraints:^(MASConstraintMaker *make) {<br>    make.center.equalTo(self.view);<br>    make.width.equalTo(self.view).priorityLow();<br>    make.width.mas_equalTo(20).priorityHigh();<br>    make.height.equalTo(self.view).priority(200);<br>    make.height.mas_equalTo(100).priority(1000);<br>}];</p>
+<p>Masonry也帮我们定义好了一些默认的优先级常量，分别对应着不同的数值，优先级最大数值是1000。<br>static const MASLayoutPriority MASLayoutPriorityRequired = UILayoutPriorityRequired;<br>static const MASLayoutPriority MASLayoutPriorityDefaultHigh = UILayoutPriorityDefaultHigh;<br>static const MASLayoutPriority MASLayoutPriorityDefaultMedium = 500;<br>static const MASLayoutPriority MASLayoutPriorityDefaultLow = UILayoutPriorityDefaultLow;<br>static const MASLayoutPriority MASLayoutPriorityFittingSizeLevel = UILayoutPriorityFittingSizeLevel;<br>设置约束比例</p>
+<p>// 设置当前约束值乘以多少，例如这个例子是redView的宽度是self.view宽度的0.2倍。<br>[self.redView mas_makeConstraints:^(MASConstraintMaker *make) {<br>    make.center.equalTo(self.view);<br>    make.height.mas_equalTo(30);<br>    make.width.equalTo(self.view).multipliedBy(0.2);<br>}];<br>小练习</p>
+<p>子视图等高练习</p>
+<p>/**<br> 下面的例子是通过给equalTo()方法传入一个数组，设置数组中子视图及当前make对应的视图之间等高。</p>
+<p> 需要注意的是，下面block中设置边距的时候，应该用insets来设置，而不是用offset。<br> 因为用offset设置right和bottom的边距时，这两个值应该是负数，所以如果通过offset来统一设置值会有问题。<br> <em>/<br>CGFloat padding = LXZViewPadding;<br>[self.redView mas_makeConstraints:^(MASConstraintMaker </em>make) {<br>    make.left.right.top.equalTo(self.view).insets(UIEdgeInsetsMake(padding, padding, 0, padding));<br>    make.bottom.equalTo(self.blueView.mas_top).offset(-padding);<br>}];</p>
+<p>[self.blueView mas_makeConstraints:^(MASConstraintMaker *make) {<br>    make.left.right.equalTo(self.view).insets(UIEdgeInsetsMake(0, padding, 0, padding));<br>    make.bottom.equalTo(self.yellowView.mas_top).offset(-padding);<br>}];</p>
+<p>/*<em><br> 下面设置make.height的数组是关键，通过这个数组可以设置这三个视图高度相等。其他例如宽度之类的，也是类似的方式。
+ </em>/<br>[self.yellowView mas_makeConstraints:^(MASConstraintMaker *make) {<br>    make.left.right.bottom.equalTo(self.view).insets(UIEdgeInsetsMake(0, padding, padding, padding));<br>    make.height.equalTo(@[self.blueView, self.redView]);<br>}];<br>子视图垂直居中练习</p>
+<p>/*<em><br> 要求：(这个例子是在其他人博客里看到的，然后按照要求自己写了下面这段代码)<br> 两个视图相对于父视图垂直居中，并且两个视图以及父视图之间的边距均为10，高度为150，两个视图宽度相等。
+ </em>/<br>CGFloat padding = 10.f;<br>[self.blueView mas_makeConstraints:^(MASConstraintMaker *make) {<br>    make.centerY.equalTo(self.view);<br>    make.left.equalTo(self.view).mas_offset(padding);<br>    make.right.equalTo(self.redView.mas_left).mas_offset(-padding);<br>    make.width.equalTo(self.redView);<br>    make.height.mas_equalTo(150);<br>}];</p>
+<p>[self.redView mas_makeConstraints:^(MASConstraintMaker *make) {<br>    make.centerY.equalTo(self.view);<br>    make.right.equalTo(self.view).mas_offset(-padding);<br>    make.width.equalTo(self.blueView);<br>    make.height.mas_equalTo(150);<br>}];<br>UITableView动态Cell高度</p>
+<p>在iOS UI开发过程中，UITableView的动态Cell高度一直都是个问题。实现这样的需求，实现方式有很多种，只是实现起来复杂程度和性能的区别。</p>
+<p>在不考虑性能的情况下，tableView动态Cell高度，可以采取估算高度的方式。如果通过估算高度的方式实现的话，无论是纯代码还是Interface Builder，都只需要两行代码就可以完成Cell自动高度适配。</p>
+<p>实现方式：</p>
+<p>需要设置tableView的rowHeight属性，这里设置为自动高度，告诉系统Cell的高度是不固定的，需要系统帮我们进行计算。然后设置tableView的estimatedRowHeight属性，设置一个估计的高度。(我这里用的代理方法，实际上都一样)</p>
+<p>原理：</p>
+<p>这样的话，在tableView被创建之后，系统会根据estimatedRowHeight属性设置的值，为tableView设置一个估计的值。然后在Cell显示的时候再获取Cell的高度，并刷新tableView的contentSize。</p>
+<ul>
+<li><p>(void)tableViewConstraints {<br>  [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {</p>
+<pre><code>make.edges.equalTo(self.view);
+</code></pre><p>  }];<br>}</p>
+</li>
+<li><p>(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {<br>  return self.dataList.count;<br>}</p>
+</li>
+<li><p>(MasonryTableViewCell <em>)tableView:(UITableView </em>)tableView cellForRowAtIndexPath:(NSIndexPath <em>)indexPath {<br>  MasonryTableViewCell </em>cell = [tableView dequeueReusableCellWithIdentifier:LXZTableViewCellIdentifier];<br>  [cell reloadViewWithText:self.dataList[indexPath.row]];<br>  return cell;<br>}</p>
+</li>
+</ul>
+<p>// 需要注意的是，这个代理方法和直接返回当前Cell高度的代理方法并不一样。<br>// 这个代理方法会将当前所有Cell的高度都预估出来，而不是只计算显示的Cell，所以这种方式对性能消耗还是很大的。<br>// 所以通过设置estimatedRowHeight属性的方式，和这种代理方法的方式，最后性能消耗都是一样的。</p>
+<ul>
+<li><p>(CGFloat)tableView:(UITableView <em>)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath </em>)indexPath {<br>  return 50.f;<br>}</p>
+</li>
+<li><p>(UITableView *)tableView {<br>  if (!_tableView) {</p>
+<pre><code>_tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+_tableView.delegate = self;
+_tableView.dataSource = self;
+// 设置tableView自动高度
+_tableView.rowHeight = UITableViewAutomaticDimension;
+[_tableView registerClass:[MasonryTableViewCell class] forCellReuseIdentifier:LXZTableViewCellIdentifier];
+[self.view addSubview:_tableView];
+</code></pre><p>  }<br>  return _tableView;<br>}<br>UIScrollView自动布局</p>
+</li>
+</ul>
+<p>之前听很多人说过UIScrollView很麻烦，然而我并没有感觉到有多麻烦(并非装逼)。我感觉说麻烦的人可能根本就没试过吧，只是觉得很麻烦而已。</p>
+<p>我这里就讲一下两种进行UIScrollView自动布局的方案，并且会讲一下自动布局的技巧，只要掌握技巧，布局其实很简单。</p>
+<p>布局小技巧：</p>
+<p>给UIScrollView添加的约束是定义其frame，设置contentSize是定义其内部大小。UIScrollView进行addSubview操作，都是将其子视图添加到contentView上。</p>
+<p>所以，添加到UIScrollView上的子视图，对UIScrollView添加的约束都是作用于contentView上的。只需要按照这样的思路给UIScrollView设置约束，就可以掌握设置约束的技巧了。</p>
+<p>提前设置contentSize</p>
+<p>// 提前设置好UIScrollView的contentSize，并设置UIScrollView自身的约束<br>self.scrollView.contentSize = CGSizeMake(1000, 1000);<br>[self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {<br>    make.edges.equalTo(self.view);<br>}];</p>
+<p>// 虽然redView的get方法内部已经执行过addSubview操作，但是UIView始终以最后一次添加的父视图为准，也就是redView始终是在最后一次添加的父视图上。<br>[self.scrollView addSubview:self.redView];<br>[self.redView mas_makeConstraints:^(MASConstraintMaker *make) {<br>    make.left.top.equalTo(self.scrollView);<br>    make.width.height.mas_equalTo(200);<br>}];</p>
+<p>[self.scrollView addSubview:self.blueView];<br>[self.blueView mas_makeConstraints:^(MASConstraintMaker *make) {<br>    make.left.equalTo(self.redView.mas_right);<br>    make.top.equalTo(self.scrollView);<br>    make.width.height.equalTo(self.redView);<br>}];</p>
+<p>[self.scrollView addSubview:self.greenView];<br>[self.greenView mas_makeConstraints:^(MASConstraintMaker *make) {<br>    make.left.equalTo(self.scrollView);<br>    make.top.equalTo(self.redView.mas_bottom);<br>    make.width.height.equalTo(self.redView);<br>}];<br>自动contentSize</p>
+<p>上面的例子是提前设置好UIScrollView的contentSize的内部size，然后直接向里面addSubview。但是这有个要求就是，需要提前知道contentSize的大小，不然没法设置。</p>
+<p>这个例子中将会展示动态改变contentSize的大小，内部视图有多少contentSize就自动扩充到多大。</p>
+<p>这种方式的实现，主要是依赖于创建一个containerView内容视图，并添加到UIScrollView上作为子视图。UIScrollView原来的子视图都添加到containerView上，并且和这个视图设置约束。</p>
+<p>因为对UIScrollView进行addSubview操作的时候，本质上是往其contentView上添加。也就是containerView的父视图是contentView，通过containerView撑起contentView视图的大小，以此来实现动态改变contentSize。</p>
+<p>// 在进行约束的时候，要对containerView的上下左右都添加和子视图的约束，以便确认containerView的边界区域。<br>[self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {<br>    make.edges.equalTo(self.view);<br>}];</p>
+<p>CGFloat padding = LXZViewPadding;<br>[self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {<br>    make.edges.equalTo(self.scrollView).insets(UIEdgeInsetsMake(padding, padding, padding, padding));<br>}];</p>
+<p>[self.containerView addSubview:self.greenView];<br>[self.greenView mas_makeConstraints:^(MASConstraintMaker *make) {<br>    make.top.left.equalTo(self.containerView).offset(padding);<br>    make.size.mas_equalTo(CGSizeMake(250, 250));<br>}];</p>
+<p>[self.containerView addSubview:self.redView];<br>[self.redView mas_makeConstraints:^(MASConstraintMaker *make) {<br>    make.top.equalTo(self.containerView).offset(padding);<br>    make.left.equalTo(self.greenView.mas_right).offset(padding);<br>    make.size.equalTo(self.greenView);<br>    make.right.equalTo(self.containerView).offset(-padding);<br>}];</p>
+<p>[self.containerView addSubview:self.yellowView];<br>[self.yellowView mas_makeConstraints:^(MASConstraintMaker *make) {<br>    make.left.equalTo(self.containerView).offset(padding);<br>    make.top.equalTo(self.greenView.mas_bottom).offset(padding);<br>    make.size.equalTo(self.greenView);<br>    make.bottom.equalTo(self.containerView).offset(-padding);<br>}];</p>
+<p>多个（2个以上）控件的等间隔排序显示<br>首先介绍2个函数<br>/** </p>
+<pre><code>*  axisType         轴线方向 
+*  fixedSpacing     间隔大小 
+*  fixedItemLength  每个控件的固定长度/宽度 
+*  leadSpacing      头部间隔 
+*  tailSpacing      尾部间隔 
+* 
+*/  
+</code></pre><p>//1. 等间隔排列 - 多个控件间隔固定，控件长度/宽度变化  </p>
+<ul>
+<li>(void)mas_distributeViewsAlongAxis:(MASAxisType)axisType<br>withFixedSpacing:(CGFloat)fixedSpacing leadSpacing:(CGFloat)leadSpacing<br>tailSpacing:(CGFloat)tailSpacing;  </li>
+</ul>
+<p>//2. 等间隔排列 - 多个固定大小固定，间隔空隙变化  </p>
+<ul>
+<li>(void)mas_distributeViewsAlongAxis:(MASAxisType)axisType<br>withFixedItemLength:(CGFloat)fixedItemLength<br>leadSpacing:(CGFloat)leadSpacing<br>tailSpacing:(CGFloat)tailSpacing;  </li>
+</ul>
+<p>//首先添加5个视图<br> NSMutableArray <em>array = [NSMutableArray new];<br>    for (int i = 0; i &lt; 5; i ++) {<br>        UIView </em>view = [UIView new];<br>        view.backgroundColor = [UIColor greenColor];<br>        [self addSubview:view];<br>        [array addObject:view]; //保存添加的控件<br>    }  </p>
+<p>//水平方向控件间隔固定等间隔<br>[array mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:15 leadSpacing:10 tailSpacing:10];<br>            [array makeConstraints:^(MASConstraintMaker *make) {<br>                make.top.equalTo(50);<br>                make.height.equalTo(70);<br>            }];  </p>
+<p>//水平方向宽度固定等间隔<br>[array mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:70 leadSpacing:10 tailSpacing:10];<br>            [array makeConstraints:^(MASConstraintMaker *make) { //数组额你不必须都是view<br>                make.top.equalTo(50);<br>                make.height.equalTo(70);<br>            }];  </p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://snsfrontend.crysnower.cn/关于Masonry的使用和注意点.html" data-id="cjhfvpxop003owmovwkene7o5" class="article-share-link">分享到</a>
+        
+        
+      </footer>
+    </div>
+  </article>
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="github" href="http://www.suning.com" target="_blank"><i id="icon-github" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="http://www.suning.com" target="_blank"><i id="icon-weibo" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="rss" href="/atom.xml" target="_blank"><i id="icon-rss" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/计算一年中所有周的第一天和最后一天.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <p class="article-nav-title">
+        
+          计算一年中所有周的第一天和最后一天
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/在MKMapView中添加渐变色路径.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">在MKMapView中添加渐变色路径</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/螺与鱼.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/redaiyu.jpg
+)" alt="螺与螺" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/项目管理/">项目管理</a></p>
+              <p class="item-title"><a href="/螺与鱼.html" class="title">螺与螺</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:53:16.867Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/URL-编码-iOS.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/URL-编码-iOS.html" class="title">URL 编码 iOS</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:05:46.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/ios修改本地useragent-WKWebView.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/ios修改本地useragent-WKWebView.html" class="title">ios修改本地useragent(WKWebView)</a></p>
+              <p class="item-date"><time datetime="2018-05-20T03:50:39.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/如何提高字符转float数据时的数据精度.html" class="thumbnail">
+  
+    <span style="background-image:url(http://obfk4z1f6.bkt.clouddn.com/fixed-point-representation.png
+)" alt="如何提高字符转float数据时的数据精度" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/如何提高字符转float数据时的数据精度.html" class="title">如何提高字符转float数据时的数据精度</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:17:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/echarts用饼图制作带labelline的旭日图.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/dy20180512171652810.jpg
+)" alt="echarts之用饼图制作带labelline的旭日图(一)" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/WEB/">WEB</a></p>
+              <p class="item-title"><a href="/echarts用饼图制作带labelline的旭日图.html" class="title">echarts之用饼图制作带labelline的旭日图(一)</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:04:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IOS开发/">IOS开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">49</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/FMDB/" style="font-size: 10px;">FMDB</a> <a href="/tags/POP/" style="font-size: 10px;">POP</a> <a href="/tags/PhoneGap/" style="font-size: 10px;">PhoneGap</a> <a href="/tags/SizeClass/" style="font-size: 14px;">SizeClass</a> <a href="/tags/WKWebView/" style="font-size: 10px;">WKWebView</a> <a href="/tags/appium/" style="font-size: 12px;">appium</a> <a href="/tags/cocos2d-x/" style="font-size: 20px;">cocos2d-x</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS8/" style="font-size: 16px;">iOS8</a> <a href="/tags/iconsole/" style="font-size: 10px;">iconsole</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/phonegap/" style="font-size: 10px;">phonegap</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/xib/" style="font-size: 10px;">xib</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/代码优化/" style="font-size: 12px;">代码优化</a> <a href="/tags/代码规范/" style="font-size: 10px;">代码规范</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/控件/" style="font-size: 18px;">控件</a> <a href="/tags/推送/" style="font-size: 10px;">推送</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/效率/" style="font-size: 12px;">效率</a> <a href="/tags/日历/" style="font-size: 10px;">日历</a> <a href="/tags/杂文/" style="font-size: 10px;">杂文</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/状态栏/" style="font-size: 10px;">状态栏</a> <a href="/tags/网络/" style="font-size: 14px;">网络</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/路线图/" style="font-size: 10px;">路线图</a> <a href="/tags/边下边播/" style="font-size: 10px;">边下边播</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a> <a href="/tags/项目管理/" style="font-size: 12px;">项目管理</a> <a href="/tags/高德/" style="font-size: 10px;">高德</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+          <li>
+            <a href="/AboutUs.html">AboutMe</a>
+          </li>
+        
+          <li>
+            <a href="http://www.suning.com">苏宁易购</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2018 SNS前端团队</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js"></script>
+  <script src="/scrollLoading/main.js"></script>
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

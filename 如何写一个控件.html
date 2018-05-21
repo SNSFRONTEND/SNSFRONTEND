@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?6b806b7ed8c586bd0172da97b3ed66d8";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script>
+    
+
+<head>
+    <meta name="baidu-site-verification" content="ReWQDRchc7" />
+  <meta charset="utf-8">
+  
+  <title>如何写一个控件 | SNS前端团队</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="写控件，是做客户端开发的一项基本功。为什么这么说呢？">
+<meta name="keywords" content="控件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何写一个控件">
+<meta property="og:url" content="http://snsfrontend.crysnower.cn/如何写一个控件.html">
+<meta property="og:site_name" content="SNS前端团队">
+<meta property="og:description" content="写控件，是做客户端开发的一项基本功。为什么这么说呢？">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/16632-fa252bea2ac2d284.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/16632-62c5eb1c842c1bbe.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/16632-9b4af2300eeccf34.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/16632-0fbf7ea7afc6df54.png">
+<meta property="og:updated_time" content="2018-05-21T06:31:08.854Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何写一个控件">
+<meta name="twitter:description" content="写控件，是做客户端开发的一项基本功。为什么这么说呢？">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/16632-fa252bea2ac2d284.png">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css">
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(/images/logo.png); }
+    </style>
+  
+
+  
+    <!-- <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'> -->
+    <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  
+
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">点点滴滴-破茧成蝶</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IOS开发/">IOS开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/WEB/">WEB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS/">iOS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/测试/">测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/项目管理/">项目管理</a></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/AboutUs.html">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://snsfrontend.crysnower.cn"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/iOS/">iOS</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-如何写一个控件" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      如何写一个控件
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/如何写一个控件.html" class="article-date">
+  作者：StephenZhu
+  <time datetime="2015-02-04T09:23:14.000Z" itemprop="datePublished">2月 4 2015</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <p>写控件，是做客户端开发的一项基本功。为什么这么说呢？<br><a id="more"></a></p>
+<p>#前言</p>
+<p>写控件，是做客户端开发的一项基本功。为什么这么说呢？首先，写一个控件并不需要大量的代码（绝大部分1000行代码就可以搞定）；其次，写控件并不难，只要给出视觉效果，不管新手还是老手，都能够最终搞定（无非是时间长短而已）；但我觉得最重要的是，写控件很能体现出抽象和面向对象的思想。高质量的控件，调用者只需要很少的代码，就能够嵌入到不同的使用场景；而实现质量堪忧的控件，调用端写一大堆代码不说，需求上稍有变化，可能就要推倒重来了。最近正好在实现一个控件，花了整整一个工作日，虽然这个控件还有很多问题，但回想起过程中的一些思路和方法，觉得有必要总结下。</p>
+<p>#需求</p>
+<p>这是一个筛选控件，常见得不能再常见了，几乎是个APP都有这样的控件。直接上图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/16632-fa252bea2ac2d284.png" alt="control_1.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/16632-62c5eb1c842c1bbe.png" alt="control_2.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/16632-9b4af2300eeccf34.png" alt="control_3.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/16632-0fbf7ea7afc6df54.png" alt="control_4.png"></p>
+<p>简单解释一下：<br>1、控件有两种类型，一种是有图片的（control_1.png），一种是没图片的（control_3.png）。<br>2、控件被选中的时候下方动画展开菜单，菜单高度根据菜单项的数量决定，但高度有上限。<br>3、菜单项选择了之后会标题按钮会更新成选择的文字，同时菜单项收回。<br>4、菜单项弹出式遮罩整个屏幕，点击遮罩部分，同时菜单项收回。<br>5、菜单分隔项数量，标题和图片，以及菜单项按钮的文字都是可变的。</p>
+<p>#目标</p>
+<p>有了需求，就要开始写了。但写之前，先要定个目标。因为写控件这种东西，没有产品经理来验收，所以不定目标的话，很容易自我妥协。</p>
+<p>对于控件，我的目标一贯就是：让调用者写最少的代码。</p>
+<p>这样有两个好处：</p>
+<ul>
+<li>减轻调用者的工作负担</li>
+<li>减少调用者写错代码的可能性</li>
+</ul>
+<p>那么问题就来了：我想让对方用一行代码就调起控件，可是可变得东西太多，比如到底有没有图片，有几个筛选项，按钮和菜单的文字又是什么？所以对于这个控件，一行代码有点太天真了，有一部分数据必须是由调用者提供的。究竟是什么数据呢？先看我的第一个观点：</p>
+<p>###观点一：可变性与不变性</p>
+<p>所谓控件，是对UI设计的某种抽象。对于产品经理来说，并没有控件的概念，他只是把需求画在纸上，告诉你交互的逻辑，然后叫你实现。然后程序员按照需求画出了界面，似乎没有用到什么控件。</p>
+<p>可不幸的是，第二天，产品经理又要改了，比如说把文字变大点，然后加粗，或者加个动画什么的。于是，你又重新把代码改了一遍。</p>
+<p>可是，第三天、第四天……你怒了！不过为了保住饭碗，只能忍气吞声。</p>
+<p>真的只能忍气吞声吗？不！那样太消极了。你难道就没有想过，每次产品经理改来改去，总有一些东西是不会变的，而那些变来变去的东西往往也就那么几样！</p>
+<p>当你想到这一点的时候，你已经不再是菜鸟了，因为你已经了解到软件设计最灵魂的两个字：抽象。</p>
+<p>抽象就是把一堆各不相同的东西看成一个。比如世界上每个人都不一样，但他们都是人。把不同的UI设计进行抽象，就是控件。从系统层面上来讲，UIView、UIButton、UILabel等等，都是控件。它们都有其本质的特点以区别于其他控件，但他们又具有丰富的扩展性，能够产生千变万化的效果。但万变又不离其中，Label还是Label，Button还是Button。</p>
+<p>好像扯远了，收回来。我们现在要把上图的UI效果做成控件，就要知道哪些东西是可变的，哪些东西是不变的。</p>
+<p>不变的：</p>
+<ul>
+<li>初始状态肯定是并排几个按钮，点一下下面的菜单就会展开，再点一下有收回</li>
+<li>选中的按钮会有特殊状态以区别于其他按钮。</li>
+<li>展开的菜单上面都显示字符串</li>
+<li>点击展开菜单中的某一项，就会出发某个事件，然后菜单收回。</li>
+</ul>
+<p>可变的：</p>
+<ul>
+<li>按钮数量、图片、文字</li>
+<li>展开的菜单项数量，菜单项内容。</li>
+<li>选中项的位置（要高亮的位置）</li>
+</ul>
+<p>如果真要严格的讲，可变的内容太多了。但你要知道，可变即意味着控件自身不可知，只能从外部获取，这样就加大了调用者的工作量。所以，在实际设计控件时，我们只需提取几个最有可能发生变化的因素，其它的就当它是固定的即可。比如在这个例子中，弹出菜单的每一项的具体高度，是不是统一的？我就把它当成全部都是一样的，而且都是40，因为这种变化确实不太可能发生。但是像按钮和菜单项的文字，那是绝对会变的（不然还怎么扩展）。</p>
+<p>总结一下，就是把可变的因素中最有可能的几个因素罗列出来，传给控件，然后通过控件的内部各种固定逻辑将其展现出来。</p>
+<p>###观点二：主动传参与被动传参的选择</p>
+<p>先解释一下主动传参与被动传参的概念，因为这是我自己脑补的。<br>主动传参：就是通过参数、属性的形式把参数传给控件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">self.menuView = [[LCSegmentMenuView alloc] initWithFrame:rect</span><br><span class="line">                                               containerView:self.view</span><br><span class="line">                                                   itemCount:3</span><br><span class="line">                                                       style:LCSegmentMenuStyle_Text];</span><br><span class="line">self.menuView.delegate = self;</span><br></pre></td></tr></table></figure></p>
+<p>上面是控件调用代码，Frame、containerView:self、itemCount、style、delegate，这些都属于主动传参。它的特点除了传递方式之外，时间上都是先于控件控件自身逻辑运行之前。</p>
+<p>被动传参：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">- (NSString*)segmentMenuView:(LCSegmentMenuView*)segmentMenuView titleAtSection:(NSUInteger)section</span><br><span class="line">&#123;</span><br><span class="line">    return self.menuTitles[section];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (UIImage*)segmentMenuView:(LCSegmentMenuView*)segmentMenuView imageAtSection:(NSUInteger)section</span><br><span class="line">&#123;</span><br><span class="line">    return self.menuImages[section];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (UIImage*)segmentMenuView:(LCSegmentMenuView*)segmentMenuView selectedImageAtSection:(NSUInteger)section</span><br><span class="line">&#123;</span><br><span class="line">    return self.menuSelectedImages[section];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (NSArray*)titlesInSegmentMenuView:(LCSegmentMenuView*)segmentMenuView atSection:(NSUInteger)section</span><br><span class="line">&#123;</span><br><span class="line">    if (section == 0) &#123;</span><br><span class="line">        return @[NSLocalizedString(@&quot;Total&quot;, nil),@&quot;5km&quot;,@&quot;10km&quot;,@&quot;15km&quot;];</span><br><span class="line">    &#125;</span><br><span class="line">    else if(section == 1)&#123;</span><br><span class="line">        </span><br><span class="line">        NSString* stringA = NSLocalizedString(@&quot;Total&quot;, nil);</span><br><span class="line">        NSString* stringB = NSLocalizedString(@&quot;Wash car&quot;, nil);</span><br><span class="line">        NSString* stringC = NSLocalizedString(@&quot;repair and maintain&quot;, nil);</span><br><span class="line">        NSString* stringD = NSLocalizedString(@&quot;Cosmetology&quot;, nil);</span><br><span class="line">        return @[stringA,stringB,stringC,stringD];</span><br><span class="line">    &#125;</span><br><span class="line">    else if(section == 2)&#123;</span><br><span class="line">        </span><br><span class="line">        NSString* stringA = NSLocalizedString(@&quot;Distance from near to far&quot;, nil);</span><br><span class="line">        NSString* stringB = NSLocalizedString(@&quot;Praise from high to low&quot;, nil);</span><br><span class="line">        NSString* stringC = NSLocalizedString(@&quot;Sales from high to low&quot;, nil);</span><br><span class="line">        return @[stringA,stringB,stringC];</span><br><span class="line">    &#125;</span><br><span class="line">    return nil;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (NSUInteger)currentIndexInSegmentMenuView:(LCSegmentMenuView*)segmentMenuView atSection:(NSUInteger)section</span><br><span class="line">&#123;</span><br><span class="line">    return [self.menuIndexs[section] integerValue];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)segmentMenuView:(LCSegmentMenuView*)segmentMenuView didSelectAtIndexPath:(NSIndexPath*)indexPath</span><br><span class="line">&#123;</span><br><span class="line">    self.menuIndexs[indexPath.section] = @(indexPath.row);</span><br><span class="line">    NSArray* array = [self titlesInSegmentMenuView:segmentMenuView atSection:indexPath.section];</span><br><span class="line">    self.menuTitles[indexPath.section] = array[indexPath.row];</span><br><span class="line">    </span><br><span class="line">    [self.parentVC.shops removeAllObjects];</span><br><span class="line">    self.currentPage = 0;</span><br><span class="line">    [self getShopList:YES];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面几个方法，一看就是代理方法，这些方法提供的数据，可不是控件创建之初就知道的，而是由于人为的交互，改变的控件的内部状态，进而产生UI上的变化。对于调用者而言，这些数据都是被动的有控件来索取，所以称为被动传参。</p>
+<p>在系统控件中，像UILabel全是主动传参，因为它没有交互；像UITableView，就有很多被动传参。被动传参除了Delegate，还可以用Block，KVO实现，主动传参就直来直去，简单的多。</p>
+<p>总结一下，不到万不得已，尽量使用主动传参。但主动传参局限性太大了，只能发生在事前，不能发生在事中。所以，交互稍微复杂一点的控件，就要使用被控传参。</p>
+<h3 id="观点三：控件结构化"><a href="#观点三：控件结构化" class="headerlink" title="观点三：控件结构化"></a>观点三：控件结构化</h3><p>上面提到传参，我们就穿了一堆参数。但是参数太多好乱，怎么办？原因就是没有结构化。</p>
+<p>我们设计完控件，控件它就是一个对象，比如：LCSegmentMenuView。这个对象对应了一堆参数，什么title、index、image，这些零散的东西为什么不可以结构化成一个对象呢？这样我们的控件每次取外部数据，只要从这个结构化对象里面取就可以了（只要为这个对象增加几个对外接口）。<br>这样做的好处是显而易见的，本来外部调用者要管理如下的参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic,strong) NSMutableArray* menuTitles;</span><br><span class="line">@property (nonatomic,strong) NSArray* menuImages;</span><br><span class="line">@property (nonatomic,strong) NSArray* menuSelectedImages;</span><br><span class="line">@property (nonatomic,strong) NSMutableArray* menuIndexs;</span><br></pre></td></tr></table></figure></p>
+<p>把它们结构化成一个对象之后，只要管理一个变量即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic,strong) LCMenu* menu;</span><br></pre></td></tr></table></figure></p>
+<p>这样就能避免很多因为代码零散而造成的复杂性。这样一个对象从抽象的角度来讲也是应该存在的，它就是控件的灵魂，没有它，控件就是一堆代码；有了它，控件遍丰富多彩。</p>
+<p>可惜目前我还没有封装这个对象，因为我觉得四个变量管理起来也不是很复杂，反正要比新写一个对象简单。但如果变成了8个变量，我想我一定会去封装这个对象的。</p>
+<p>#总结</p>
+<p>说了这么多，具体控件实现没有讲。因为这个实在没什么好讲的，就是组装系统控件而已。等这个控件完善了，直接贴代码好了。</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://snsfrontend.crysnower.cn/如何写一个控件.html" data-id="cjhfvpxp7004hwmov36xbynam" class="article-share-link">分享到</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/控件/">控件</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="github" href="http://www.suning.com" target="_blank"><i id="icon-github" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="http://www.suning.com" target="_blank"><i id="icon-weibo" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="rss" href="/atom.xml" target="_blank"><i id="icon-rss" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/一处重复代码的改进.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <p class="article-nav-title">
+        
+          一处重复代码的改进
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/谈谈“互联网”.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">谈谈“互联网”</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/螺与鱼.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/redaiyu.jpg
+)" alt="螺与螺" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/项目管理/">项目管理</a></p>
+              <p class="item-title"><a href="/螺与鱼.html" class="title">螺与螺</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:53:16.867Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/URL-编码-iOS.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/URL-编码-iOS.html" class="title">URL 编码 iOS</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:05:46.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/ios修改本地useragent-WKWebView.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/ios修改本地useragent-WKWebView.html" class="title">ios修改本地useragent(WKWebView)</a></p>
+              <p class="item-date"><time datetime="2018-05-20T03:50:39.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/如何提高字符转float数据时的数据精度.html" class="thumbnail">
+  
+    <span style="background-image:url(http://obfk4z1f6.bkt.clouddn.com/fixed-point-representation.png
+)" alt="如何提高字符转float数据时的数据精度" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/如何提高字符转float数据时的数据精度.html" class="title">如何提高字符转float数据时的数据精度</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:17:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/echarts用饼图制作带labelline的旭日图.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/dy20180512171652810.jpg
+)" alt="echarts之用饼图制作带labelline的旭日图(一)" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/WEB/">WEB</a></p>
+              <p class="item-title"><a href="/echarts用饼图制作带labelline的旭日图.html" class="title">echarts之用饼图制作带labelline的旭日图(一)</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:04:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IOS开发/">IOS开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">49</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/FMDB/" style="font-size: 10px;">FMDB</a> <a href="/tags/POP/" style="font-size: 10px;">POP</a> <a href="/tags/PhoneGap/" style="font-size: 10px;">PhoneGap</a> <a href="/tags/SizeClass/" style="font-size: 14px;">SizeClass</a> <a href="/tags/WKWebView/" style="font-size: 10px;">WKWebView</a> <a href="/tags/appium/" style="font-size: 12px;">appium</a> <a href="/tags/cocos2d-x/" style="font-size: 20px;">cocos2d-x</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS8/" style="font-size: 16px;">iOS8</a> <a href="/tags/iconsole/" style="font-size: 10px;">iconsole</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/phonegap/" style="font-size: 10px;">phonegap</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/xib/" style="font-size: 10px;">xib</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/代码优化/" style="font-size: 12px;">代码优化</a> <a href="/tags/代码规范/" style="font-size: 10px;">代码规范</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/控件/" style="font-size: 18px;">控件</a> <a href="/tags/推送/" style="font-size: 10px;">推送</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/效率/" style="font-size: 12px;">效率</a> <a href="/tags/日历/" style="font-size: 10px;">日历</a> <a href="/tags/杂文/" style="font-size: 10px;">杂文</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/状态栏/" style="font-size: 10px;">状态栏</a> <a href="/tags/网络/" style="font-size: 14px;">网络</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/路线图/" style="font-size: 10px;">路线图</a> <a href="/tags/边下边播/" style="font-size: 10px;">边下边播</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a> <a href="/tags/项目管理/" style="font-size: 12px;">项目管理</a> <a href="/tags/高德/" style="font-size: 10px;">高德</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+          <li>
+            <a href="/AboutUs.html">AboutMe</a>
+          </li>
+        
+          <li>
+            <a href="http://www.suning.com">苏宁易购</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2018 SNS前端团队</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js"></script>
+  <script src="/scrollLoading/main.js"></script>
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

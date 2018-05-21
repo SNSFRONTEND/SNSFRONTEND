@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?6b806b7ed8c586bd0172da97b3ed66d8";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script>
+    
+
+<head>
+    <meta name="baidu-site-verification" content="ReWQDRchc7" />
+  <meta charset="utf-8">
+  
+  <title>UICollectionView简介 | SNS前端团队</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="UICollectionView是iOS6添加的一个控件，是一种新的数据展示方式，简单来说可以把他理解成多列的UITableView，最简单的UICollectionView就是一个GridView，可以以多列的方式将数据进行展示。">
+<meta name="keywords" content="控件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UICollectionView简介">
+<meta property="og:url" content="http://snsfrontend.crysnower.cn/UICollectionView简介.html">
+<meta property="og:site_name" content="SNS前端团队">
+<meta property="og:description" content="UICollectionView是iOS6添加的一个控件，是一种新的数据展示方式，简单来说可以把他理解成多列的UITableView，最简单的UICollectionView就是一个GridView，可以以多列的方式将数据进行展示。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-21T06:26:43.470Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UICollectionView简介">
+<meta name="twitter:description" content="UICollectionView是iOS6添加的一个控件，是一种新的数据展示方式，简单来说可以把他理解成多列的UITableView，最简单的UICollectionView就是一个GridView，可以以多列的方式将数据进行展示。">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css">
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(/images/logo.png); }
+    </style>
+  
+
+  
+    <!-- <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'> -->
+    <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  
+
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">点点滴滴-破茧成蝶</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IOS开发/">IOS开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/WEB/">WEB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS/">iOS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/测试/">测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/项目管理/">项目管理</a></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/AboutUs.html">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://snsfrontend.crysnower.cn"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/iOS/">iOS</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-UICollectionView简介" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      UICollectionView简介
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/UICollectionView简介.html" class="article-date">
+  作者：StephenZhu
+  <time datetime="2014-11-24T05:38:14.000Z" itemprop="datePublished">11月 24 2014</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <p>UICollectionView是iOS6添加的一个控件，是一种新的数据展示方式，简单来说可以把他理解成多列的UITableView，最简单的UICollectionView就是一个GridView，可以以多列的方式将数据进行展示。<br><a id="more"></a></p>
+<h1 id="UICollectionView简介"><a href="#UICollectionView简介" class="headerlink" title="UICollectionView简介"></a>UICollectionView简介</h1><p>标准的UICollectionView包含三个部分，它们都是UIView的子类：<br>Cells 用于展示内容的主体，对于不同的cell可以指定不同尺寸和不同的内容<br>Supplementary Views 追加视图，可以理解为每个Section的Header或者Footer，用来标记每个section的view<br>Decoration Views 装饰视图 这是每个section的背景</p>
+<h1 id="实现一个简单的UICollectionView"><a href="#实现一个简单的UICollectionView" class="headerlink" title="实现一个简单的UICollectionView"></a>实现一个简单的UICollectionView</h1><p>实现一个UICollectionView和实现一个UITableView基本没有什么大区别，它们都同样是datasource+delegate</p>
+<p>￼￼￼￼基本的UICollectionViewDataSource提供</p>
+<pre><code>
+￼-numberOfSectionsInCollection:  //section的数量
+￼-collectionView:numberOfItemsInSection:  //某个section里有多少个item
+￼-collectionView:cellForItemAtIndexPath: // 对于某个位置应该显示什么样的cell 
+
+-collectionView:viewForSupplementaryElementOfKind:atIndexPath: //提供Supplementary View
+</code></pre>
+
+<p>与UITableView中的情况一致，UICollectionView也需要对Cell进行重用，在iOS5中，Apple对UITableView的重用做了简化，以往要写类似这样的代码：</p>
+<pre><code>
+UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MY_CELL_ID"];  
+if (!cell) {     
+cell = [[UITableViewCell alloc] init]; 
+} 
+//配置cell，blablabla 
+return cell 
+</code></pre>
+在iOS5以后如果我们在TableView向数据源请求数据之前使用-registerNib:forCellReuseIdentifier:方法为@“MYCELLID"注册过nib的话，就可以省下每次判断并初始化cell的代码，要是在重用队列里没有可用的cell的话，runtime将自动帮我们生成并初始化一个可用的cell，还有以下类似方法
+<pre><code>
+- (void)registerNib:(UINib *)nib forCellReuseIdentifier:(NSString *)identifier NS_AVAILABLE_IOS(5_0);
+- (void)registerClass:(Class)cellClass forCellReuseIdentifier:(NSString *)identifier NS_AVAILABLE_IOS(6_0);
+
+- (void)registerNib:(UINib *)nib forHeaderFooterViewReuseIdentifier:(NSString *)identifier NS_AVAILABLE_IOS(6_0);
+- (void)registerClass:(Class)aClass forHeaderFooterViewReuseIdentifier:(NSString *)identifier NS_AVAILABLE_IOS(6_0);
+</code></pre>
+
+<p>同样的 UICollectionView也有类似的方法</p>
+<pre><code>
+- (void)registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier;
+- (void)registerNib:(UINib *)nib forCellWithReuseIdentifier:(NSString *)identifier;
+
+- (void)registerClass:(Class)viewClass forSupplementaryViewOfKind:(NSString *)elementKind withReuseIdentifier:(NSString *)identifier;
+- (void)registerNib:(UINib *)nib forSupplementaryViewOfKind:(NSString *)kind withReuseIdentifier:(NSString *)identifier;
+</code></pre>
+
+<p>基本的UICollectionViewDelegate提供与数据无关的view的外形，用户交互之类：</p>
+<p>cell的高亮<br>cell的选中状态<br>可以支持长按后的菜单<br>关于用户交互，UICollectionView也做了改进。每个cell现在有独立的高亮事件和选中事件的delegate，用户点击cell的时候，现在会按照以下流程向delegate进行询问：</p>
+<pre><code>
+-￼collectionView:shouldHighlightItemAtIndexPath: // 是否应该高亮？
+-￼collectionView:didHighlightItemAtIndexPath:  //如果1答是，那么高亮
+-￼collectionView:shouldSelectItemAtIndexPath:  //无论1结果如何，都询问是否可以被选中？
+-collectionView:didUnhighlightItemAtIndexPath: // 如果1答是，那么现在取消高亮
+-collectionView:didSelectItemAtIndexPath: // 如果3答是，那么选中cell
+</code></pre>
+
+<h3 id="Cell"><a href="#Cell" class="headerlink" title="Cell"></a>Cell</h3><p>UICollectionViewCell结构比较简单， 由上至下<br>首先是cell本身作为容器view<br>然后是一个大小自动适应整个cell的backgroundView，用作cell平时的背景<br>再其上是selectedBackgroundView，是cell被选中时的背景<br>最后是一个contentView，自定义内容应被加在这个view上</p>
+<h3 id="￼UICollectionViewLayout"><a href="#￼UICollectionViewLayout" class="headerlink" title="￼UICollectionViewLayout"></a>￼UICollectionViewLayout</h3><p>这是UICollectionView和UITableView最大的不同。UICollectionViewLayout负责了将各个cell、Supplementary View和Decoration Views进行组织，为它们设定各自的属性。在展示之前，一般需要生成合适的UICollectionViewLayout子类对象，并将其赋予CollectionView的collectionViewLayout属性。<br>SDK为我们提供了一个最简单可能也是最常用的默认layout对象，￼￼￼UICollectionViewFlowLayout。Flow Layout简单说是一个直线对齐的layout，最常见的Grid View形式即为一种Flow Layout配置:</p>
+<p>首先一个重要的属性是itemSize，它定义了每一个item的大小。通过设定itemSize可以全局地改变所有cell的尺寸，如果想要对某个cell制定尺寸，可以使用-collectionView:layout:sizeForItemAtIndexPath:方法。<br>间隔 可以指定item之间的间隔和每一行之间的间隔，和size类似，有全局属性，也可以对每一个item和每一个section做出设定：</p>
+<p><pre><code><br>@property (CGSize) minimumInteritemSpacing<br>@property (CGSize) minimumLineSpacing<br>-collectionView:layout:minimumInteritemSpacingForSectionAtIndex:<br>-collectionView:layout:minimumLineSpacingForSectionAtIndex:<br></code></pre><br>滚动方向 由属性scrollDirection确定scroll view的方向，将影响Flow Layout的基本方向和由header及footer确定的section之间的宽度</p>
+<p>UICollectionViewScrollDirectionVertical<br>UICollectionViewScrollDirectionHorizontal<br>Header和Footer尺寸 同样地分为全局和部分。需要注意根据滚动方向不同，header和footer的高和宽中只有一个会起作用。垂直滚动时section间宽度为该尺寸的高，而水平滚动时为宽度起作用，如图。</p>
+<p><pre><code><br>@property (CGSize) headerReferenceSize<br>@property (CGSize) footerReferenceSize<br>-collectionView:layout:referenceSizeForHeaderInSection:<br>-collectionView:layout:referenceSizeForFooterInSection:<br></code></pre><br>缩进</p>
+<p><pre><code><br>@property UIEdgeInsets sectionInset;<br>-collectionView:layout:insetForSectionAtIndex:<br></code></pre><br>通过自定义Layout可以实现各种nb布局，基本上常见的类似的第三方开源控件效果都可以实现，比如瀑布流、coverFlow，下面实现一个基本的瀑流效果</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://snsfrontend.crysnower.cn/UICollectionView简介.html" data-id="cjhfvpxn1000vwmov1wy9m04z" class="article-share-link">分享到</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/控件/">控件</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="github" href="http://www.suning.com" target="_blank"><i id="icon-github" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="http://www.suning.com" target="_blank"><i id="icon-weibo" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="rss" href="/atom.xml" target="_blank"><i id="icon-rss" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/cocos2d-x 学习笔记（1）.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <p class="article-nav-title">
+        
+          cocos2d-x 学习笔记（1）
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/LCDataManager相关说明.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">LCDataManager相关说明</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/螺与鱼.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/redaiyu.jpg
+)" alt="螺与螺" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/项目管理/">项目管理</a></p>
+              <p class="item-title"><a href="/螺与鱼.html" class="title">螺与螺</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:53:16.867Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/URL-编码-iOS.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/URL-编码-iOS.html" class="title">URL 编码 iOS</a></p>
+              <p class="item-date"><time datetime="2018-05-20T07:05:46.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/ios修改本地useragent-WKWebView.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/ios修改本地useragent-WKWebView.html" class="title">ios修改本地useragent(WKWebView)</a></p>
+              <p class="item-date"><time datetime="2018-05-20T03:50:39.000Z" itemprop="datePublished">5月 20 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/如何提高字符转float数据时的数据精度.html" class="thumbnail">
+  
+    <span style="background-image:url(http://obfk4z1f6.bkt.clouddn.com/fixed-point-representation.png
+)" alt="如何提高字符转float数据时的数据精度" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/如何提高字符转float数据时的数据精度.html" class="title">如何提高字符转float数据时的数据精度</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:17:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/echarts用饼图制作带labelline的旭日图.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/dy20180512171652810.jpg
+)" alt="echarts之用饼图制作带labelline的旭日图(一)" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/WEB/">WEB</a></p>
+              <p class="item-title"><a href="/echarts用饼图制作带labelline的旭日图.html" class="title">echarts之用饼图制作带labelline的旭日图(一)</a></p>
+              <p class="item-date"><time datetime="2018-05-12T09:04:00.000Z" itemprop="datePublished">5月 12 2018</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IOS开发/">IOS开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">49</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/FMDB/" style="font-size: 10px;">FMDB</a> <a href="/tags/POP/" style="font-size: 10px;">POP</a> <a href="/tags/PhoneGap/" style="font-size: 10px;">PhoneGap</a> <a href="/tags/SizeClass/" style="font-size: 14px;">SizeClass</a> <a href="/tags/WKWebView/" style="font-size: 10px;">WKWebView</a> <a href="/tags/appium/" style="font-size: 12px;">appium</a> <a href="/tags/cocos2d-x/" style="font-size: 20px;">cocos2d-x</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS8/" style="font-size: 16px;">iOS8</a> <a href="/tags/iconsole/" style="font-size: 10px;">iconsole</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/phonegap/" style="font-size: 10px;">phonegap</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/xib/" style="font-size: 10px;">xib</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/代码优化/" style="font-size: 12px;">代码优化</a> <a href="/tags/代码规范/" style="font-size: 10px;">代码规范</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/控件/" style="font-size: 18px;">控件</a> <a href="/tags/推送/" style="font-size: 10px;">推送</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/效率/" style="font-size: 12px;">效率</a> <a href="/tags/日历/" style="font-size: 10px;">日历</a> <a href="/tags/杂文/" style="font-size: 10px;">杂文</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/状态栏/" style="font-size: 10px;">状态栏</a> <a href="/tags/网络/" style="font-size: 14px;">网络</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/路线图/" style="font-size: 10px;">路线图</a> <a href="/tags/边下边播/" style="font-size: 10px;">边下边播</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a> <a href="/tags/项目管理/" style="font-size: 12px;">项目管理</a> <a href="/tags/高德/" style="font-size: 10px;">高德</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+          <li>
+            <a href="/AboutUs.html">AboutMe</a>
+          </li>
+        
+          <li>
+            <a href="http://www.suning.com">苏宁易购</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2018 SNS前端团队</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js"></script>
+  <script src="/scrollLoading/main.js"></script>
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
