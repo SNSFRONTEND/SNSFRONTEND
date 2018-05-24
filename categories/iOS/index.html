@@ -79,7 +79,7 @@
               
                 <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
               
-                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IOS开发/">IOS开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/WEB/">WEB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS/">iOS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/测试/">测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/项目管理/">项目管理</a></li></ul>
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/WEB/">WEB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS/">iOS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS开发/">iOS开发</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/测试/">测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/项目管理/">项目管理</a></li></ul>
                   
                 <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/AboutUs.html">About</a></li>
               
@@ -311,10 +311,10 @@ Masonry中的坑：
   <article class="article article-summary">
     <div class="article-summary-inner">
       
-<a href="/POP框架初探.html" class="thumbnail">
+<a href="/关于文档类工作输出要求.html" class="thumbnail">
   
-    <span style="background-image:url(/images/pop.gif
-)" alt="POP框架初探" class="thumbnail-image"></span>
+    <span style="background-image:url(/images/Markdown.png
+)" alt="关于文档类工作输出要求" class="thumbnail-image"></span>
   
 </a>
 
@@ -323,21 +323,23 @@ Masonry中的坑：
         <p class="date"><time datetime="2017-09-12T00:12:30.000Z" itemprop="datePublished">9月 12 2017</time></p>
       </div>
       <h2 class="article-title">
-        <a href="/POP框架初探.html" class="title">POP框架初探</a>
+        <a href="/关于文档类工作输出要求.html" class="title">关于文档类工作输出要求</a>
       </h2>
       <p class="article-excerpt">
         
-        合适的动画效果是提高用户体验最直观的方式，我们项目中的动画应用也不少，主要是使用的UIKit的动画扩展，还有少量用CoreAnimation实现。现在Facebook开源了POP，我们又多了一种强大好用的选择。与CoreAnimation相比，api用法相似，POP提供了更多方便生动的动画效果，主要是弹簧（SpringAnimation）和衰减（DecayAnimation）效果。
-使用方法POP的使用跟CoreAnimation比较相似，基本的步骤如下：
-
-选择一种动画效果1.POPBasicAnimation 基本的动画效果，我们常用的EaseInOut、Linenear的动画效果都可以用这种方式实现
-
-2.POPSpringAnimation 弹簧效果，如下图
-
-
-POPSpringAnimation *springAnimation = [POPSpringAnimation animation];
-springAnimation.springBounciness=14;    // 弹簧弹力 取值范围为[0, 20]，默认值为4
-springAnimation.springSpeed=3;     // 弹簧速度，速度越快，动画时间越短 [0, 20]，默认为12，和springBounciness一起决定着弹簧动画的效果
+        
+模板说明
+title 文档的标题
+date 文档编写或修改的时间
+categories 文档的类别，多个以半角逗号和方括号构成
+tags 文档的tag，多个以半角逗号和方括号构成
+分隔符—这一行保留
+&amp;lt;!--more--&amp;gt;和分隔符---之间的内容为文档摘要
+其中图片必须使用本地相对路径![imag](/images/xxx.png)
+文档提交地址http://172.16.128.161/ios/technology-blog.git
+文档地址 ./source/_posts/*.md
+图片地址 ./source/images/*.png
+xxx 正文
       </p>
     </div>
   </article>
@@ -482,7 +484,7 @@ springAnimation.springSpeed=3;     // 弹簧速度，速度越快，动画时间
   <div class="widget-wrap widget-list">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IOS开发/">IOS开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">50</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">4</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">50</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS开发/">iOS开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">4</span></li></ul>
     </div>
   </div>
 
