@@ -4,6 +4,50 @@
 
     
   <url>
+    <loc>http://snsfrontend.crysnower.cn/CAS%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81.html</loc>
+    <lastmod>2018-05-29T02:57:24.841Z</lastmod>
+    <data>
+        <display>
+        <title>CAS统一认证中心，针对移动客户端的认证过程设计（APP视角）</title>
+        <pubTime>2018-05-28T10:24:12.835Z</pubTime>
+        
+        <tag>CAS</tag>
+         
+        <tag>单点登录</tag>
+         
+         
+           
+             
+              <breadCrumb title="APP" url="http://snsfrontend.crysnower.cn/categories/APP/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://snsfrontend.crysnower.cn/iCarousel%E5%AE%9E%E7%8E%B0%E8%BD%AE%E6%92%AD-%E5%B8%A6%E7%BC%A9%E6%94%BE%E6%95%88%E6%9E%9C.html</loc>
+    <lastmod>2018-05-26T06:46:49.614Z</lastmod>
+    <data>
+        <display>
+        <title>iCarousel实现轮播(带缩放效果)</title>
+        <pubTime>2018-05-26T02:30:00.000Z</pubTime>
+        
+        <tag>banner</tag>
+         
+        <tag>轮播</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://snsfrontend.crysnower.cn/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://snsfrontend.crysnower.cn/%E8%AE%A1%E7%AE%97%E4%B8%80%E5%B9%B4%E4%B8%AD%E6%89%80%E6%9C%89%E5%91%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E5%A4%A9%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E5%A4%A9.html</loc>
     <lastmod>2018-05-24T12:19:33.378Z</lastmod>
     <data>
@@ -167,26 +211,6 @@
         <pubTime>2015-02-02T09:23:14.000Z</pubTime>
         
         <tag>杂文</tag>
-         
-         
-           
-             
-              <breadCrumb title="项目管理" url="http://snsfrontend.crysnower.cn/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://snsfrontend.crysnower.cn/%E8%9E%BA%E4%B8%8E%E9%B1%BC.html</loc>
-    <lastmod>2018-05-21T06:32:58.008Z</lastmod>
-    <data>
-        <display>
-        <title>螺与螺</title>
-        <pubTime>2018-05-20T07:53:16.867Z</pubTime>
-        
-        <tag>项目管理</tag>
          
          
            

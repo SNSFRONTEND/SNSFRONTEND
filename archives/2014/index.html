@@ -79,7 +79,7 @@
               
                 <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
               
-                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/WEB/">WEB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS/">iOS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/测试/">测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/项目管理/">项目管理</a></li></ul>
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/APP/">APP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/WEB/">WEB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS/">iOS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/测试/">测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/项目管理/">项目管理</a></li></ul>
                   
                 <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/AboutUs.html">About</a></li>
               
@@ -844,7 +844,7 @@ texturepacker
   <article class="article article-summary">
     <div class="article-summary-inner">
       
-<a href="/cocos2d-x 学习笔记（2）.html" class="thumbnail">
+<a href="/cocos2d-x 学习笔记（1）.html" class="thumbnail">
   
     <span class="thumbnail-image thumbnail-none"></span>
   
@@ -855,12 +855,21 @@ texturepacker
         <p class="date"><time datetime="2014-11-25T09:23:14.000Z" itemprop="datePublished">11月 25 2014</time></p>
       </div>
       <h2 class="article-title">
-        <a href="/cocos2d-x 学习笔记（2）.html" class="title">cocos2d-x 学习笔记（2）</a>
+        <a href="/cocos2d-x 学习笔记（1）.html" class="title">cocos2d-x 学习笔记（1）</a>
       </h2>
       <p class="article-excerpt">
         
-        调度器(scheduler)重载系统的调度器Cocos2d-x中Node默认是没有启用update事件的，因此你需要重载update方法来执行自己的逻辑代码。通过执行schedulerUpdate()调度器每帧执行 update方法，如果需要停止这个调度器，可以使用12以下代码用来测试该调度器：`
-HelloWorldScene.hvoid update(float dt) override;12
+        搭建环境
+创建新工程： python cocos.py new HelloWorldDemo -p com.coco2dx.org -l cpp -d ~/Desktop
+参数说明：
+
+
+HelloWorldDemo为项目名称
+-p后面接包名
+-l后面接开发语言类型，有cpp, lua, js三种类型
+-d后面接项目存放的目录
+
+搭建环境新建工程当然也可以用cocosstudio了。新建的时候勾选
       </p>
     </div>
   </article>
@@ -909,7 +918,7 @@ HelloWorldScene.hvoid update(float dt) override;12
   <article class="article article-summary">
     <div class="article-summary-inner">
       
-<a href="/cocos2d-x 学习笔记（1）.html" class="thumbnail">
+<a href="/cocos2d-x 学习笔记（2）.html" class="thumbnail">
   
     <span class="thumbnail-image thumbnail-none"></span>
   
@@ -920,21 +929,12 @@ HelloWorldScene.hvoid update(float dt) override;12
         <p class="date"><time datetime="2014-11-25T09:23:14.000Z" itemprop="datePublished">11月 25 2014</time></p>
       </div>
       <h2 class="article-title">
-        <a href="/cocos2d-x 学习笔记（1）.html" class="title">cocos2d-x 学习笔记（1）</a>
+        <a href="/cocos2d-x 学习笔记（2）.html" class="title">cocos2d-x 学习笔记（2）</a>
       </h2>
       <p class="article-excerpt">
         
-        搭建环境
-创建新工程： python cocos.py new HelloWorldDemo -p com.coco2dx.org -l cpp -d ~/Desktop
-参数说明：
-
-
-HelloWorldDemo为项目名称
--p后面接包名
--l后面接开发语言类型，有cpp, lua, js三种类型
--d后面接项目存放的目录
-
-搭建环境新建工程当然也可以用cocosstudio了。新建的时候勾选
+        调度器(scheduler)重载系统的调度器Cocos2d-x中Node默认是没有启用update事件的，因此你需要重载update方法来执行自己的逻辑代码。通过执行schedulerUpdate()调度器每帧执行 update方法，如果需要停止这个调度器，可以使用12以下代码用来测试该调度器：`
+HelloWorldScene.hvoid update(float dt) override;12
       </p>
     </div>
   </article>
@@ -983,42 +983,6 @@ HelloWorldDemo为项目名称
   <article class="article article-summary">
     <div class="article-summary-inner">
       
-<a href="/测试Json效率和XML效率.html" class="thumbnail">
-  
-    <span style="background-image:url(/images/79888-1946ee461177aeca.png
-)" alt="测试Json效率和XML效率" class="thumbnail-image"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-        <p class="date"><time datetime="2014-11-07T05:38:14.000Z" itemprop="datePublished">11月 7 2014</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/测试Json效率和XML效率.html" class="title">测试Json效率和XML效率</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        
-tips：把项目中的解析json的sbjson ,网上提到的JsonKit和apple提供的自带json解析方法进行比较所解析的json是来自项目当中服务返回的商家列表信息具体如下图
-      </p>
-    </div>
-  </article>
-
-    
-      </div>
-    
-  
-    
-    
-    
-    
-      <div class="article-row">
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
 <a href="/关于iConsole在项目中的应用.html" class="thumbnail">
   
     <span style="background-image:url(/images/79888-d9f0841d3cfac40e.png
@@ -1048,10 +1012,14 @@ tips：把项目中的解析json的sbjson ,网上提到的JsonKit和apple提供�
   </article>
 
     
+      </div>
+    
   
     
     
     
+    
+      <div class="article-row">
     
         
   <article class="article article-summary">
@@ -1077,43 +1045,6 @@ tips：把项目中的解析json的sbjson ,网上提到的JsonKit和apple提供�
 代码规范的内容？代码规范包含的范围十分广泛。从一个变量的命名到一个类的设计，我觉得都属于代码规范的范畴。从实践的角度，可以把代码规范分成两个部分：
 第一部分是规则，即一定要这么做。这里面没有对错，但需要统一。包含变量的命名、函数的命名、模块的组织、代码块的组织、宏、枚举、常量的声明、函数的粒度。
 第二部分是风格，即一种模式化的代码设计结构。我们实现某个功能时，往往不止一种实现方式。每一种实现方式没有绝对的高低之分，不同角度的解读，就会有不同的偏好。所以这个层面上的代码规范，只能求同存异。但是不管怎样，每个人必须要有一致性的风格。就像不同的小区可以有不同的风格，但同一个小区只能有一种设计风格。风格包含代码设计中的抽象概念，比如接口、继承等等。
-      </p>
-    </div>
-  </article>
-
-    
-      </div>
-    
-  
-    
-    
-    
-    
-      <div class="article-row">
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/LCBaseViewController相关.html" class="thumbnail">
-  
-    <span style="background-image:url(http://upload-images.jianshu.io/upload_images/79888-d6fa0aed379b25d2.png
-)" alt="LCBaseViewController相关" class="thumbnail-image"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-        <p class="date"><time datetime="2014-11-07T05:38:14.000Z" itemprop="datePublished">11月 7 2014</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/LCBaseViewController相关.html" class="title">LCBaseViewController相关</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        简介该基类参考原先项目中BaseViewController等几个类 进行修改 功能暂时满足目前项目需求 日后更新会根据项目迭代中提出的需求在进行修改
-##属性和函数说明
-LCViewControllerShowType：viewController出现的方式 具体分为123LCViewControllerShowTypePush                （pop/push方式）（默认）LCViewControllerShowTypePresent             （present/dismiss方式）LCViewControllerShowTypePresentBasic        （作为没有登录的情况下，登陆界面返回按钮 跳转到首页的凭据）
       </p>
     </div>
   </article>
@@ -1153,6 +1084,75 @@ NSArray, NSDictionary, NSData,NSString,UIImage 等常用数据类型，自定义
 1LCDataManager *dataManager = [LCDataManager shareManager];
 首先，我们创建一个对象，下文将以它作为存储的一个依据
 ##Cache block
+      </p>
+    </div>
+  </article>
+
+    
+      </div>
+    
+  
+    
+    
+    
+    
+      <div class="article-row">
+    
+        
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+      
+<a href="/测试Json效率和XML效率.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/79888-1946ee461177aeca.png
+)" alt="测试Json效率和XML效率" class="thumbnail-image"></span>
+  
+</a>
+
+      <div class="article-meta">
+        <p class="category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+        <p class="date"><time datetime="2014-11-07T05:38:14.000Z" itemprop="datePublished">11月 7 2014</time></p>
+      </div>
+      <h2 class="article-title">
+        <a href="/测试Json效率和XML效率.html" class="title">测试Json效率和XML效率</a>
+      </h2>
+      <p class="article-excerpt">
+        
+        
+tips：把项目中的解析json的sbjson ,网上提到的JsonKit和apple提供的自带json解析方法进行比较所解析的json是来自项目当中服务返回的商家列表信息具体如下图
+      </p>
+    </div>
+  </article>
+
+    
+  
+    
+    
+    
+    
+        
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+      
+<a href="/LCBaseViewController相关.html" class="thumbnail">
+  
+    <span style="background-image:url(http://upload-images.jianshu.io/upload_images/79888-d6fa0aed379b25d2.png
+)" alt="LCBaseViewController相关" class="thumbnail-image"></span>
+  
+</a>
+
+      <div class="article-meta">
+        <p class="category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+        <p class="date"><time datetime="2014-11-07T05:38:14.000Z" itemprop="datePublished">11月 7 2014</time></p>
+      </div>
+      <h2 class="article-title">
+        <a href="/LCBaseViewController相关.html" class="title">LCBaseViewController相关</a>
+      </h2>
+      <p class="article-excerpt">
+        
+        简介该基类参考原先项目中BaseViewController等几个类 进行修改 功能暂时满足目前项目需求 日后更新会根据项目迭代中提出的需求在进行修改
+##属性和函数说明
+LCViewControllerShowType：viewController出现的方式 具体分为123LCViewControllerShowTypePush                （pop/push方式）（默认）LCViewControllerShowTypePresent             （present/dismiss方式）LCViewControllerShowTypePresentBasic        （作为没有登录的情况下，登陆界面返回按钮 跳转到首页的凭据）
       </p>
     </div>
   </article>
@@ -1740,6 +1740,45 @@ iOS说到分层，有几种常见的做法。
             
             <div class="item-thumbnail">
               
+<a href="/CAS统一认证.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/APP/">APP</a></p>
+              <p class="item-title"><a href="/CAS统一认证.html" class="title">CAS统一认证中心，针对移动客户端的认证过程设计（APP视角）</a></p>
+              <p class="item-date"><time datetime="2018-05-28T10:24:12.835Z" itemprop="datePublished">5月 28 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/iCarousel实现轮播-带缩放效果.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/gif5.gif
+)" alt="iCarousel实现轮播(带缩放效果)" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/iCarousel实现轮播-带缩放效果.html" class="title">iCarousel实现轮播(带缩放效果)</a></p>
+              <p class="item-date"><time datetime="2018-05-26T02:30:00.000Z" itemprop="datePublished">5月 26 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
 <a href="/java-lang-UnsatisfiedLinkError.html" class="thumbnail">
   
     <span class="thumbnail-image thumbnail-none"></span>
@@ -1795,45 +1834,6 @@ iOS说到分层，有几种常见的做法。
             </div>
           </li>
         
-          <li>
-            
-            <div class="item-thumbnail">
-              
-<a href="/螺与鱼.html" class="thumbnail">
-  
-    <span style="background-image:url(/images/redaiyu.jpg
-)" alt="螺与螺" class="thumbnail-image"></span>
-  
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/项目管理/">项目管理</a></p>
-              <p class="item-title"><a href="/螺与鱼.html" class="title">螺与螺</a></p>
-              <p class="item-date"><time datetime="2018-05-20T07:53:16.867Z" itemprop="datePublished">5月 20 2018</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              
-<a href="/URL-编码-iOS.html" class="thumbnail">
-  
-    <span class="thumbnail-image thumbnail-none"></span>
-  
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-              <p class="item-title"><a href="/URL-编码-iOS.html" class="title">URL 编码 iOS</a></p>
-              <p class="item-date"><time datetime="2018-05-20T07:05:46.000Z" itemprop="datePublished">5月 20 2018</time></p>
-            </div>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1843,7 +1843,7 @@ iOS说到分层，有几种常见的做法。
   <div class="widget-wrap widget-list">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">51</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">4</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/APP/">APP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">52</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -1853,7 +1853,7 @@ iOS说到分层，有几种常见的做法。
   <div class="widget-wrap widget-float">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/FMDB/" style="font-size: 10px;">FMDB</a> <a href="/tags/POP/" style="font-size: 10px;">POP</a> <a href="/tags/PhoneGap/" style="font-size: 10px;">PhoneGap</a> <a href="/tags/SizeClass/" style="font-size: 14px;">SizeClass</a> <a href="/tags/WKWebView/" style="font-size: 10px;">WKWebView</a> <a href="/tags/appium/" style="font-size: 12px;">appium</a> <a href="/tags/cocos2d-x/" style="font-size: 20px;">cocos2d-x</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS8/" style="font-size: 16px;">iOS8</a> <a href="/tags/iconsole/" style="font-size: 10px;">iconsole</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/phonegap/" style="font-size: 10px;">phonegap</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/xib/" style="font-size: 10px;">xib</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/代码优化/" style="font-size: 12px;">代码优化</a> <a href="/tags/代码规范/" style="font-size: 10px;">代码规范</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/宏/" style="font-size: 10px;">宏</a> <a href="/tags/控件/" style="font-size: 18px;">控件</a> <a href="/tags/推送/" style="font-size: 10px;">推送</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/效率/" style="font-size: 12px;">效率</a> <a href="/tags/日历/" style="font-size: 10px;">日历</a> <a href="/tags/杂文/" style="font-size: 10px;">杂文</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/状态栏/" style="font-size: 10px;">状态栏</a> <a href="/tags/网络/" style="font-size: 14px;">网络</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/路线图/" style="font-size: 10px;">路线图</a> <a href="/tags/边下边播/" style="font-size: 10px;">边下边播</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a> <a href="/tags/项目管理/" style="font-size: 12px;">项目管理</a> <a href="/tags/高德/" style="font-size: 10px;">高德</a>
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/CAS/" style="font-size: 10px;">CAS</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/FMDB/" style="font-size: 10px;">FMDB</a> <a href="/tags/POP/" style="font-size: 10px;">POP</a> <a href="/tags/PhoneGap/" style="font-size: 10px;">PhoneGap</a> <a href="/tags/SizeClass/" style="font-size: 14px;">SizeClass</a> <a href="/tags/WKWebView/" style="font-size: 10px;">WKWebView</a> <a href="/tags/appium/" style="font-size: 12px;">appium</a> <a href="/tags/banner/" style="font-size: 10px;">banner</a> <a href="/tags/cocos2d-x/" style="font-size: 20px;">cocos2d-x</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS8/" style="font-size: 16px;">iOS8</a> <a href="/tags/iconsole/" style="font-size: 10px;">iconsole</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/phonegap/" style="font-size: 10px;">phonegap</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/xib/" style="font-size: 10px;">xib</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/代码优化/" style="font-size: 12px;">代码优化</a> <a href="/tags/代码规范/" style="font-size: 10px;">代码规范</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/单点登录/" style="font-size: 10px;">单点登录</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/宏/" style="font-size: 10px;">宏</a> <a href="/tags/控件/" style="font-size: 18px;">控件</a> <a href="/tags/推送/" style="font-size: 10px;">推送</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/效率/" style="font-size: 12px;">效率</a> <a href="/tags/日历/" style="font-size: 10px;">日历</a> <a href="/tags/杂文/" style="font-size: 10px;">杂文</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/状态栏/" style="font-size: 10px;">状态栏</a> <a href="/tags/网络/" style="font-size: 14px;">网络</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/路线图/" style="font-size: 10px;">路线图</a> <a href="/tags/轮播/" style="font-size: 10px;">轮播</a> <a href="/tags/边下边播/" style="font-size: 10px;">边下边播</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a> <a href="/tags/项目管理/" style="font-size: 10px;">项目管理</a> <a href="/tags/高德/" style="font-size: 10px;">高德</a>
     </div>
   </div>
 
