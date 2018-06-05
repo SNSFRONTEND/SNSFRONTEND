@@ -125,6 +125,39 @@
   <article class="article article-summary">
     <div class="article-summary-inner">
       
+<a href="/关于Masonry的使用和注意点.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+      <div class="article-meta">
+        <p class="category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+        <p class="date"><time datetime="2018-05-07T02:24:40.000Z" itemprop="datePublished">5月 7 2018</time></p>
+      </div>
+      <h2 class="article-title">
+        <a href="/关于Masonry的使用和注意点.html" class="title">关于Masonry的使用和注意点</a>
+      </h2>
+      <p class="article-excerpt">
+        
+        因为之前开发时都是在xib文件中添加约束，或者代码中计算frame并没有接触过Masonry，现在写篇博客来归纳总结下Masonry的使用和注意点。这篇文章只是简单介绍Masonry，以及Masonry的使用，并且会举一些例子出来。但并不会涉及到Masonry的内部实现
+Masonry中的坑：
+在使用Masonry进行约束时，有一些是需要注意的。
+在使用Masonry添加约束之前，需要在addSu
+      </p>
+    </div>
+  </article>
+
+    
+  
+    
+    
+    
+    
+        
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+      
 <a href="/IOS音视频分片缓存库IdiotAVPlayer.html" class="thumbnail">
   
     <span style="background-image:url(/images/9724987-ce428f8e23f1ec53.gif
@@ -152,6 +185,8 @@
   </article>
 
     
+      </div>
+    
   
     
     
@@ -164,6 +199,84 @@
           <a href="/archives/2017" class="archive-year"><i class="icon" id="icon-calendar-o"></i>2017</a>
         </div>
         <div class="archives">
+    
+    
+    
+      <div class="article-row">
+    
+        
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+      
+<a href="/代码规范.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+      <div class="article-meta">
+        <p class="category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+        <p class="date"><time datetime="2017-09-12T00:12:30.000Z" itemprop="datePublished">9月 12 2017</time></p>
+      </div>
+      <h2 class="article-title">
+        <a href="/代码规范.html" class="title">代码规范</a>
+      </h2>
+      <p class="article-excerpt">
+        
+        为什么要有代码规范？对于团队，如果代码风格不统一，阅读或修改同事的代码会非常困难，造成潜在的风险。
+对于个人，代码规范是对自身编码习惯的一种监督，如果没有这种监督，有时候因为偷懒，会写出难看的代码，时间长了自己都看不懂。这样对于代码的维护性是不利的。
+代码规范的内容？代码规范包含的范围十分广泛。从一个变量的命名到一个类的设计，我觉得都属于代码规范的范畴。从实践的角度，可以把代码规范分成两个部分：
+
+      </p>
+    </div>
+  </article>
+
+    
+  
+    
+    
+    
+    
+        
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+      
+<a href="/POP框架初探.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/pop.gif
+)" alt="POP框架初探" class="thumbnail-image"></span>
+  
+</a>
+
+      <div class="article-meta">
+        <p class="category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+        <p class="date"><time datetime="2017-09-12T00:12:30.000Z" itemprop="datePublished">9月 12 2017</time></p>
+      </div>
+      <h2 class="article-title">
+        <a href="/POP框架初探.html" class="title">POP框架初探</a>
+      </h2>
+      <p class="article-excerpt">
+        
+        合适的动画效果是提高用户体验最直观的方式，我们项目中的动画应用也不少，主要是使用的UIKit的动画扩展，还有少量用CoreAnimation实现。现在Facebook开源了POP，我们又多了一种强大好用的选择。与CoreAnimation相比，api用法相似，POP提供了更多方便生动的动画效果，主要是弹簧（SpringAnimation）和衰减（DecayAnimation）效果。
+使用方法POP的使用跟CoreAnimation比较相似，基本的步骤如下：
+
+选择一种动画效果1.POPBasicAnimation 基本的动画效果，我们常用的EaseInOut、Linenear的动画效果都可以用这种方式实现
+
+2.POPSpringAnimation 弹簧效果，如下图
+
+
+POPSpringAnimation *springAnimation = [POPSpringAnimation animation];
+springAnimation.springBounciness=14;    // 弹簧弹力 取值范围为[0, 20]，默认值为4
+springAnimation.springSpeed=3;     // 弹簧速度，速度越快，动画时间越短 [0, 20]，默认为12，和springBounciness一起决定着弹簧动画的效果
+      </p>
+    </div>
+  </article>
+
+    
+      </div>
+    
+  
+    
     
     
     
@@ -202,84 +315,6 @@ tags 文档的tag，多个以半角逗号和方括号构成
 文档地址 ./source/_posts/*.md
 图片地址 ./source/images/*.png
 xxx 正文
-      </p>
-    </div>
-  </article>
-
-    
-  
-    
-    
-    
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/代码规范.html" class="thumbnail">
-  
-    <span class="thumbnail-image thumbnail-none"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-        <p class="date"><time datetime="2017-09-12T00:12:30.000Z" itemprop="datePublished">9月 12 2017</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/代码规范.html" class="title">代码规范</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        为什么要有代码规范？对于团队，如果代码风格不统一，阅读或修改同事的代码会非常困难，造成潜在的风险。
-对于个人，代码规范是对自身编码习惯的一种监督，如果没有这种监督，有时候因为偷懒，会写出难看的代码，时间长了自己都看不懂。这样对于代码的维护性是不利的。
-代码规范的内容？代码规范包含的范围十分广泛。从一个变量的命名到一个类的设计，我觉得都属于代码规范的范畴。从实践的角度，可以把代码规范分成两个部分：
-
-      </p>
-    </div>
-  </article>
-
-    
-      </div>
-    
-  
-    
-    
-    
-    
-      <div class="article-row">
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/POP框架初探.html" class="thumbnail">
-  
-    <span style="background-image:url(/images/pop.gif
-)" alt="POP框架初探" class="thumbnail-image"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-        <p class="date"><time datetime="2017-09-12T00:12:30.000Z" itemprop="datePublished">9月 12 2017</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/POP框架初探.html" class="title">POP框架初探</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        合适的动画效果是提高用户体验最直观的方式，我们项目中的动画应用也不少，主要是使用的UIKit的动画扩展，还有少量用CoreAnimation实现。现在Facebook开源了POP，我们又多了一种强大好用的选择。与CoreAnimation相比，api用法相似，POP提供了更多方便生动的动画效果，主要是弹簧（SpringAnimation）和衰减（DecayAnimation）效果。
-使用方法POP的使用跟CoreAnimation比较相似，基本的步骤如下：
-
-选择一种动画效果1.POPBasicAnimation 基本的动画效果，我们常用的EaseInOut、Linenear的动画效果都可以用这种方式实现
-
-2.POPSpringAnimation 弹簧效果，如下图
-
-
-POPSpringAnimation *springAnimation = [POPSpringAnimation animation];
-springAnimation.springBounciness=14;    // 弹簧弹力 取值范围为[0, 20]，默认值为4
-springAnimation.springSpeed=3;     // 弹簧速度，速度越快，动画时间越短 [0, 20]，默认为12，和springBounciness一起决定着弹簧动画的效果
       </p>
     </div>
   </article>
@@ -329,39 +364,6 @@ springAnimation.springSpeed=3;     // 弹簧速度，速度越快，动画时间
 
     
   
-    
-    
-    
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/如何写一个控件.html" class="thumbnail">
-  
-    <span style="background-image:url(http://upload-images.jianshu.io/upload_images/16632-fa252bea2ac2d284.png
-)" alt="如何写一个控件" class="thumbnail-image"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-        <p class="date"><time datetime="2015-02-04T09:23:14.000Z" itemprop="datePublished">2月 4 2015</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/如何写一个控件.html" class="title">如何写一个控件</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        写控件，是做客户端开发的一项基本功。为什么这么说呢？
-      </p>
-    </div>
-  </article>
-
-    
-      </div>
-    
-  
   
     </div></section>
   
@@ -392,6 +394,65 @@ springAnimation.springSpeed=3;     // 弹簧速度，速度越快，动画时间
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/如何进行自动化测试1.html" class="thumbnail">
+  
+    <span style="background-image:url(https://img-blog.csdn.net/20150628124157802
+)" alt="如何进行自动化测试1" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/如何进行自动化测试1.html" class="title">如何进行自动化测试1</a></p>
+              <p class="item-date"><time datetime="2018-06-04T12:29:23.000Z" itemprop="datePublished">6月 4 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/WKWebView白屏之坑.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/dy20180604201306095.jpg
+)" alt="WKWebView白屏之坑" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/WKWebView白屏之坑.html" class="title">WKWebView白屏之坑</a></p>
+              <p class="item-date"><time datetime="2018-06-04T11:49:00.000Z" itemprop="datePublished">6月 4 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/Java反射完全解析1-1.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/Java反射完全解析1-1.html" class="title">Java反射完全解析1</a></p>
+              <p class="item-date"><time datetime="2018-06-02T08:14:00.000Z" itemprop="datePublished">6月 2 2018</time></p>
+            </div>
+          </li>
         
           <li>
             
@@ -432,65 +493,6 @@ springAnimation.springSpeed=3;     // 弹簧速度，速度越快，动画时间
             </div>
           </li>
         
-          <li>
-            
-            <div class="item-thumbnail">
-              
-<a href="/java-lang-UnsatisfiedLinkError.html" class="thumbnail">
-  
-    <span class="thumbnail-image thumbnail-none"></span>
-  
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
-              <p class="item-title"><a href="/java-lang-UnsatisfiedLinkError.html" class="title">java.lang.UnsatisfiedLinkError</a></p>
-              <p class="item-date"><time datetime="2018-05-24T07:19:00.000Z" itemprop="datePublished">5月 24 2018</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              
-<a href="/读懂复杂宏的小技巧.html" class="thumbnail">
-  
-    <span style="background-image:url(/images/dy20180521193332202.jpg
-)" alt="读懂复杂宏的小技巧" class="thumbnail-image"></span>
-  
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-              <p class="item-title"><a href="/读懂复杂宏的小技巧.html" class="title">读懂复杂宏的小技巧</a></p>
-              <p class="item-date"><time datetime="2018-05-21T11:13:00.000Z" itemprop="datePublished">5月 21 2018</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              
-<a href="/UIStackView基础用法介绍.html" class="thumbnail">
-  
-    <span style="background-image:url(https://o909w11l5.qnssl.com/2016-07-20-屏幕快照%202016-07-20%2016.52.41.png
-)" alt="UIStackView基础用法介绍" class="thumbnail-image"></span>
-  
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/UIStackView基础用法介绍.html" class="title">UIStackView基础用法介绍</a></p>
-              <p class="item-date"><time datetime="2018-05-21T01:27:19.000Z" itemprop="datePublished">5月 21 2018</time></p>
-            </div>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -500,7 +502,7 @@ springAnimation.springSpeed=3;     // 弹簧速度，速度越快，动画时间
   <div class="widget-wrap widget-list">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/APP/">APP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">52</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/APP/">APP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -510,7 +512,7 @@ springAnimation.springSpeed=3;     // 弹簧速度，速度越快，动画时间
   <div class="widget-wrap widget-float">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/CAS/" style="font-size: 10px;">CAS</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/FMDB/" style="font-size: 10px;">FMDB</a> <a href="/tags/POP/" style="font-size: 10px;">POP</a> <a href="/tags/PhoneGap/" style="font-size: 10px;">PhoneGap</a> <a href="/tags/SizeClass/" style="font-size: 14px;">SizeClass</a> <a href="/tags/WKWebView/" style="font-size: 10px;">WKWebView</a> <a href="/tags/appium/" style="font-size: 12px;">appium</a> <a href="/tags/banner/" style="font-size: 10px;">banner</a> <a href="/tags/cocos2d-x/" style="font-size: 20px;">cocos2d-x</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS8/" style="font-size: 16px;">iOS8</a> <a href="/tags/iconsole/" style="font-size: 10px;">iconsole</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/phonegap/" style="font-size: 10px;">phonegap</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/xib/" style="font-size: 10px;">xib</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/代码优化/" style="font-size: 12px;">代码优化</a> <a href="/tags/代码规范/" style="font-size: 10px;">代码规范</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/单点登录/" style="font-size: 10px;">单点登录</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/宏/" style="font-size: 10px;">宏</a> <a href="/tags/控件/" style="font-size: 18px;">控件</a> <a href="/tags/推送/" style="font-size: 10px;">推送</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/效率/" style="font-size: 12px;">效率</a> <a href="/tags/日历/" style="font-size: 10px;">日历</a> <a href="/tags/杂文/" style="font-size: 10px;">杂文</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/状态栏/" style="font-size: 10px;">状态栏</a> <a href="/tags/网络/" style="font-size: 14px;">网络</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/路线图/" style="font-size: 10px;">路线图</a> <a href="/tags/轮播/" style="font-size: 10px;">轮播</a> <a href="/tags/边下边播/" style="font-size: 10px;">边下边播</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a> <a href="/tags/项目管理/" style="font-size: 10px;">项目管理</a> <a href="/tags/高德/" style="font-size: 10px;">高德</a>
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/CAS/" style="font-size: 10px;">CAS</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/FMDB/" style="font-size: 10px;">FMDB</a> <a href="/tags/POP/" style="font-size: 10px;">POP</a> <a href="/tags/PhoneGap/" style="font-size: 10px;">PhoneGap</a> <a href="/tags/SizeClass/" style="font-size: 14px;">SizeClass</a> <a href="/tags/WKWebView/" style="font-size: 10px;">WKWebView</a> <a href="/tags/appium/" style="font-size: 12px;">appium</a> <a href="/tags/banner/" style="font-size: 10px;">banner</a> <a href="/tags/cocos2d-x/" style="font-size: 20px;">cocos2d-x</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS8/" style="font-size: 16px;">iOS8</a> <a href="/tags/iconsole/" style="font-size: 10px;">iconsole</a> <a href="/tags/java-reflection/" style="font-size: 10px;">java reflection</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/phonegap/" style="font-size: 10px;">phonegap</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/xib/" style="font-size: 10px;">xib</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/代码优化/" style="font-size: 12px;">代码优化</a> <a href="/tags/代码规范/" style="font-size: 10px;">代码规范</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/单点登录/" style="font-size: 10px;">单点登录</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/宏/" style="font-size: 10px;">宏</a> <a href="/tags/控件/" style="font-size: 18px;">控件</a> <a href="/tags/推送/" style="font-size: 10px;">推送</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/效率/" style="font-size: 12px;">效率</a> <a href="/tags/日历/" style="font-size: 10px;">日历</a> <a href="/tags/杂文/" style="font-size: 10px;">杂文</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/状态栏/" style="font-size: 10px;">状态栏</a> <a href="/tags/白屏/" style="font-size: 10px;">白屏</a> <a href="/tags/网络/" style="font-size: 14px;">网络</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/路线图/" style="font-size: 10px;">路线图</a> <a href="/tags/轮播/" style="font-size: 10px;">轮播</a> <a href="/tags/边下边播/" style="font-size: 10px;">边下边播</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a> <a href="/tags/项目管理/" style="font-size: 10px;">项目管理</a> <a href="/tags/高德/" style="font-size: 10px;">高德</a>
     </div>
   </div>
 

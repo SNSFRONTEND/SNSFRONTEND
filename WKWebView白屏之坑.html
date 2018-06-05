@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?6b806b7ed8c586bd0172da97b3ed66d8";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script>
+    
+
+<head>
+    <meta name="baidu-site-verification" content="ReWQDRchc7" />
+  <meta charset="utf-8">
+  
+  <title>WKWebView白屏之坑 | SNS前端团队</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="问题最近项目中使用了WKWebView展示echarts图表。起初效果很好，但是长时间测试后发现，WKWebView会出现白屏现象。百度了一番后，发现很多朋友遇到了同样的问题（例如这一篇https://www.jianshu.com/p/2a6cd16aceaa）。所以一开始也把白屏现象归罪于WKWebView的bug，寻思着从WK着手去解决问题。 踩坑白屏现象难复现，所以在发生白屏后，只能用fl">
+<meta name="keywords" content="白屏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WKWebView白屏之坑">
+<meta property="og:url" content="http://snsfrontend.crysnower.cn/WKWebView白屏之坑.html">
+<meta property="og:site_name" content="SNS前端团队">
+<meta property="og:description" content="问题最近项目中使用了WKWebView展示echarts图表。起初效果很好，但是长时间测试后发现，WKWebView会出现白屏现象。百度了一番后，发现很多朋友遇到了同样的问题（例如这一篇https://www.jianshu.com/p/2a6cd16aceaa）。所以一开始也把白屏现象归罪于WKWebView的bug，寻思着从WK着手去解决问题。 踩坑白屏现象难复现，所以在发生白屏后，只能用fl">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://snsfrontend.crysnower.cn/images/dy20180604201306095.jpg">
+<meta property="og:image" content="http://snsfrontend.crysnower.cn/images/dy20180604201317886.jpg">
+<meta property="og:updated_time" content="2018-06-05T07:21:07.102Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WKWebView白屏之坑">
+<meta name="twitter:description" content="问题最近项目中使用了WKWebView展示echarts图表。起初效果很好，但是长时间测试后发现，WKWebView会出现白屏现象。百度了一番后，发现很多朋友遇到了同样的问题（例如这一篇https://www.jianshu.com/p/2a6cd16aceaa）。所以一开始也把白屏现象归罪于WKWebView的bug，寻思着从WK着手去解决问题。 踩坑白屏现象难复现，所以在发生白屏后，只能用fl">
+<meta name="twitter:image" content="http://snsfrontend.crysnower.cn/images/dy20180604201306095.jpg">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css">
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(/images/logo.png); }
+    </style>
+  
+
+  
+    <!-- <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'> -->
+    <!-- <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  
+
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">点点滴滴-破茧成蝶</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/APP/">APP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android/">Android</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Server/">Server</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/WEB/">WEB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS/">iOS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/测试/">测试</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/项目管理/">项目管理</a></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/AboutUs.html">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://snsfrontend.crysnower.cn"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/iOS/">iOS</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-WKWebView白屏之坑" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      WKWebView白屏之坑
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/WKWebView白屏之坑.html" class="article-date">
+  作者：SNS前端团队
+  <time datetime="2018-06-04T11:49:00.000Z" itemprop="datePublished">6月 4 2018</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h5><p>最近项目中使用了WKWebView展示echarts图表。起初效果很好，但是长时间测试后发现，WKWebView会出现白屏现象。百度了一番后，发现很多朋友遇到了同样的问题（例如这一篇<a href="https://www.jianshu.com/p/2a6cd16aceaa）。" target="_blank" rel="noopener">https://www.jianshu.com/p/2a6cd16aceaa）。</a><br>所以一开始也把白屏现象归罪于WKWebView的bug，寻思着从WK着手去解决问题。</p>
+<h5 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h5><p>白屏现象难复现，所以在发生白屏后，只能用flex来看view的层次<br><img src="/images/dy20180604201306095.jpg" alt="白屏前"><br><img src="/images/dy20180604201317886.jpg" alt="白屏后"></p>
+<p>两张图对比之后可以看到，白屏之后上层的WKCompsitingView都消失了。是否可以通过判断WKWebView是否存在WKCompsitingView来判断是否白屏？下面的代码用于统计WKWebView当前一共包含多少WKCompsitingView。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)getWKCompositingViewCount:(<span class="built_in">UIView</span> *)view withCount:(<span class="built_in">NSInteger</span> *)count&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">UIView</span> *subview <span class="keyword">in</span> view.subviews) &#123;</span><br><span class="line">        <span class="keyword">if</span> ([subview isKindOfClass:<span class="built_in">NSClassFromString</span>(<span class="string">@"WKCompositingView"</span>)]) &#123;</span><br><span class="line">            *count += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (subview.subviews.count) &#123;</span><br><span class="line">            [<span class="keyword">self</span> getWKCompositingViewCount:subview withCount:count];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line"><span class="built_in">NSInteger</span> count = <span class="number">0</span>;</span><br><span class="line">[<span class="keyword">self</span> getWKCompositingViewCount:weakSelf.myWebView withCount:&amp;count];</span><br></pre></td></tr></table></figure>
+<p>在执行js之前，只要发现count == 0 就执行[webview reload];</p>
+<p>这段代码是否能填满这个坑呢？经过一系列折腾之后，白屏终于复现了，而且日志显示webview也reload了，但是依然是白屏、、、是不是wk的某种释放机制把相关的H5资源，所以reload没有效果？那重新loadRequest 是否可行呢？结果~~~还是白屏。</p>
+<h5 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h5><p>已经过去2天了，白屏问题仍然没有解决。但是经过了两天的折腾，我们总结出了下列几种现象，尽管都是白屏，但原因并不相同。</p>
+<table>
+<thead>
+<tr>
+<th>1.WKWebView的URL为空，出现白屏，这种现象可以通过loadRequest解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.WKWebView的URL不空，出现白屏，这种现象无论是reload还是loadRequest都不能刷出网页</td>
+</tr>
+<tr>
+<td>3.WKWebView的URL不空，显示背景图片，但是echarts图表不显示，reload和loadRequest都无效</td>
+</tr>
+<tr>
+<td>4.WKWebView的URL不空，背景图片不显示，echarts图表能显示，reload和loadRequest都无效</td>
+</tr>
+</tbody>
+</table>
+<p>现象3和4不能说是白屏，但应该跟白屏现象存在一定的关系。</p>
+<p>现象1很快就解决了，只要在执行js方法之前判断WKWebView的URL是否为空，重新loadRequest就能出网页。</p>
+<p>而2~4无论怎么reload或者loadRequest都没有效果，但它们的共同点都是似乎某种资源加载失败了，也许是wk的某种机制把加载过的资源释放了。</p>
+<p>于是尝试在本地html中加入资源加载的监听，只要发生错误，就调用location.reload();重载当前文档。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//监控资源加载错误(img,script,css,以及jsonp)</span></span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"==="</span> + e.message + <span class="string">"==="</span>);</span><br><span class="line">            location.reload();</span><br><span class="line">        &#125;, <span class="literal">true</span>);</span><br><span class="line">        <span class="built_in">window</span>.onerror = <span class="function"><span class="keyword">function</span> (<span class="params">errorMessage, scriptURI, lineNumber, columnNumber, errorObj</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"错误信息："</span>, errorMessage);</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"出错文件："</span>, scriptURI);</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"出错行号："</span>, lineNumber);</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"出错列号："</span>, columnNumber);</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"错误详情："</span>, errorObj);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>（注:这段代码要放在head内，并且css不能内联）至此，1-4现象再也没复现过，是否完全解决，后续测试中再持续关注。</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://snsfrontend.crysnower.cn/WKWebView白屏之坑.html" data-id="cji1d6lxn001i25ov04b63hij" class="article-share-link">分享到</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/白屏/">白屏</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="github" href="http://www.suning.com" target="_blank"><i id="icon-github" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="http://www.suning.com" target="_blank"><i id="icon-weibo" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="rss" href="/atom.xml" target="_blank"><i id="icon-rss" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/如何进行自动化测试1.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <p class="article-nav-title">
+        
+          如何进行自动化测试1
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/Java反射完全解析1-1.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">Java反射完全解析1</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/如何进行自动化测试1.html" class="thumbnail">
+  
+    <span style="background-image:url(https://img-blog.csdn.net/20150628124157802
+)" alt="如何进行自动化测试1" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/如何进行自动化测试1.html" class="title">如何进行自动化测试1</a></p>
+              <p class="item-date"><time datetime="2018-06-04T12:29:23.000Z" itemprop="datePublished">6月 4 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/WKWebView白屏之坑.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/dy20180604201306095.jpg
+)" alt="WKWebView白屏之坑" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/WKWebView白屏之坑.html" class="title">WKWebView白屏之坑</a></p>
+              <p class="item-date"><time datetime="2018-06-04T11:49:00.000Z" itemprop="datePublished">6月 4 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/Java反射完全解析1-1.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/Java反射完全解析1-1.html" class="title">Java反射完全解析1</a></p>
+              <p class="item-date"><time datetime="2018-06-02T08:14:00.000Z" itemprop="datePublished">6月 2 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/CAS统一认证.html" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/APP/">APP</a></p>
+              <p class="item-title"><a href="/CAS统一认证.html" class="title">CAS统一认证中心，针对移动客户端的认证过程设计（APP视角）</a></p>
+              <p class="item-date"><time datetime="2018-05-28T10:24:12.835Z" itemprop="datePublished">5月 28 2018</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/iCarousel实现轮播-带缩放效果.html" class="thumbnail">
+  
+    <span style="background-image:url(/images/gif5.gif
+)" alt="iCarousel实现轮播(带缩放效果)" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+              <p class="item-title"><a href="/iCarousel实现轮播-带缩放效果.html" class="title">iCarousel实现轮播(带缩放效果)</a></p>
+              <p class="item-date"><time datetime="2018-05-26T02:30:00.000Z" itemprop="datePublished">5月 26 2018</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/APP/">APP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/CAS/" style="font-size: 10px;">CAS</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/FMDB/" style="font-size: 10px;">FMDB</a> <a href="/tags/POP/" style="font-size: 10px;">POP</a> <a href="/tags/PhoneGap/" style="font-size: 10px;">PhoneGap</a> <a href="/tags/SizeClass/" style="font-size: 14px;">SizeClass</a> <a href="/tags/WKWebView/" style="font-size: 10px;">WKWebView</a> <a href="/tags/appium/" style="font-size: 12px;">appium</a> <a href="/tags/banner/" style="font-size: 10px;">banner</a> <a href="/tags/cocos2d-x/" style="font-size: 20px;">cocos2d-x</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS8/" style="font-size: 16px;">iOS8</a> <a href="/tags/iconsole/" style="font-size: 10px;">iconsole</a> <a href="/tags/java-reflection/" style="font-size: 10px;">java reflection</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/phonegap/" style="font-size: 10px;">phonegap</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/xib/" style="font-size: 10px;">xib</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/代码优化/" style="font-size: 12px;">代码优化</a> <a href="/tags/代码规范/" style="font-size: 10px;">代码规范</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/动画/" style="font-size: 10px;">动画</a> <a href="/tags/单点登录/" style="font-size: 10px;">单点登录</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/宏/" style="font-size: 10px;">宏</a> <a href="/tags/控件/" style="font-size: 18px;">控件</a> <a href="/tags/推送/" style="font-size: 10px;">推送</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/效率/" style="font-size: 12px;">效率</a> <a href="/tags/日历/" style="font-size: 10px;">日历</a> <a href="/tags/杂文/" style="font-size: 10px;">杂文</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/状态栏/" style="font-size: 10px;">状态栏</a> <a href="/tags/白屏/" style="font-size: 10px;">白屏</a> <a href="/tags/网络/" style="font-size: 14px;">网络</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/路线图/" style="font-size: 10px;">路线图</a> <a href="/tags/轮播/" style="font-size: 10px;">轮播</a> <a href="/tags/边下边播/" style="font-size: 10px;">边下边播</a> <a href="/tags/音频/" style="font-size: 10px;">音频</a> <a href="/tags/项目管理/" style="font-size: 10px;">项目管理</a> <a href="/tags/高德/" style="font-size: 10px;">高德</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+          <li>
+            <a href="/AboutUs.html">AboutMe</a>
+          </li>
+        
+          <li>
+            <a href="http://www.suning.com">苏宁易购</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2018 SNS前端团队</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js"></script>
+  <script src="/scrollLoading/main.js"></script>
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
